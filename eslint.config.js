@@ -12,7 +12,7 @@ export default tseslint.config(
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
-      prettierConfig, // 🟩 додано
+      prettierConfig,
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -22,7 +22,7 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      prettier: prettierPlugin, // 🟩 додано
+      prettier: prettierPlugin,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -30,7 +30,7 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-      'prettier/prettier': 'error', // 🟩 додано
+      'prettier/prettier': 'error',
     },
   },
 );

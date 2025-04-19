@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <h1>Product catalog</h1>
+      <h1  >Product catalog</h1>
     </div>
   );
 }

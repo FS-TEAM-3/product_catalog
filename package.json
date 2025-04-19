@@ -10,10 +10,14 @@
     "preview": "vite preview",
     "prepare": "husky install"
   },
-    "lint-staged": {
-      "**/*.{ts,tsx,js,jsx}": [
-        "eslint --fix"
-      ]
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "**/*.{json,css,scss,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "react": "^19.0.0",

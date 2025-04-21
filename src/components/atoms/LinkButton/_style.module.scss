@@ -1,0 +1,36 @@
+@use '@/styles/variables.scss' as *;
+
+.button {
+  display: flex;
+  text-decoration: none;
+  border: 1px solid $elements;
+  height: 32px;
+  width: 32px;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+
+  & svg {
+    stroke: $primary;
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    background-color: $elements;
+    stroke: $icons;
+    cursor: not-allowed;
+
+    svg {
+      stroke: $icons;
+    }
+  }
+}
+
+.active {
+  background-color: $primary;
+  color: $white;
+}

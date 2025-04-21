@@ -9,10 +9,12 @@ export const Header = () => {
 
   const linksList = [
     { name: 'Home', path: '/' },
-    { name: 'Cart', path: 'cart' },
-    { name: 'Catalog', path: 'catalog' },
+    { name: 'Phones', path: 'phones' },
+    { name: 'Tablets', path: 'tablets' },
+    { name: 'Accessories', path: 'accessories' },
+    { name: 'Item Card', path: 'phones/default-test-item' },
     { name: 'Favourites', path: 'favourites' },
-    { name: 'Item Card', path: 'phones' },
+    { name: 'Cart', path: 'cart' },
     { name: 'Not Found', path: 'random' },
   ];
 

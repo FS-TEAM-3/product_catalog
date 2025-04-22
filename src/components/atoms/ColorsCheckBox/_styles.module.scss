@@ -1,0 +1,36 @@
+@use '@/styles/variables.scss' as *;
+
+.checkbox {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $elements;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid $elements;
+  transition:
+    border-color 400ms,
+    background-color 400ms;
+
+  &:hover {
+    border-color: $icons;
+  }
+
+  .colorCircle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid $white;
+    background-color: transparent;
+    flex-shrink: 0;
+  }
+}
+
+.active {
+  border-color: $primary;
+  pointer-events: none;
+}

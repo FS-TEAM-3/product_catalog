@@ -1,0 +1,16 @@
+@use '@/styles/variables' as *;
+$box-size: 28px;
+$icon-size: 14px;
+
+.iconLink {
+  position: relative;
+  border: none;
+  color: $secondary;
+  width: $box-size;
+  height: $box-size;
+
+  & svg {
+    width: $icon-size;
+    height: $icon-size;
+  }
+}

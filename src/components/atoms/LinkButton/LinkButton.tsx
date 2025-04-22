@@ -7,7 +7,7 @@ type Props = {
   classNames?: string;
   path: string;
   disabled?: boolean;
-  size?: 'defauld' | 'big' | 'rectangle';
+  size?: 'default' | 'big';
 };
 
 export const LinkButton: React.FC<Props> = ({
@@ -23,7 +23,6 @@ export const LinkButton: React.FC<Props> = ({
       isActive && styles.active,
       disabled && styles.disabled,
       size === 'big' && styles.big,
-      size === 'rectangle' && styles.rectangle,
       classNames,
     ]
       .filter(Boolean)

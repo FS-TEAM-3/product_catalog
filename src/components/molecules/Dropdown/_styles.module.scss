@@ -37,11 +37,12 @@
   &:focus-visible {
     outline: none;
   }
+
+  @include font-style(body);
+
   @media (min-width: 320px) {
     min-width: 187px;
   }
-
-  @include font-style(body);
 }
 
 .selectContent {

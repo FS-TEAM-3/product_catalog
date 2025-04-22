@@ -1,12 +1,12 @@
 @use '@/styles/variables.scss' as *;
 @use '@/styles/typography' as *;
 
-.button {
+.checkbox {
   display: flex;
   text-decoration: none;
   border: 1px solid $elements;
   height: 32px;
-  width: 32px;
+  width: 60px;
   justify-content: center;
   align-items: center;
   color: inherit;
@@ -15,29 +15,8 @@
     border-color 400ms,
     background-color 400ms;
 
-  & svg {
-    height: 16px;
-    width: 16px;
-    stroke: $primary;
-  }
-
   &:hover {
     border-color: $primary;
-  }
-
-  &.disabled {
-    pointer-events: none;
-    background-color: $white;
-    cursor: not-allowed;
-
-    svg {
-      stroke: $icons;
-    }
-  }
-
-  &.big {
-    height: 40px;
-    width: 40px;
   }
 
   @include font-style(button);

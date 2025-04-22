@@ -21,6 +21,10 @@
     stroke: $primary;
   }
 
+  &:active {
+    background-color: $elements;
+  }
+
   &:hover {
     border-color: $primary;
   }
@@ -43,7 +47,7 @@
   @include font-style(button);
 }
 
-.active {
+.disabled {
   background-color: $primary;
   color: $white;
   pointer-events: none;

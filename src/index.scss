@@ -1,0 +1,8 @@
+@use './styles/_typography.scss' as *;
+
+body {
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+  @include font-style(body);
+}

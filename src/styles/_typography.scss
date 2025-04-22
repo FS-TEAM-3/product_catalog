@@ -1,0 +1,137 @@
+@use 'sass:map';
+
+$font-config: (
+  h1: (
+    desktop: (
+      size: 48px,
+      line: 56px,
+      weight: 700,
+      spacing: -0.01em,
+    ),
+    mobile: (
+      size: 32px,
+      line: 41px,
+      weight: 700,
+      spacing: -0.01em,
+    ),
+  ),
+  h2: (
+    desktop: (
+      size: 32px,
+      line: 41px,
+      weight: 700,
+      spacing: -0.01em,
+    ),
+    mobile: (
+      size: 22px,
+      line: 31px,
+      weight: 700,
+      spacing: 0,
+    ),
+  ),
+  h3: (
+    desktop: (
+      size: 22px,
+      line: 31px,
+      weight: 700,
+      spacing: 0,
+    ),
+    mobile: (
+      size: 20px,
+      line: 26px,
+      weight: 600,
+      spacing: 0,
+    ),
+  ),
+  h4: (
+    desktop: (
+      size: 20px,
+      line: 26px,
+      weight: 600,
+      spacing: 0,
+    ),
+    mobile: (
+      size: 16px,
+      line: 20px,
+      weight: 600,
+      spacing: 0,
+    ),
+  ),
+  uppercase: (
+    desktop: (
+      size: 12px,
+      line: 11px,
+      weight: 700,
+      spacing: 0.04em,
+    ),
+    mobile: (
+      size: 12px,
+      line: 11px,
+      weight: 700,
+      spacing: 0.04em,
+    ),
+  ),
+  button: (
+    desktop: (
+      size: 14px,
+      line: 21px,
+      weight: 600,
+      spacing: 0,
+    ),
+    mobile: (
+      size: 14px,
+      line: 21px,
+      weight: 600,
+      spacing: 0,
+    ),
+  ),
+  body: (
+    desktop: (
+      size: 14px,
+      line: 21px,
+      weight: 400,
+      spacing: 0,
+    ),
+    mobile: (
+      size: 14px,
+      line: 21px,
+      weight: 400,
+      spacing: 0,
+    ),
+  ),
+  small: (
+    desktop: (
+      size: 12px,
+      line: 15px,
+      weight: 600,
+      spacing: 0,
+    ),
+    mobile: (
+      size: 12px,
+      line: 15px,
+      weight: 600,
+      spacing: 0,
+    ),
+  ),
+);
+
+@function font-token($type, $screen, $key) {
+  $type-map: map.get($font-config, $type);
+  $screen-map: map.get($type-map, $screen);
+  @return map.get($screen-map, $key);
+}
+
+@mixin font-style($type) {
+  font-family: 'Mont', sans-serif;
+  font-size: font-token($type, desktop, size);
+  line-height: font-token($type, desktop, line);
+  font-weight: font-token($type, desktop, weight);
+  letter-spacing: font-token($type, desktop, spacing);
+
+  @media (max-width: 640px) {
+    font-size: font-token($type, mobile, size);
+    line-height: font-token($type, mobile, line);
+    font-weight: font-token($type, mobile, weight);
+    letter-spacing: font-token($type, mobile, spacing);
+  }
+}

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import styles from './_style.module.scss';
+import styles from './_styles.module.scss';
 
 type Props = {
   children: React.ReactNode;

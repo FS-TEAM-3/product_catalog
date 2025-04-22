@@ -1,9 +1,11 @@
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { LinkButton } from '@/components/atoms/LinkButton';
 import styles from './_styles.module.scss';
-import { ShoppingBag } from 'lucide-react';
-import { ColorsLinkCheckBox } from '@/components/atoms/ColorsLinkCheckBox';
+import { ShoppingBag, Plus, Minus } from 'lucide-react';
+import { ColorsCheckBox } from '@/components/atoms/ColorsCheckBox';
 import { LikeCheckBox } from '@/components/atoms/LikeCheckBox';
+import { PropertiesCheckBox } from '@/components/atoms/PropertiesCheckBox';
+import { SquareButton } from '@/components/atoms/SquareButton';
 
 export const Home = () => {
   return (
@@ -36,22 +38,25 @@ export const Home = () => {
         1
       </LinkButton>
       <p>Capacity</p>
-      <LinkButton path="/phones" size="rectangle">
-        65 GB
-      </LinkButton>
+      <PropertiesCheckBox property="125GB" />
       <p></p>
-      <LinkButton path="/" size="rectangle">
-        125 GB
-      </LinkButton>
+      <PropertiesCheckBox property="64GB" />
       <p>ColorChanges</p>
-      <ColorsLinkCheckBox path="/" color="green" />
+      <ColorsCheckBox innerColor="green" />
       <p></p>
-      <ColorsLinkCheckBox path="/phones" color="pink" />
-      <p></p>
+      <ColorsCheckBox innerColor="pink" />
+      <p>Like</p>
       <LikeCheckBox liked={false} />
       <p></p>
       <LikeCheckBox liked={true} />
       <p></p>
+      <SquareButton>
+        <Plus />
+      </SquareButton>
+      <p></p>
+      <SquareButton disabled={true}>
+        <Minus />
+      </SquareButton>
 
       <div>Home page</div>
     </>

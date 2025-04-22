@@ -20,13 +20,13 @@
 .navLeft {
   display: flex;
   gap: 48px;
-  padding: 10px 0 10px 24px;
+  padding: 10px 0 0 24px;
 }
 
 .logo {
   width: 128px;
   img {
-    width: 100%;
+    width: 80px;
     height: auto;
   }
 }
@@ -70,7 +70,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 24px;
+    padding: 18px;
     border-left: 1px solid #e0e0e0;
 
     a {
@@ -89,8 +89,8 @@
       }
 
       .icon {
-        width: 24px;
-        height: 24px;
+        width: 16px;
+        height: 16px;
         color: $primary;
       }
     }

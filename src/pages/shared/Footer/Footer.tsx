@@ -1,7 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import s from './footer.module.scss';
 import { Container } from '@/components/atoms/Container';
+import { useCallback } from 'react';
+import { Button } from '@radix-ui/themes';
+import { ChevronUp } from 'lucide-react';
+
+import clsx from 'clsx';
 
 export const Footer = () => {
   const linkList = [
@@ -10,26 +15,34 @@ export const Footer = () => {
     { name: 'rights', path: '/rights' },
   ];
 
+  const scrollToTop = useCallback(() => {
+    document.body.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }, []);
+
   return (
     <footer className={s.box}>
-      <Container>
-        <div>
-          <h2>Logo</h2>
+      <Container className={s.content}>
+        <div className={clsx(s.logo, s.section)}>
+          <NavLink to={'/'}>
+            <img className={s.logoImage} src="/img/Logo.png" alt="Logo" />
+          </NavLink>
         </div>
-
-        <div>
-          <ul className={s.linkList}>
-            {linkList.map(item => (
-              <li>
-                <Link to={`${item.path}`} className={s.link}>
-                  {item.name.toUpperCase()}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className={clsx(s.linkList, s.section)}>
+          {linkList.map(item => (
+            <Link className={s.linkItem} to={`${item.path}`} key={item.name}>
+              {item.name}
+            </Link>
+          ))}
         </div>
-
-        <div>Back to top Button</div>
+        <div className={clsx(s.toTopContainer, s.section)}>
+          <p className={s.toTopText}>Back to top</p>
+          <Button className={s.toTopButton} onClick={scrollToTop}>
+            <ChevronUp />
+          </Button>
+        </div>
       </Container>
     </footer>
   );

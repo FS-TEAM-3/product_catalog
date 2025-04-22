@@ -3,10 +3,15 @@ import { LinkButton } from '@/components/atoms/LinkButton';
 import { IconCounter } from '@/components/atoms/IconsCounter/IconsCouter';
 import s from './IconLinkWithCounter.module.scss';
 
-export const IconLinkWithCounter: React.FC<{
+type Props = {
   count?: number;
   children: React.ReactNode;
-}> = ({ count = 0, children }) => {
+};
+
+export const IconLinkWithCounter: React.FC<Props> = ({
+  count = 0,
+  children,
+}) => {
   return (
     <LinkButton path="cart" classNames={s.iconLink}>
       {children}

@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 
 import s from './footer.module.scss';
-import { Container } from '@/components/atoms/Container';
+import { Container } from '@/components/templates/Container';
 import { useCallback } from 'react';
 import { Button } from '@radix-ui/themes';
 import { ChevronUp } from 'lucide-react';

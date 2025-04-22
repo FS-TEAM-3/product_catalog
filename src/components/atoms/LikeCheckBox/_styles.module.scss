@@ -1,0 +1,22 @@
+@use '@/styles/variables.scss' as *;
+
+.checkbox {
+  width: 40px;
+  height: 40px;
+  background-color: $white;
+  border: 1px solid $icons;
+  stroke: $primary;
+  transition:
+    fill 400ms,
+    border-color 400ms;
+
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.liked svg {
+  fill: $red;
+  stroke: $red;
+  border-color: $elements;
+}

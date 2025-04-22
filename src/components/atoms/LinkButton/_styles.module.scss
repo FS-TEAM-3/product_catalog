@@ -11,6 +11,9 @@
   align-items: center;
   color: inherit;
   box-sizing: border-box;
+  transition:
+    border-color 400ms,
+    background-color 400ms;
 
   & svg {
     stroke: $primary;

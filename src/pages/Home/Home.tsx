@@ -6,10 +6,24 @@ import { ColorsCheckBox } from '@/components/atoms/ColorsCheckBox';
 import { LikeCheckBox } from '@/components/atoms/LikeCheckBox';
 import { PropertiesCheckBox } from '@/components/atoms/PropertiesCheckBox';
 import { SquareButton } from '@/components/atoms/SquareButton';
+import { GoBackButton } from '@/components/molecules/GoBackButton';
+import {
+  ColorsSelector,
+  PropertiesSelector,
+} from '@/components/molecules/SelectorWrapper';
 
 export const Home = () => {
   return (
     <>
+      <ColorsSelector colors={['green', 'pink', 'blue']} />
+      <p></p>
+      <PropertiesSelector
+        label={'Prop'}
+        properties={['125GB', '65GB', '254GB']}
+      />
+      <p></p>
+      <GoBackButton />
+      <p></p>
       <RectangleButton isActive={true}>Add to cart</RectangleButton>
       <p></p>
       <RectangleButton isLoading={true} size="big">

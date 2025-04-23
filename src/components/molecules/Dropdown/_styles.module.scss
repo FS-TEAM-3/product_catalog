@@ -2,8 +2,6 @@
 @use '@/styles/typography' as *;
 
 .dropdown {
-  // position: relative;
-
   &__label {
     display: block;
     color: $secondary;

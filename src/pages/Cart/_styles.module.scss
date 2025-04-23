@@ -1,0 +1,35 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/typography' as *;
+@use '@/styles/mixins' as *;
+
+.cart {
+  &__itemsBlock {
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      grid-column: 1 / span 12;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 16;
+    }
+  }
+
+  &__priceBlock {
+    text-align: center;
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      grid-column: 1 / span 12;
+    }
+
+    @include on-desktop {
+      grid-column: 17 / span 8;
+    }
+  }
+
+  &__innerPriceBlock {
+    border: 1px solid $elements;
+    padding: 24px;
+  }
+}

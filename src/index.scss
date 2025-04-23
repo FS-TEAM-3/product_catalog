@@ -1,8 +1,23 @@
 @use './styles/_typography.scss' as *;
+@use './styles/mixins.scss' as *;
 
 body {
   margin: 0;
   background-color: #fff;
   color: #000;
   @include font-style(body);
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
 }

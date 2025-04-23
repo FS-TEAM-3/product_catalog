@@ -88,16 +88,3 @@ $botton-size: 32px;
   margin-right: 16px;
   @include font-style(small);
 }
-
-.toTopButton {
-  border: 1px solid $icons;
-  width: $botton-size;
-  height: $botton-size;
-  cursor: pointer;
-  transition: border-color $duration;
-  color: $primary;
-
-  &:hover {
-    border-color: $primary;
-  }
-}

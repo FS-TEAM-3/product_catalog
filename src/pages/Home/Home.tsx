@@ -11,10 +11,16 @@ import {
   ColorsSelector,
   PropertiesSelector,
 } from '@/components/molecules/SelectorWrapper';
+import { Price } from '@/components/molecules/Price';
 
 export const Home = () => {
   return (
     <>
+      <p></p>
+      <Price currentPrice={400} fullPrice={422} />
+      <p></p>
+      <Price currentPrice={400} fullPrice={422} size="big" />
+      <p></p>
       <ColorsSelector colors={['green', 'pink', 'blue']} />
       <p></p>
       <PropertiesSelector

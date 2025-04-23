@@ -1,12 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
-
-import s from './footer.module.scss';
-import { Container } from '@/components/templates/Container';
 import { useCallback } from 'react';
-import { Button } from '@radix-ui/themes';
 import { ChevronUp } from 'lucide-react';
 
+import { Container } from '@/components/templates/Container';
+import { SquareButton } from '@/components/atoms/SquareButton';
+
 import clsx from 'clsx';
+import s from './footer.module.scss';
 
 export const Footer = () => {
   const linkList = [
@@ -39,9 +39,9 @@ export const Footer = () => {
         </div>
         <div className={clsx(s.toTopContainer, s.section)}>
           <p className={s.toTopText}>Back to top</p>
-          <Button className={s.toTopButton} onClick={scrollToTop}>
+          <SquareButton onClick={scrollToTop}>
             <ChevronUp />
-          </Button>
+          </SquareButton>
         </div>
       </Container>
     </footer>

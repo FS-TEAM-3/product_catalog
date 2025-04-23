@@ -2,8 +2,8 @@
 @use '@/styles/typography' as *;
 
 .totalPrice {
-  @include font-style(h2);
   margin: 0;
+  @include font-style(h2);
 }
 .discount {
   display: inline-block;

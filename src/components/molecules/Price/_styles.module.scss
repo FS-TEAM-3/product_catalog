@@ -1,0 +1,31 @@
+@use '@/styles/typography' as *;
+@use '@/styles/variables.scss' as *;
+
+.priceContainer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  color: $primary;
+  @include font-style(h3);
+
+  &.big {
+    @include font-style(h2);
+  }
+}
+
+.fullPrice {
+  text-decoration-line: line-through;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0;
+  color: $secondary;
+  font-family: Mont;
+
+  &.big {
+    font-weight: 500;
+  }
+}

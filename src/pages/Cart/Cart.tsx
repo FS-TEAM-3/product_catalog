@@ -1,5 +1,5 @@
 import styles from './_styles.module.scss';
-import { Container } from '@/components/atoms/Container';
+import { Container } from '@/components/templates/Container';
 import { TotalCartInfo } from '@/components/atoms/TotalCartInfo/TotalCartInfo';
 import { AlertDialogCheckout } from '@/components/organisms/AlertDialogCheckout/AlertDialogCheckout';
 

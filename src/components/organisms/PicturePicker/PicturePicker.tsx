@@ -11,8 +11,10 @@ interface PicturePickerProps {
 export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState(images[0]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImage, setModalImage] = useState<string | null>(null);
 
   const currentIndex = images.indexOf(selectedImage);
+  const modalIndex = modalImage ? images.indexOf(modalImage) : -1;
 
   const showPrev = () => {
     const prevIndex = (currentIndex - 1 + images.length) % images.length;
@@ -24,10 +26,28 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
     setSelectedImage(images[nextIndex]);
   };
 
-  // Бібліотека для обробки свайпів
+  const showModalPrev = () => {
+    if (modalImage === null) return;
+    const prevIndex = (modalIndex - 1 + images.length) % images.length;
+    setModalImage(images[prevIndex]);
+  };
+
+  const showModalNext = () => {
+    if (modalImage === null) return;
+    const nextIndex = (modalIndex + 1) % images.length;
+    setModalImage(images[nextIndex]);
+  };
+
   const handlers = useSwipeable({
     onSwipedLeft: showNext,
     onSwipedRight: showPrev,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
+  const modalHandlers = useSwipeable({
+    onSwipedLeft: showModalNext,
+    onSwipedRight: showModalPrev,
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
@@ -53,7 +73,10 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
         <div {...handlers}>
           <div
             className="main-photo-wrapper"
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => {
+              setModalImage(selectedImage);
+              setIsModalOpen(true);
+            }}
           >
             <img
               src={`/${selectedImage}`}
@@ -64,21 +87,20 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
         </div>
       </div>
 
-      {isModalOpen && (
+      {isModalOpen && modalImage && (
         <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-          {/*Функція stopPropagation не дає змогу закрити модальне вікно при кліку на картинку*/}
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <button className="modal-arrow left" onClick={showPrev}>
+            <button className="modal-arrow left" onClick={showModalPrev}>
               <ArrowLeft />
             </button>
-            <div {...handlers}>
+            <div {...modalHandlers}>
               <img
-                src={`/${selectedImage}`}
+                src={`/${modalImage}`}
                 className="modal-image"
                 alt="Large preview"
               />
             </div>
-            <button className="modal-arrow right" onClick={showNext}>
+            <button className="modal-arrow right" onClick={showModalNext}>
               <ArrowRight />
             </button>
             <div className="modal-thumbnails">
@@ -87,8 +109,8 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
                   key={index}
                   src={`/${img}`}
                   alt={`modal-thumb-${index}`}
-                  className={`modal-thumb ${selectedImage === img ? 'active' : ''}`}
-                  onClick={() => setSelectedImage(img)}
+                  className={`modal-thumb ${modalImage === img ? 'active' : ''}`}
+                  onClick={() => setModalImage(img)}
                 />
               ))}
             </div>

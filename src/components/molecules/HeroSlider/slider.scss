@@ -1,0 +1,107 @@
+@use '@/styles/mixins.scss' as *;
+@use '@/styles/variables.scss' as *;
+
+$video-height-mobile: 320px;
+$video-height-tablet: 189px;
+$video-height-desktop: 400px;
+
+.slider-wraper {
+  overflow: hidden;
+}
+
+.swiper-pagination-horizontal {
+  text-align: center;
+  width: fit-content;
+  margin: 5px auto;
+  display: flex;
+}
+
+.pagination {
+  text-align: center;
+}
+.swiper-pagination-bullet {
+  display: flex;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  &::after {
+    display: block;
+    content: '';
+    width: 14px;
+    height: 4px;
+    background-color: $elements;
+    opacity: 1;
+    transition: all $duration;
+    & :not(:last-child) {
+      margin-right: 4px;
+    }
+  }
+  &.swiper-pagination-bullet-active {
+    &::after {
+      background-color: $primary;
+    }
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+  @include on-tablet {
+    height: $video-height-tablet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: $video-height-tablet;
+    color: #000;
+    border: 1px solid $elements;
+    transition: border $duration;
+    cursor: pointer;
+    & svg {
+      width: 16px;
+      height: 16px;
+      color: $primary;
+    }
+  }
+  @include on-desktop {
+    height: $video-height-desktop;
+  }
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  border-color: $primary;
+}
+
+.box {
+  overflow: hidden;
+  display: flex;
+  margin-inline: -16px;
+}
+.video {
+  pointer-events: none;
+  display: block;
+  min-width: 100%;
+}
+.videoBox {
+  position: relative;
+  overflow: hidden;
+  object-fit: fill;
+  object-position: center bottom;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  background-color: rgba($primary, 0.7);
+  height: $video-height-mobile;
+  & source {
+    min-width: 100%;
+  }
+  @include on-tablet {
+    height: $video-height-tablet;
+    margin: 0;
+    margin-inline: 5px;
+  }
+  @include on-desktop {
+    height: $video-height-desktop;
+  }
+}

@@ -5,14 +5,8 @@ import products from '../../../public/api/phones.json';
 import { PicturePicker } from '@/components/organisms/PicturePicker/PicturePicker';
 ///
 
-// Для тесту
-const images = [
-  '../../../public/img/phones/apple-iphone-11/black/00.webp',
-  '../../../public/img/phones/apple-iphone-11/black/01.webp',
-  '../../../public/img/phones/apple-iphone-11/black/02.webp',
-  '../../../public/img/phones/apple-iphone-11/black/03.webp',
-  '../../../public/img/phones/apple-iphone-11/black/04.webp',
-];
+import images from '../../../public/api/phones.json';
+console.log(images[0].images);
 
 export const ItemCard = ({ category }: { category: string }) => {
   const product = products[3];
@@ -24,7 +18,7 @@ export const ItemCard = ({ category }: { category: string }) => {
         <Description product={product} isSmall={false} />
       </div>
       <div>
-        <PicturePicker images={images} />
+        <PicturePicker images={images[0].images} />
       </div>
     </>
   );

@@ -12,10 +12,17 @@ import {
   PropertiesSelector,
 } from '@/components/molecules/SelectorWrapper';
 import { Price } from '@/components/molecules/Price';
+import { ProductCard } from '@/components/organisms/ProductCard/ProductCard';
+
+import { Product } from '@/types/Product';
+import products from '../../../public/api/phones.json';
 
 export const Home = () => {
+  const product: Product = products[0];
   return (
     <>
+      <p></p>
+      <ProductCard product={product} />
       <p></p>
       <Price currentPrice={400} fullPrice={422} />
       <p></p>

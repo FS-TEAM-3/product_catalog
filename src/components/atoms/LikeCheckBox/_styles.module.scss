@@ -1,11 +1,15 @@
 @use '@/styles/variables.scss' as *;
 
 .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   background-color: $white;
   border: 1px solid $icons;
   stroke: $primary;
+  flex: 0 0 40px;
   transition:
     fill 400ms,
     border-color 400ms;

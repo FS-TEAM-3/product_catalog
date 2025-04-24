@@ -6,7 +6,6 @@ import styles from './_styles.module.scss';
 type TechSpecsProps = {
   product: Partial<ProductSpecs>;
   isSmall: boolean;
-  fieldsCount?: number;
 };
 
 const FIELD_LABELS_DEFAULT: Record<string, string> = {
@@ -26,11 +25,7 @@ const FIELD_LABELS_SMALL: Record<string, string> = {
   ram: 'RAM',
 };
 
-export const Description: React.FC<TechSpecsProps> = ({
-  product,
-  isSmall,
-  fieldsCount,
-}) => {
+export const Description: React.FC<TechSpecsProps> = ({ product, isSmall }) => {
   const { screen, resolution, processor, ram, capacity, camera, zoom, cell } =
     product;
 
@@ -53,11 +48,7 @@ export const Description: React.FC<TechSpecsProps> = ({
     { key: 'ram', value: ram },
   ];
 
-  let specsToShow = isSmall ? smallSpecs : allSpecs;
-
-  if (fieldsCount) {
-    specsToShow = specsToShow.slice(0, fieldsCount);
-  }
+  const specsToShow = isSmall ? smallSpecs : allSpecs;
 
   return (
     <section className={`${isSmall ? styles.techspecs__inside : ''} techspecs`}>

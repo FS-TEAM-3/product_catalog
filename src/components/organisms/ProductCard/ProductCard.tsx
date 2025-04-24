@@ -30,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({ product, path }) => {
       <div className={styles.separator} />
 
       <div className={styles.cardDescription}>
-        <Description product={specs} isSmall={true} fieldsCount={3} />
+        <Description product={specs} isSmall={true} />
       </div>
 
       <div className={styles.cardButtons}>

@@ -1,12 +1,14 @@
 @use '@/styles/variables.scss' as *;
 @use '@/styles/typography' as *;
+@use '@/styles/mixins' as *;
 
 .card {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  width: 272px;
-  height: 506px;
+  width: 100%;
+  max-width: 288px;
+
   border: 1px solid $elements;
   padding: 32px;
   gap: 8px;
@@ -17,12 +19,23 @@
     object-fit: contain;
 
     &Container {
-      max-width: 208px;
-      max-height: 196px;
+      width: 224px;
+      height: 130px;
 
       display: flex;
       align-items: center;
       align-self: center;
+      justify-content: center;
+
+      @include on-tablet {
+        width: 165px;
+        height: 175px;
+      }
+
+      @include on-desktop {
+        width: 224px;
+        height: 196px;
+      }
     }
   }
 
@@ -54,9 +67,10 @@
     justify-content: center;
     width: 100%;
     gap: 8px;
+    flex: 0 0 40px;
 
     &Container {
-      width: 160px;
+      width: 100%;
     }
   }
 }

@@ -18,6 +18,7 @@ import { ProductCard } from '@/components/organisms/ProductCard/ProductCard';
 
 import { Product } from '@/types/Product';
 import products from '../../../public/api/phones.json';
+import { CardSlider } from '@/components/molecules/CardSlider/CardSlider';
 
 export const Home = () => {
   const product: Product = products[0];
@@ -109,6 +110,13 @@ export const Home = () => {
       <SquareButton disabled={true}>
         <Minus />
       </SquareButton>
+
+      <CardSlider
+        products={products.slice(10)}
+        id={1}
+        title="Brand new models"
+      />
+      <CardSlider products={products.slice(-10)} id={2} title="Hot prices" />
       <div>Home page</div>
     </Container>
   );

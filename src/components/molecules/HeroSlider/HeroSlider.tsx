@@ -82,10 +82,8 @@ export const Slider: React.FC<Props> = ({ links }) => {
           }}
           autoplay={{ delay: 5000 }}
           controller={{ control: controlledSwiper }}
-          onSlideChange={() => console.log('slide change')}
         >
           {links[breakpoint].map((item, idx) => {
-            console.log(item, breakpoint);
             return (
               <SwiperSlide key={item}>
                 <div className="videoBox">

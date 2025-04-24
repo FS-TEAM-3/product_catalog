@@ -1,0 +1,28 @@
+@use '@/styles/_typography.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.headBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.title {
+  @include font-style(h2);
+  max-width: 50%;
+  margin: 0;
+  @include on-tablet {
+    @include font-style(h2);
+  }
+}
+
+.buttonBox {
+  display: flex;
+  & button:first-child {
+    margin-right: 16px;
+  }
+}
+
+.button {
+  display: block;
+}

@@ -9,6 +9,10 @@ $video-height-desktop: 400px;
   overflow: hidden;
 }
 
+.pagination {
+  text-align: center;
+}
+
 .swiper-pagination-horizontal {
   text-align: center;
   width: fit-content;
@@ -16,15 +20,13 @@ $video-height-desktop: 400px;
   display: flex;
 }
 
-.pagination {
-  text-align: center;
-}
 .swiper-pagination-bullet {
   display: flex;
   align-items: center;
   width: 24px;
   height: 24px;
   cursor: pointer;
+
   &::after {
     display: block;
     content: '';
@@ -37,6 +39,7 @@ $video-height-desktop: 400px;
       margin-right: 4px;
     }
   }
+
   &.swiper-pagination-bullet-active {
     &::after {
       background-color: $primary;
@@ -80,16 +83,6 @@ $video-height-desktop: 400px;
   margin-inline: -16px;
 }
 
-.videoLink {
-  display: block;
-  @include on-tablet {
-    pointer-events: none;
-  }
-}
-
-.video {
-  min-width: 100%;
-}
 .videoBox {
   position: relative;
   overflow: hidden;
@@ -110,4 +103,15 @@ $video-height-desktop: 400px;
   @include on-desktop {
     height: $video-height-desktop;
   }
+}
+
+.videoLink {
+  display: block;
+  @include on-tablet {
+    pointer-events: none;
+  }
+}
+
+.video {
+  min-width: 100%;
 }

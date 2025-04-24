@@ -79,9 +79,15 @@ $video-height-desktop: 400px;
   display: flex;
   margin-inline: -16px;
 }
-.video {
-  pointer-events: none;
+
+.videoLink {
   display: block;
+  @include on-tablet {
+    pointer-events: none;
+  }
+}
+
+.video {
   min-width: 100%;
 }
 .videoBox {

@@ -47,7 +47,7 @@ export const Home = () => {
       </div>
 
       <p></p>
-      <ProductCard product={product} />
+      <ProductCard product={product} path="/phones" />
       <p></p>
       <Price currentPrice={400} fullPrice={422} />
       <p></p>

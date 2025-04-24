@@ -18,7 +18,7 @@ export const ProductCard: React.FC<Props> = ({ product, path }) => {
   return (
     <div className={styles.card}>
       <NavLink to={path} className={styles.cardImageContainer}>
-        <img src={image} alt={name} className={styles.cardImage}></img>
+        <img src={'/' + image} alt={name} className={styles.cardImage}></img>
       </NavLink>
 
       <NavLink to={path} className={styles.cardTitleContainer}>

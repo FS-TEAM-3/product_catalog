@@ -1,11 +1,13 @@
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, Controller } from 'swiper/modules';
-import './slider.scss';
-import React, { useEffect, useState } from 'react';
-import 'swiper/css';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { HeroCard } from '../../atoms/HeroCard/HeroCard';
 import { Link } from 'react-router-dom';
+import 'swiper/css';
+
+import './slider.scss';
+
 type Props = {
   links: {
     desktop: string[];
@@ -35,7 +37,7 @@ export const Slider: React.FC<Props> = ({ links }) => {
   const pagination = {
     clickable: true,
     renderBullet: function (index: number, className: string) {
-      return `<div class="pagination  ${className} "></div>`;
+      return `<div class="pagination  ${className} key=${index}"></div>`;
     },
   };
 

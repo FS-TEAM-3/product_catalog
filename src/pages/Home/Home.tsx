@@ -12,6 +12,8 @@ import {
   PropertiesSelector,
 } from '@/components/molecules/SelectorWrapper';
 import { Price } from '@/components/molecules/Price';
+import { Slider } from '@/components/molecules/HeroSlider/HeroSlider';
+import { Container } from '@/components/templates/Container';
 import { ProductCard } from '@/components/organisms/ProductCard/ProductCard';
 
 import { Product } from '@/types/Product';
@@ -19,8 +21,31 @@ import products from '../../../public/api/phones.json';
 
 export const Home = () => {
   const product: Product = products[0];
+
+  const sliderLinks = {
+    desktop: [
+      'https://www.apple.com/105/media/ww/iphone/family/2025/e7ff365a-cb59-4ce9-9cdf-4cb965455b69/anim/welcome3/large.mp4',
+      'https://www.apple.com/assets-www/en_WW/ipad/welcome/04854789d_large.mp4',
+      'https://www.apple.com/105/media/ww/watch/2024/f0b51c31-e8a5-44d7-b23d-51bd2858454a/anim/hero/large.mp4',
+    ],
+    tablet: [
+      'https://www.apple.com/105/media/ww/iphone/family/2025/e7ff365a-cb59-4ce9-9cdf-4cb965455b69/anim/welcome3/medium.mp4',
+      'https://www.apple.com/assets-www/en_WW/ipad/welcome/c09534af6_medium.mp4',
+      'https://www.apple.com/105/media/ww/watch/2024/f0b51c31-e8a5-44d7-b23d-51bd2858454a/anim/hero/medium.mp4',
+    ],
+    mobile: [
+      'https://www.apple.com/105/media/ww/iphone/family/2025/e7ff365a-cb59-4ce9-9cdf-4cb965455b69/anim/welcome3/small.mp4',
+      'https://www.apple.com/assets-www/en_WW/ipad/welcome/66b39244b_small.mp4',
+      'https://www.apple.com/105/media/ww/watch/2024/f0b51c31-e8a5-44d7-b23d-51bd2858454a/anim/hero/small.mp4',
+    ],
+  };
+
   return (
-    <>
+    <Container>
+      <div>
+        <Slider links={sliderLinks} />
+      </div>
+
       <p></p>
       <ProductCard product={product} />
       <p></p>
@@ -84,8 +109,7 @@ export const Home = () => {
       <SquareButton disabled={true}>
         <Minus />
       </SquareButton>
-
       <div>Home page</div>
-    </>
+    </Container>
   );
 };

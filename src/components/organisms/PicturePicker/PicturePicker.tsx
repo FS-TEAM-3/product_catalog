@@ -24,7 +24,7 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
     setSelectedImage(images[nextIndex]);
   };
 
-  //Бібліотека react-swipeable для того щоб можна було свайпати на мобільних пристроях
+  // Бібліотека для обробки свайпів
   const handlers = useSwipeable({
     onSwipedLeft: showNext,
     onSwipedRight: showPrev,
@@ -42,7 +42,7 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
               className={`thumbnail-block ${selectedImage === img ? 'active' : ''}`}
             >
               <img
-                src={img}
+                src={`/${img}`}
                 alt={`thumb-${index}`}
                 className="thumb-img"
                 onClick={() => setSelectedImage(img)}
@@ -55,21 +55,25 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
             className="main-photo-wrapper"
             onClick={() => setIsModalOpen(true)}
           >
-            <img src={selectedImage} alt="Selected" className="main-photo" />
+            <img
+              src={`/${selectedImage}`}
+              alt="Selected"
+              className="main-photo"
+            />
           </div>
         </div>
       </div>
 
       {isModalOpen && (
         <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+          {/*Функція stopPropagation не дає змогу закрити модальне вікно при кліку на картинку*/}
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            {/*Функція stopPropagation для того щоб не закривалось модальне вікно при кліку на зображення */}
             <button className="modal-arrow left" onClick={showPrev}>
               <ArrowLeft />
             </button>
             <div {...handlers}>
               <img
-                src={selectedImage}
+                src={`/${selectedImage}`}
                 className="modal-image"
                 alt="Large preview"
               />
@@ -81,7 +85,7 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
               {images.map((img, index) => (
                 <img
                   key={index}
-                  src={img}
+                  src={`/${img}`}
                   alt={`modal-thumb-${index}`}
                   className={`modal-thumb ${selectedImage === img ? 'active' : ''}`}
                   onClick={() => setSelectedImage(img)}

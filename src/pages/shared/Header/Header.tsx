@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import './style.module.scss';
 import s from './style.module.scss';
 import { Heart, ShoppingBag, Menu, X } from 'lucide-react';
@@ -87,26 +87,30 @@ export const Header = () => {
         </div>
 
         <div className={s.navRight}>
-          <div className={s.iconWrapper}>
-            <NavLink
-              to="/favourites"
-              className={({ isActive }) => (isActive ? s.active : '')}
-            >
-              <IconLinkWithCounter count={favoritesCounter}>
-                <Heart className={s.icon} />
-              </IconLinkWithCounter>
-            </NavLink>
-          </div>
-          <div className={s.iconWrapper}>
-            <NavLink
-              to="/cart"
-              className={({ isActive }) => (isActive ? s.active : '')}
-            >
-              <IconLinkWithCounter count={cartCounter}>
-                <ShoppingBag className={s.icon} />
-              </IconLinkWithCounter>
-            </NavLink>
-          </div>
+          <Link to="/favourites">
+            <div className={s.iconWrapper}>
+              <NavLink
+                to="/favourites"
+                className={({ isActive }) => (isActive ? s.active : '')}
+              >
+                <IconLinkWithCounter count={favoritesCounter}>
+                  <Heart className={s.icon} />
+                </IconLinkWithCounter>
+              </NavLink>
+            </div>
+          </Link>
+          <Link to="/cart">
+            <div className={s.iconWrapper}>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) => (isActive ? s.active : '')}
+              >
+                <IconLinkWithCounter count={cartCounter}>
+                  <ShoppingBag className={s.icon} />
+                </IconLinkWithCounter>
+              </NavLink>
+            </div>
+          </Link>
           <div
             className={s.menuButton}
             onClick={() => setMenuOpen(!isMenuOpen)}

@@ -10,7 +10,7 @@ export const ItemCard = ({ category }: { category: string }) => {
     <div>
       <h4>{category}</h4>
       <p>ItemCard page</p>
-      <Description product={product} hasTitle={true} />
+      <Description product={product} isSmall={false} />
     </div>
   );
 };

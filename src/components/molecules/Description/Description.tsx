@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './_styles.module.scss';
 
 type TechSpecsProps = {
-  product: ProductSpecs;
+  product: Partial<ProductSpecs>;
   isSmall: boolean;
   fieldsCount?: number;
 };

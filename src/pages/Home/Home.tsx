@@ -15,13 +15,12 @@ import { Price } from '@/components/molecules/Price';
 import { Slider } from '@/components/molecules/HeroSlider/HeroSlider';
 import { Container } from '@/components/templates/Container';
 import { ProductCard } from '@/components/organisms/ProductCard/ProductCard';
-
-import { Product } from '@/types/Product';
-import products from '../../../public/api/phones.json';
+import products from '../../../public/api/products.json';
+import { GeneralProduct } from '@/types/GeneralProduct';
 import { CardSlider } from '@/components/molecules/CardSlider/CardSlider';
 
 export const Home = () => {
-  const product: Product = products[0];
+  const prod: GeneralProduct = products[0];
 
   const sliderLinks = {
     desktop: [
@@ -48,7 +47,7 @@ export const Home = () => {
       </div>
 
       <p></p>
-      <ProductCard product={product} path="/phones" />
+      <ProductCard product={prod} path="/phones" />
       <p></p>
       <Price currentPrice={400} fullPrice={422} />
       <p></p>

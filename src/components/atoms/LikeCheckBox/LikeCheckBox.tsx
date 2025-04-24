@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { Heart } from 'lucide-react';
 
 type Props = {
-  liked: boolean;
+  liked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
 };
 

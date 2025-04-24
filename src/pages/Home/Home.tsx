@@ -14,8 +14,14 @@ import {
 import { Price } from '@/components/molecules/Price';
 import { Slider } from '@/components/molecules/HeroSlider/HeroSlider';
 import { Container } from '@/components/templates/Container';
+import { ProductCard } from '@/components/organisms/ProductCard/ProductCard';
+
+import { Product } from '@/types/Product';
+import products from '../../../public/api/phones.json';
 
 export const Home = () => {
+  const product: Product = products[0];
+
   const sliderLinks = {
     desktop: [
       'https://www.apple.com/105/media/ww/iphone/family/2025/e7ff365a-cb59-4ce9-9cdf-4cb965455b69/anim/welcome3/large.mp4',
@@ -40,6 +46,8 @@ export const Home = () => {
         <Slider links={sliderLinks} />
       </div>
 
+      <p></p>
+      <ProductCard product={product} />
       <p></p>
       <Price currentPrice={400} fullPrice={422} />
       <p></p>

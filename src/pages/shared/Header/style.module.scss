@@ -11,6 +11,19 @@ $active-border-height: 3px;
 $footer-height: 48px;
 $menu-padding: 18px;
 
+@mixin underline-animate {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $active-border-height;
+  background-color: $primary;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
 .firstVariantLink {
   margin: 5px;
   text-decoration: none;
@@ -49,6 +62,7 @@ $menu-padding: 18px;
   display: flex;
   align-items: center;
   gap: 64px;
+  line-height: 56px;
 }
 
 .link {
@@ -59,17 +73,15 @@ $menu-padding: 18px;
   font-size: $font-size;
   letter-spacing: $link-spacing;
 
+  &::after {
+    @include underline-animate;
+  }
+
   &.active {
     color: $primary;
 
     &::after {
-      content: '';
-      position: absolute;
-      bottom: -16px;
-      left: 0;
-      width: 100%;
-      height: $active-border-height;
-      background-color: $primary;
+      transform: scaleX(1);
     }
   }
 }
@@ -83,7 +95,7 @@ $menu-padding: 18px;
     position: relative;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 28px;
     padding: $menu-padding;
     border-left: 1px solid $border-color;
 
@@ -92,14 +104,12 @@ $menu-padding: 18px;
       justify-content: center;
       align-items: center;
 
+      &::after {
+        @include underline-animate;
+      }
+
       &.active::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: $active-border-height;
-        background-color: $primary;
+        transform: scaleX(1);
       }
     }
   }
@@ -146,14 +156,7 @@ $menu-padding: 18px;
 
   .navLinks {
     gap: 32px;
-  }
-
-  .link {
-    &.active {
-      &::after {
-        bottom: -8px;
-      }
-    }
+    line-height: 40px;
   }
 }
 

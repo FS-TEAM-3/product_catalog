@@ -1,0 +1,215 @@
+@use '@/styles/variables.scss' as *;
+
+.picker-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.thumbnails-column {
+  width: 80px;
+  height: 464px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.thumbnail-block {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid $icons;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border 0.3s ease;
+}
+
+.thumbnail-block.active {
+  border-color: $primary;
+}
+
+.thumb-img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.main-photo-wrapper {
+  width: 464px;
+  height: 464px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $icons;
+}
+
+.main-photo {
+  width: 442px;
+  height: 442px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.main-photo-wrapper:hover {
+  border-color: $primary;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-image {
+  max-width: 442px;
+  max-height: 442px;
+}
+
+.modal-arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 48px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.modal-arrow.left {
+  left: -60px;
+}
+
+.modal-arrow.right {
+  right: -60px;
+}
+
+.modal-thumbnails {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 10px 20px;
+}
+
+.modal-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.modal-thumb.active {
+  border-color: white;
+}
+
+@media (max-width: 850px) and (min-width: 640px) {
+  .thumbnails-column {
+    width: 35px;
+    height: 207px;
+    gap: 8px;
+  }
+
+  .thumbnail-block {
+    width: 35px;
+    height: 35px;
+  }
+
+  .thumb-img {
+    width: 27px;
+    height: 27px;
+  }
+
+  .main-photo-wrapper {
+    width: 287px;
+    height: 287px;
+  }
+
+  .main-photo {
+    width: 273px;
+    height: 273px;
+  }
+
+  .modal-image {
+    max-width: 273px;
+    max-height: 273px;
+  }
+}
+
+@media (max-width: 640px) {
+  .picker-wrapper {
+    flex-direction: column;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .thumbnails-column {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    gap: 12px;
+  }
+
+  .thumbnail-block {
+    width: 50px;
+    height: 50px;
+  }
+
+  .thumb-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .main-photo-wrapper {
+    width: 287px;
+    height: 287px;
+  }
+
+  .main-photo {
+    width: 273px;
+    height: 273px;
+  }
+
+  .modal-image {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .modal-thumb {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modal-arrow.left {
+    display: none;
+  }
+
+  .modal-arrow.right {
+    display: none;
+  }
+}

@@ -3,14 +3,14 @@ import { Navigation, Autoplay, Controller } from 'swiper/modules';
 import { ProductCard } from '@/components/organisms/ProductCard/ProductCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
-import { Product } from '@/types/Product';
 import { SquareButton } from '@/components/atoms/SquareButton';
 import s from './cardSlider.module.scss';
 import 'swiper/css';
+import { GeneralProduct } from '@/types/GeneralProduct';
 
 type Props = {
   id: number;
-  products: Product[];
+  products: GeneralProduct[];
   title: string;
 };
 
@@ -70,7 +70,7 @@ export const CardSlider: React.FC<Props> = ({
         >
           {products.map((item, idx) => (
             <SwiperSlide key={(item.id, idx)}>
-              <ProductCard product={item} path={`/phone/${item.namespaceId}`} />
+              <ProductCard product={item} path={`/phone/${item.itemId}`} />
             </SwiperSlide>
           ))}
         </Swiper>

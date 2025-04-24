@@ -8,12 +8,10 @@
   margin-bottom: 24px;
 }
 .title {
-  @include font-style(h2);
   max-width: 50%;
   margin: 0;
-  @include on-tablet {
-    @include font-style(h2);
-  }
+
+  @include font-style(h2);
 }
 
 .buttonBox {

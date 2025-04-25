@@ -11,7 +11,7 @@
   align-items: center;
   color: inherit;
   box-sizing: border-box;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
   transition:
     border-color 400ms,
     background-color 400ms;

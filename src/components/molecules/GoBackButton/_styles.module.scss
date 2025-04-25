@@ -8,7 +8,7 @@
   color: $secondary;
   align-items: flex-end;
   justify-content: space-between;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
 
   & svg {
     height: 16px;

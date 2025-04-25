@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
   border: 1px solid $elements;
   transition:
     border-color 400ms,

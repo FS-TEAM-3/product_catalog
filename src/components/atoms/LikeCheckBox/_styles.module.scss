@@ -10,7 +10,7 @@
   border: 1px solid $icons;
   stroke: $primary;
   flex: 0 0 40px;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
   transition:
     fill 400ms,
     border-color 400ms;

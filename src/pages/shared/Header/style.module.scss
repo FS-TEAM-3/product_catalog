@@ -190,7 +190,7 @@ $menu-padding: 18px;
     justify-content: center;
     padding: $menu-padding;
     border-left: 1px solid $border-color;
-    cursor: pointer;
+    cursor: url('@/../public/img/cursor-pointer.png'), auto;
     padding: 10px;
   }
 

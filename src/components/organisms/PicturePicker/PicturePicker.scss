@@ -23,7 +23,7 @@
 
   border: 2px solid $icons;
   box-sizing: border-box;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
   transition: border 0.3s ease;
 }
 
@@ -50,7 +50,7 @@
   width: 442px;
   height: 442px;
   object-fit: contain;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
 }
 
 .main-photo-wrapper:hover {
@@ -89,7 +89,7 @@
   color: white;
   background: none;
   border: none;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
   user-select: none;
   transform: translateY(-50%);
   z-index: 2;
@@ -117,7 +117,7 @@
   object-fit: contain;
   border: 2px solid transparent;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
   flex-shrink: 0;
   box-sizing: border-box;
 }

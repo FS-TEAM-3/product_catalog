@@ -10,8 +10,7 @@
   color: $green;
   padding: 5px 20px;
   margin: 0 auto 20px;
-  border: solid $icons;
-  border-width: 1px 3px;
+  border: 1px solid $icons;
 
   @include font-style(h4);
 }

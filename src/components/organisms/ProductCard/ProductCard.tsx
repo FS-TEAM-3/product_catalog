@@ -5,6 +5,8 @@ import { LikeCheckBox } from '@/components/atoms/LikeCheckBox';
 import { Description } from '@/components/molecules/Description';
 import { NavLink } from 'react-router-dom';
 import { GeneralProduct } from '@/types/GeneralProduct';
+import { Cart, Favourites } from '@/types/Store';
+import { useStore } from '@/store/store';
 
 type Props = {
   product: GeneralProduct;
@@ -14,6 +16,32 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product, path }) => {
   const { image, name, fullPrice, price, screen, ram, capacity } = product;
   const specs = { screen: screen, ram: ram, capacity: capacity };
+
+  const cart: Cart[] = useStore(state => state.cart);
+  const favourites: Favourites[] = useStore(state => state.favourites);
+  const addToCart = useStore(state => state.addToCart);
+  const removeFromCart = useStore(state => state.removeFromCart);
+  const addToFavourites = useStore(state => state.addToFavourites);
+  const removeFromFavourites = useStore(state => state.removeFromFavourites);
+
+  const isInCart = !!cart.find(item => item.id === name) || false;
+  const isInFavourites = favourites.includes(name);
+
+  const handleCartAction = () => {
+    if (isInCart) {
+      removeFromCart(name);
+    } else {
+      addToCart(name);
+    }
+  };
+
+  const handleFavouritesAction = () => {
+    if (isInFavourites) {
+      removeFromFavourites(name);
+    } else {
+      addToFavourites(name);
+    }
+  };
 
   return (
     <div className={styles.card}>
@@ -35,9 +63,14 @@ export const ProductCard: React.FC<Props> = ({ product, path }) => {
 
       <div className={styles.cardButtons}>
         <div className={styles.cardButtonsContainer}>
-          <RectangleButton>Add to cart</RectangleButton>
+          <RectangleButton onClick={handleCartAction} isActive={isInCart}>
+            {isInCart ? 'In card' : 'Add to cart'}
+          </RectangleButton>
         </div>
-        <LikeCheckBox />
+        <LikeCheckBox
+          onCheckedChange={handleFavouritesAction}
+          liked={isInFavourites}
+        />
       </div>
     </div>
   );

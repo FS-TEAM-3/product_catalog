@@ -3,11 +3,14 @@ import { PropertiesCheckBox } from '@/components/atoms/PropertiesCheckBox';
 import styles from './_styles.module.scss';
 
 type Props = {
-  label: string;
+  label?: string;
   properties: string[];
 };
 
-const PropertiesSelector: React.FC<Props> = ({ label, properties }) => {
+const PropertiesSelector: React.FC<Props> = ({
+  label = 'Select capacity',
+  properties,
+}) => {
   return (
     <div className={styles.selectorContainer}>
       <span className={styles.label}>{label}</span>{' '}

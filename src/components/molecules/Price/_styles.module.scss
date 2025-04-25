@@ -13,6 +13,7 @@
   @include font-style(h3);
 
   &.big {
+    margin-top: 8px;
     @include font-style(h2);
   }
 }
@@ -26,6 +27,7 @@
   font-family: Mont;
 
   &.big {
+    margin-top: 8px;
     font-weight: 500;
   }
 }

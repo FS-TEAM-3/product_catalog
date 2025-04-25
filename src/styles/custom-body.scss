@@ -1,0 +1,25 @@
+@use './variables.scss' as *;
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+a {
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
+}
+
+::selection {
+  background-color: $secondary;
+  color: $white;
+}
+
+::-ms-selection {
+  background-color: $secondary;
+  color: $white;
+}

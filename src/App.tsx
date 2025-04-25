@@ -4,9 +4,9 @@ import { Header } from './pages/shared/Header/Header';
 import { Footer } from './pages/shared/Footer/Footer';
 
 export const App = () => (
-  <div data-cy="app">
+  <div data-cy="app" className="page-content">
     <Header />
-    <main className="section">
+    <main className="section main-content">
       <div className="container">
         <Outlet />
       </div>

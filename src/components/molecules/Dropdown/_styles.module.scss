@@ -61,7 +61,7 @@
   &:hover {
     color: $primary;
     background-color: hsla(210, 25%, 98%, 1);
-    cursor: pointer;
+    cursor: url('@/../public/img/cursor-pointer.png'), auto;
     outline: none;
   }
 }

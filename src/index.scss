@@ -1,11 +1,13 @@
 @use './styles/_typography.scss' as *;
 @use './styles/mixins.scss' as *;
+@import './styles/custom-body.scss';
 @import 'normalize.css';
 
 body {
   margin: 0;
   background-color: #fff;
   color: #000;
+  cursor: url('@/../public/img/cursor.png'), auto;
   @include font-style(body);
 }
 

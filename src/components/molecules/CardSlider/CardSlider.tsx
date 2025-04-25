@@ -70,7 +70,10 @@ export const CardSlider: React.FC<Props> = ({
         >
           {products.map((item, idx) => (
             <SwiperSlide key={(item.id, idx)}>
-              <ProductCard product={item} path={`/phone/${item.itemId}`} />
+              <ProductCard
+                product={item}
+                path={`/${item.category}/${item.itemId}`}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

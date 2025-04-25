@@ -3,12 +3,15 @@ import './style.module.scss';
 import s from './style.module.scss';
 import { Heart, ShoppingBag, Menu, X } from 'lucide-react';
 import { IconLinkWithCounter } from '@/components/molecules/IconLinkWithCounter/IconLinkWithCounter';
+import { Cart, Favourites } from '@/types/Store';
 import { useEffect, useState } from 'react';
+import { useStore } from '@/store/store';
 
 export const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [favoritesCounter] = useState(0);
-  const [cartCounter] = useState(0);
+
+  const cart: Cart[] = useStore(state => state.cart);
+  const favourites: Favourites[] = useStore(state => state.favourites);
 
   const getClassName = (isActive: boolean) => {
     return isActive ? `${s.firstVariantLink} ${s.active}` : s.firstVariantLink;
@@ -93,7 +96,7 @@ export const Header = () => {
                 to="/favourites"
                 className={({ isActive }) => (isActive ? s.active : '')}
               >
-                <IconLinkWithCounter count={favoritesCounter}>
+                <IconLinkWithCounter count={favourites.length}>
                   <Heart className={s.icon} />
                 </IconLinkWithCounter>
               </NavLink>
@@ -105,7 +108,7 @@ export const Header = () => {
                 to="/cart"
                 className={({ isActive }) => (isActive ? s.active : '')}
               >
-                <IconLinkWithCounter count={cartCounter}>
+                <IconLinkWithCounter count={cart.length}>
                   <ShoppingBag className={s.icon} />
                 </IconLinkWithCounter>
               </NavLink>
@@ -118,7 +121,7 @@ export const Header = () => {
             <IconLinkWithCounter
               count={0}
               type={
-                (favoritesCounter > 0 || cartCounter > 0) && !isMenuOpen
+                (favourites.length > 0 || cart.length > 0) && !isMenuOpen
                   ? 'menu'
                   : undefined
               }
@@ -155,7 +158,7 @@ export const Header = () => {
             }
             onClick={() => setMenuOpen(false)}
           >
-            <IconLinkWithCounter count={favoritesCounter}>
+            <IconLinkWithCounter count={favourites.length}>
               <Heart className={s.icon} />
             </IconLinkWithCounter>
           </NavLink>
@@ -169,7 +172,7 @@ export const Header = () => {
             }
             onClick={() => setMenuOpen(false)}
           >
-            <IconLinkWithCounter count={cartCounter}>
+            <IconLinkWithCounter count={cart.length}>
               <ShoppingBag className={s.icon} />
             </IconLinkWithCounter>
           </NavLink>

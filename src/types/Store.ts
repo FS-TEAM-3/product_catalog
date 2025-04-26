@@ -1,4 +1,4 @@
-export type Cart = {
+export type CartElement = {
   id: string;
   count: number;
 };

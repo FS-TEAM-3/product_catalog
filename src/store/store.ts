@@ -1,14 +1,14 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Cart, Favourites } from '@/types/Store';
+import { CartElement, Favourites } from '@/types/Store';
 
 type Store = {
-  cart: Cart[];
+  cart: CartElement[];
   favourites: Favourites[];
-  addToCart: (item: Cart | Cart['id']) => void;
-  removeFromCart: (item: Cart['id']) => void;
-  incCart: (item: Cart['id']) => void;
-  decCart: (item: Cart['id']) => void;
+  addToCart: (item: CartElement | CartElement['id']) => void;
+  removeFromCart: (item: CartElement['id']) => void;
+  incCart: (item: CartElement['id']) => void;
+  decCart: (item: CartElement['id']) => void;
   clearCart: () => void;
   addToFavourites: (id: Favourites) => void;
   removeFromFavourites: (id: Favourites) => void;

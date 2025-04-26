@@ -3,14 +3,14 @@ import './style.module.scss';
 import s from './style.module.scss';
 import { Heart, ShoppingBag, Menu, X } from 'lucide-react';
 import { IconLinkWithCounter } from '@/components/molecules/IconLinkWithCounter/IconLinkWithCounter';
-import { Cart, Favourites } from '@/types/Store';
+import { CartElement, Favourites } from '@/types/Store';
 import { useEffect, useState } from 'react';
 import { useStore } from '@/store/store';
 
 export const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const cart: Cart[] = useStore(state => state.cart);
+  const cart: CartElement[] = useStore(state => state.cart);
   const favourites: Favourites[] = useStore(state => state.favourites);
 
   const getClassName = (isActive: boolean) => {
@@ -180,17 +180,18 @@ export const Header = () => {
       </div>
 
       <br></br>
-
-      {linksList.map(item => {
-        return (
-          <NavLink
-            className={({ isActive }) => getClassName(isActive)}
-            to={`${item.path}`}
-          >
-            {item.name}
-          </NavLink>
-        );
-      })}
+      <div>
+        {linksList.map(item => {
+          return (
+            <NavLink
+              className={({ isActive }) => getClassName(isActive)}
+              to={`${item.path}`}
+            >
+              {item.name}
+            </NavLink>
+          );
+        })}
+      </div>
     </>
   );
 };

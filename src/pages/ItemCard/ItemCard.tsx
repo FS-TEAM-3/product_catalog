@@ -15,9 +15,9 @@ import {
 } from '@/components/molecules/SelectorWrapper';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator';
 import { Price } from '@/components/molecules/Price';
-import { RectangleButton } from '@/components/atoms/RectangleButton';
-import { LikeCheckBox } from '@/components/atoms/LikeCheckBox';
 import { CardSlider } from '@/components/molecules/CardSlider/CardSlider';
+import { CartButton } from '@/components/molecules/CartButton';
+import { FavouriteButton } from '@/components/molecules/FavouriteButton';
 
 export const ItemCard = () => {
   const { itemId } = useParams();
@@ -75,9 +75,9 @@ export const ItemCard = () => {
             />
             <div className={styles.itemButtons}>
               <div className={styles.itemButtonsContainer}>
-                <RectangleButton> Add </RectangleButton>
+                <CartButton productId={product.name} />
               </div>
-              <LikeCheckBox />
+              <FavouriteButton productId={product.name} />
             </div>
             <Description product={item} fieldsCount={4} />
           </div>

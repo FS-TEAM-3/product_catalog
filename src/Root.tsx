@@ -21,17 +21,17 @@ export const Root = () => {
           <Route index element={<Home />} />
           <Route path="phones">
             <Route index element={<Catalog category="phones" />} />
-            <Route path=":slug" element={<ItemCard category="phones" />} />
+            <Route path="/phones/:itemId" element={<ItemCard />} />
           </Route>
 
           <Route path="tablets">
             <Route index element={<Catalog category="tablets" />} />
-            <Route path=":slug" element={<ItemCard category="tablets" />} />
+            <Route path="/tablets/:itemId" element={<ItemCard />} />
           </Route>
 
           <Route path="accessories">
             <Route index element={<Catalog category="accessories" />} />
-            <Route path=":slug" element={<ItemCard category="accessories" />} />
+            <Route path="/accessories/:itemId" element={<ItemCard />} />
           </Route>
           <Route path="cart" element={<Cart />} />
           <Route path="favourites" element={<Favourites />} />

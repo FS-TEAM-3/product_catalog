@@ -1,0 +1,193 @@
+@use '@/styles/typography' as *;
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins' as *;
+
+.item {
+  &Name {
+    margin-top: 16px;
+    margin-bottom: 32px;
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+      grid-column: 1 / span 12;
+    }
+
+    @include on-desktop {
+      margin-bottom: 40px;
+      grid-column: 1 / span 24;
+    }
+  }
+
+  &Picker {
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      grid-column: 1 / span 7;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 12;
+    }
+  }
+
+  &Params {
+    margin-top: 40px;
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      margin-top: 0;
+      grid-column: 8 / span 5;
+    }
+
+    @include on-desktop {
+      margin-top: 0;
+      grid-column: 15 / span 7;
+    }
+  }
+
+  &Buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+    margin-top: 16px;
+
+    &Container {
+      width: 100%;
+    }
+  }
+
+  &Id {
+    color: $icons;
+    @include font-style(small);
+
+    @include on-desktop {
+      display: block;
+      grid-column: 22 / span 3;
+      justify-self: end;
+    }
+
+    &Mini {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &Small {
+      color: $icons;
+      @include font-style(small);
+
+      @include on-desktop {
+        display: none;
+      }
+    }
+
+    &Descktop {
+      display: none;
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+  }
+
+  &Description {
+    &Title {
+      color: $primary;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      @include font-style(h4);
+    }
+
+    &Text {
+      color: $secondary;
+      @include font-style(body);
+    }
+  }
+}
+
+.url {
+  margin-top: 16px;
+  grid-column: 1 / span 4;
+
+  @include on-tablet {
+    grid-column: 1 / span 12;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / span 24;
+  }
+}
+
+.button {
+  margin-top: 24px;
+  grid-column: 1 / span 4;
+
+  @include on-tablet {
+    margin-top: 40px;
+    grid-column: 1 / span 12;
+  }
+
+  @include on-desktop {
+    margin-top: 40px;
+    grid-column: 1 / span 24;
+  }
+}
+
+.description {
+  margin-top: 56px;
+  grid-column: 1 / span 4;
+
+  @include on-tablet {
+    margin-top: 64px;
+    grid-column: 1 / span 12;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    grid-column: 1 / span 12;
+  }
+
+  &Main {
+    color: $primary;
+    @include font-style(h3);
+  }
+}
+
+.specs {
+  margin-top: 56px;
+  grid-column: 1 / span 4;
+
+  @include on-tablet {
+    margin-top: 64px;
+    grid-column: 1 / span 12;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    grid-column: 15 / span 11;
+  }
+
+  &Title {
+    margin-bottom: 16px;
+  }
+}
+
+.slider {
+  margin-top: 56px;
+  margin-bottom: 56px;
+  grid-column: 1 / span 4;
+
+  @include on-tablet {
+    margin-top: 64px;
+    margin-bottom: 64px;
+    grid-column: 1 / span 12;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    grid-column: 1 / span 24;
+  }
+}

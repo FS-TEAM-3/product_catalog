@@ -1,0 +1,122 @@
+@use '@/styles/variables.scss' as *;
+
+.catalog {
+  display: grid;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 20px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 0;
+    margin-bottom: 32px;
+
+    @media (max-width: 639px) {
+      font-size: 32px;
+    }
+  }
+
+  &__label {
+    color: #89939a;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  &__grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    row-gap: 40px;
+    max-width: 1136px;
+    margin: 0 auto;
+
+    @media (max-width: 1199px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__productCard {
+    width: 287px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e6e9;
+  background-color: transparent;
+  color: #0f0f11;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-right: 1px;
+
+  &:hover {
+    background-color: #e2e6e9;
+  }
+
+  &.active {
+    background-color: #313237;
+    color: #fff;
+    border: 1px solid #313237;
+  }
+}
+
+.arrowButtonLeft {
+  margin-right: 9px;
+}
+
+.arrowButtonRight {
+  margin-left: 9px;
+}
+
+.catalog__breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: $secondary;
+  font-size: 14px;
+}
+
+.catalog__homeIcon {
+  color: #313237;
+}
+
+.catalog__chevronIcon {
+  color: #b4bdc3;
+  width: 16px;
+  height: 16px;
+}
+
+.catalog__breadcrumbText {
+  font-weight: 400;
+}
+
+.catalog__homeLink {
+  width: 16px;
+  height: 16px;
+}

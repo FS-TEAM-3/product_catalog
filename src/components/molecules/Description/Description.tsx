@@ -58,7 +58,7 @@ export const Description: React.FC<TechSpecsProps> = ({
   return (
     <section className={`${isSmall ? styles.techspecs__inside : ''} techspecs`}>
       {!isSmall ||
-        (!fieldsCount && (
+        (fieldsCount && (
           <h3 className={styles.techspecs__title}>Tech specs</h3>
         ))}
       <ul className={styles.techspecs__list}>

@@ -28,6 +28,7 @@ export const AlertDialogCheckout: React.FC<Props> = ({
             Do you wan't to clear the Cart?
           </AlertDialog.Description>
           <div
+            className={styles.btnHolder}
             style={{
               display: 'flex',
               gap: 25,
@@ -35,13 +36,13 @@ export const AlertDialogCheckout: React.FC<Props> = ({
             }}
           >
             <AlertDialog.Cancel asChild>
-              <button className={`${styles.Button}`} onClick={() => onCancel()}>
+              <RectangleButton onClick={() => onCancel()}>
                 Cancel
-              </button>
+              </RectangleButton>
             </AlertDialog.Cancel>
             <AlertDialog.Action asChild>
               <button
-                className={`${styles.Button} red`}
+                className={`${styles.Button} green`}
                 onClick={() => onAction()}
               >
                 Yes, clear the Cart!

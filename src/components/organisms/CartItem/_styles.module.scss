@@ -34,7 +34,7 @@
     transition: opacity 400ms;
 
     &:hover {
-      cursor: pointer;
+      cursor: url(/public/img/cursor-pointer.png), auto;
       opacity: 0.7;
     }
   }

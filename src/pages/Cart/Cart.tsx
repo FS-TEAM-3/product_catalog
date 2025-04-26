@@ -6,11 +6,38 @@ import { EmptyCart } from '@/components/organisms/EmptyCart';
 
 import products from '../../../public/api/products.json';
 import { CartItem } from '@/components/organisms/CartItem/CartItem';
-
-const productsInCart = products.slice(0, 3);
+import { useStore } from '@/store/store';
+import { CartElement } from '@/types/Store';
+import { GeneralProduct } from '@/types/GeneralProduct';
 
 export const Cart = () => {
-  const isEmpty = false;
+  const cart: CartElement[] = useStore(state => state.cart);
+  const clearCart: () => void = useStore(state => state.clearCart);
+
+  const cartItems = cart
+    .map(cartItem => {
+      const product = products.find(p => p.name === cartItem.id);
+      return product ? { ...product, count: cartItem.count } : null;
+    })
+    .filter(
+      (item): item is GeneralProduct & { count: number } => item !== null,
+    );
+
+  const isEmpty = !cartItems.length;
+
+  const totalCount = cartItems.reduce((acc, item) => acc + item.count, 0);
+
+  const totalFullPrice = cartItems.reduce(
+    (acc, item) => acc + item.fullPrice * item.count,
+    0,
+  );
+
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.count,
+    0,
+  );
+
+  const discount = totalFullPrice - totalPrice;
 
   return (
     <Container>
@@ -22,17 +49,21 @@ export const Cart = () => {
 
           <div className="main-grid">
             <section className={styles.cart__itemsBlock}>
-              {productsInCart.map(product => (
+              {cartItems.map(product => (
                 <CartItem product={product} />
               ))}
             </section>
             <div className={`${styles.cart__priceBlock}`}>
               <div className={`${styles.cart__innerPriceBlock}`}>
-                <TotalCartInfo count={3} totalPrice={2657} discount={34} />
+                <TotalCartInfo
+                  count={totalCount}
+                  totalPrice={totalFullPrice}
+                  discount={discount}
+                />
 
                 <AlertDialogCheckout
                   onCancel={() => console.log('Your cart is not empty')}
-                  onAction={() => console.log('Your cart is empty')}
+                  onAction={() => clearCart()}
                 />
               </div>
             </div>

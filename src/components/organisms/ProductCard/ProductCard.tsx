@@ -5,7 +5,7 @@ import { LikeCheckBox } from '@/components/atoms/LikeCheckBox';
 import { Description } from '@/components/molecules/Description';
 import { NavLink } from 'react-router-dom';
 import { GeneralProduct } from '@/types/GeneralProduct';
-import { Cart, Favourites } from '@/types/Store';
+import { CartElement, Favourites } from '@/types/Store';
 import { useStore } from '@/store/store';
 
 type Props = {
@@ -17,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product, path }) => {
   const { image, name, fullPrice, price, screen, ram, capacity } = product;
   const specs = { screen: screen, ram: ram, capacity: capacity };
 
-  const cart: Cart[] = useStore(state => state.cart);
+  const cart: CartElement[] = useStore(state => state.cart);
   const favourites: Favourites[] = useStore(state => state.favourites);
   const addToCart = useStore(state => state.addToCart);
   const removeFromCart = useStore(state => state.removeFromCart);
@@ -64,7 +64,7 @@ export const ProductCard: React.FC<Props> = ({ product, path }) => {
       <div className={styles.cardButtons}>
         <div className={styles.cardButtonsContainer}>
           <RectangleButton onClick={handleCartAction} isActive={isInCart}>
-            {isInCart ? 'In card' : 'Add to cart'}
+            {isInCart ? 'Added to cart' : 'Add to cart'}
           </RectangleButton>
         </div>
         <LikeCheckBox

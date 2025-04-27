@@ -1,9 +1,9 @@
 import { useStore } from '../../store/store';
 import { ProductCard } from '@/components/organisms/ProductCard';
 import products from '../../../public/api/products.json';
-import s from '../Catalog/style.module.scss';
 import { Link } from 'react-router-dom';
 import { ChevronRight, HeartCrack, House } from 'lucide-react';
+import s from '../Catalog/style.module.scss';
 
 export const Favourites = () => {
   const favouritesFromStore = useStore(store => store.favourites);
@@ -25,7 +25,8 @@ export const Favourites = () => {
           <div className={s.catalog__header}>
             <h2 className={s.catalog__title}>Favourites</h2>
             <label className={s.catalog__label}>
-              {favouritesFromStore.length} items
+              {favouritesFromStore.length}
+              {favouritesFromStore.length === 1 ? 'item' : 'items'}
             </label>
           </div>
           <div className={s.catalog__grid}>

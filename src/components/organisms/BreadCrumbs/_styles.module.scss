@@ -1,0 +1,48 @@
+@use '@/styles/typography' as *;
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins' as *;
+
+.breadCrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @include font-style(body);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  color: $primary;
+  text-decoration: none;
+  transition: color 400ms;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+.step {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.current {
+  color: $secondary;
+  font-weight: 500;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: $primary;
+
+  &Home {
+    &:hover {
+      color: $secondary;
+    }
+  }
+}

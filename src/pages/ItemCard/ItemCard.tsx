@@ -19,6 +19,7 @@ import { CapacitySelector } from '@/components/molecules/CapacitySelector';
 import { getRandom } from '@/utils/productsOptions';
 import { useEffect } from 'react';
 import { parseSlug } from '@/utils/parseSlug';
+import { BreadCrumbs } from '@/components/organisms/BreadCrumbs';
 
 export const ItemCard = () => {
   const { slug } = useParams<{ slug?: string }>();
@@ -56,7 +57,9 @@ export const ItemCard = () => {
         <EmptyCart />
       ) : (
         <div className="main-grid">
-          <span className={styles.url}>Bread Crumbs</span>
+          <div className={styles.url}>
+            <BreadCrumbs />
+          </div>
           <div className={styles.button}>
             <GoBackButton category={product.category} />
           </div>

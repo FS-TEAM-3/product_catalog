@@ -1,5 +1,4 @@
 import { useStore } from '../../store/store';
-import { Container } from '@/components/templates/Container';
 import { ProductCard } from '@/components/organisms/ProductCard';
 import products from '../../../public/api/products.json';
 import s from '../Catalog/style.module.scss';
@@ -13,7 +12,7 @@ export const Favourites = () => {
   );
 
   return (
-    <Container className={s.catalog}>
+    <div className={s.catalog}>
       {favouritesFromStore.length > 0 ? (
         <>
           <div className={s.catalog__breadcrumbs}>
@@ -39,11 +38,11 @@ export const Favourites = () => {
           </div>
         </>
       ) : (
-        <Container>
+        <div>
           <HeartCrack size={45} />
           You haven't liked anything yet
-        </Container>
+        </div>
       )}
-    </Container>
+    </div>
   );
 };

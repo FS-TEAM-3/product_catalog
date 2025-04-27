@@ -108,7 +108,6 @@
 }
 
 .url {
-  margin-top: 16px;
   grid-column: 1 / span 4;
 
   @include on-tablet {
@@ -176,18 +175,15 @@
 
 .slider {
   margin-top: 56px;
-  margin-bottom: 56px;
   grid-column: 1 / span 4;
 
   @include on-tablet {
     margin-top: 64px;
-    margin-bottom: 64px;
     grid-column: 1 / span 12;
   }
 
   @include on-desktop {
     margin-top: 80px;
-    margin-bottom: 80px;
     grid-column: 1 / span 24;
   }
 }

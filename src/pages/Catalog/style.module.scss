@@ -1,61 +1,83 @@
+@use '@/styles/typography' as *;
 @use '@/styles/variables.scss' as *;
+@use '@/styles/mixins' as *;
 
 .catalog {
-  display: grid;
-  justify-content: center;
-  flex-direction: column;
-  gap: 40px;
-  padding: 40px 20px;
-
   &__header {
-    display: flex;
-    flex-direction: column;
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      grid-column: 1 / span 12;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 24;
+    }
   }
 
   &__title {
-    font-size: 48px;
-    font-weight: 800;
-    margin: 0;
-    margin-bottom: 32px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    @include font-style(h1);
 
-    @media (max-width: 639px) {
-      font-size: 32px;
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      margin-top: 40px;
     }
   }
 
   &__label {
-    color: #89939a;
+    margin-top: 8px;
+    color: $secondary;
+    @include font-style(body);
   }
 
   &__controls {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
-    margin-top: 40px;
+    margin-top: 32px;
+    margin-bottom: 24px;
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      margin-top: 40px;
+      grid-column: 1 / span 12;
+    }
+
+    @include on-desktop {
+      margin-top: 40px;
+      grid-column: 1 / span 24;
+    }
   }
 
   &__grid {
     display: grid;
+    grid-column: 1 / -1;
+    gap: 16px;
+    margin-top: 24px;
     justify-content: center;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 16px;
-    row-gap: 40px;
-    max-width: 1136px;
-    margin: 0 auto;
 
-    @media (max-width: 1199px) {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
     }
-
-    @media (max-width: 639px) {
-      grid-template-columns: 1fr;
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
   &__productCard {
-    width: 287px;
+    justify-self: center;
   }
 
   &__pagination {
+    margin-top: 32px;
+    grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     gap: 8px;
@@ -94,12 +116,15 @@
 }
 
 .catalog__breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-  color: $secondary;
-  font-size: 14px;
+  grid-column: 1 / span 4;
+
+  @include on-tablet {
+    grid-column: 1 / span 12;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / span 24;
+  }
 }
 
 .catalog__homeIcon {

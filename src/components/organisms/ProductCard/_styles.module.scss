@@ -14,11 +14,11 @@
   max-width: 287px;
 
   @include on-tablet {
-    max-width: 229px;
+    max-width: 288px;
   }
 
   @include on-desktop {
-    max-width: 288px;
+    max-width: 272px;
   }
 
   &Image {

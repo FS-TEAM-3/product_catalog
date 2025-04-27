@@ -9,39 +9,46 @@ import { useParams } from 'react-router-dom';
 import { Container } from '@/components/templates/Container';
 import { GoBackButton } from '@/components/molecules/GoBackButton';
 import { EmptyCart } from '@/components/organisms/EmptyCart';
-import {
-  ColorsSelector,
-  PropertiesSelector,
-} from '@/components/molecules/SelectorWrapper';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator';
 import { Price } from '@/components/molecules/Price';
 import { CardSlider } from '@/components/molecules/CardSlider/CardSlider';
 import { CartButton } from '@/components/molecules/CartButton';
 import { FavouriteButton } from '@/components/molecules/FavouriteButton';
+import { ColorSelector } from '@/components/molecules/ColorSelector';
+import { CapacitySelector } from '@/components/molecules/CapacitySelector';
+import { getRandom } from '@/utils/productsOptions';
+import { useEffect } from 'react';
+import { parseSlug } from '@/utils/parseSlug';
 
 export const ItemCard = () => {
-  const { itemId } = useParams();
-  const product = products.find(prod => prod.itemId === itemId);
+  const { slug } = useParams<{ slug?: string }>();
+  const { itemId } = parseSlug(slug ?? '');
+
+  useEffect(() => {
+    if (itemId) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  }, [itemId]);
+
+  const product = products.find(prod => prod.itemId === slug);
+  const randomProducts = getRandom(products);
 
   let item;
 
   switch (product?.category) {
     case 'phones':
-      item = phones.find(item => item.id === itemId);
+      item = phones.find(item => item.id === slug);
       break;
     case 'tablets':
-      item = tablets.find(item => item.id === itemId);
+      item = tablets.find(item => item.id === slug);
       break;
     case 'accessories':
-      item = accessories.find(item => item.id === itemId);
+      item = accessories.find(item => item.id === slug);
       break;
     default:
       item = null;
       break;
   }
-
-  console.log(itemId);
-  console.log(item);
 
   return (
     <Container>
@@ -51,7 +58,7 @@ export const ItemCard = () => {
         <div className="main-grid">
           <span className={styles.url}>Bread Crumbs</span>
           <div className={styles.button}>
-            <GoBackButton />
+            <GoBackButton category={product.category} />
           </div>
 
           <h2 className={styles.itemName}>{item.name}</h2>
@@ -62,11 +69,11 @@ export const ItemCard = () => {
 
           <div className={styles.itemParams}>
             <div className={styles.itemIdMini}>
-              <ColorsSelector colors={item.colorsAvailable} />
+              <ColorSelector colors={item.colorsAvailable} />
               <div className={styles.itemIdSmall}>ID: {product.id}</div>
             </div>
             <CustomSeparator marginTop={24} marginBottom={24} />
-            <PropertiesSelector properties={item.capacityAvailable} />
+            <CapacitySelector capacities={item.capacityAvailable} />
             <CustomSeparator marginTop={24} marginBottom={24} />
             <Price
               currentPrice={item.priceDiscount}
@@ -109,9 +116,9 @@ export const ItemCard = () => {
 
           <div className={styles.slider}>
             <CardSlider
-              products={products.slice(-10)}
+              products={randomProducts}
               id={2}
-              title="Hot prices"
+              title="You may also like"
             />
           </div>
         </div>

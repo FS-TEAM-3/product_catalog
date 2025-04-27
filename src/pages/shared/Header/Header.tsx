@@ -52,7 +52,7 @@ export const Header = () => {
     { name: 'Phones', path: 'phones' },
     { name: 'Tablets', path: 'tablets' },
     { name: 'Accessories', path: 'accessories' },
-    { name: 'Item Card', path: 'phones/apple-iphone-7-32gb-black' },
+    { name: 'Item Card', path: 'phones/apple-iphone-14-128gb-yellow' },
     { name: 'Favourites', path: 'favourites' },
     { name: 'Cart', path: 'cart' },
     { name: 'Not Found', path: 'random' },

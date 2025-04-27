@@ -1,3 +1,5 @@
+import { ColorSlug } from '@/constants/colors';
+
 export type Product = {
   id: string;
   namespaceId: string;
@@ -6,7 +8,7 @@ export type Product = {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string[];
+  colorsAvailable: ColorSlug[];
   color: string[] | string;
   images: string[];
   description: object[];

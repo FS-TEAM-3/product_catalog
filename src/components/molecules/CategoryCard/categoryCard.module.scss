@@ -1,0 +1,100 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/typography' as *;
+@use '@/styles/mixins.scss' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 363px;
+  text-decoration: none;
+  margin: 0;
+  @include on-tablet {
+    height: auto;
+    min-width: 187px;
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+  @include on-desktop {
+    width: 368px;
+  }
+}
+
+.title {
+  margin-bottom: 4px;
+  color: $primary;
+  @include font-style(h4);
+}
+.text {
+  color: $secondary;
+}
+
+.imageBox {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 24px;
+  transition:
+    transform $duration,
+    box-shadow $duration;
+
+  &.phones {
+    background-color: #6d6474;
+  }
+  &.tablets {
+    background-color: #8d8d92;
+  }
+  &.accessories {
+    background-color: #973d5f;
+  }
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 3px 13px 0px $shadow;
+  }
+}
+.image {
+  display: block;
+
+  &.phones {
+    object-fit: contain;
+    width: 100%;
+    height: 150%;
+    object-position: right;
+    background-color: #6d6474;
+    transform: translate(14%, 0px);
+  }
+  &.tablets {
+    width: 100%;
+    min-height: 100%;
+    transform: translate(15%, 5%);
+    background-color: #8d8d92;
+  }
+  &.accessories {
+    object-fit: contain;
+    width: 150%;
+    height: 100%;
+    transform: translate(15px, 30px);
+    background-color: #973d5f;
+  }
+
+  @include on-desktop {
+    &.phones {
+      object-fit: contain;
+      width: 100%;
+      height: auto;
+      transform: translate(50px, 30px);
+    }
+    &.tablets {
+      width: 100%;
+      height: auto;
+      transform: translate(45px, 50px);
+    }
+    &.accessories {
+      transform: translate(15px, 55px);
+      height: 100%;
+      width: auto;
+    }
+  }
+}

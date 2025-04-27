@@ -1,0 +1,7 @@
+@use '@/styles/typography' as *;
+@use '@/styles/mixins.scss' as *;
+.title {
+  display: block;
+  margin-bottom: 24px;
+  @include font-style(h2);
+}

@@ -15,12 +15,16 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
+  margin-bottom: 64px;
+  margin-top: 24px;
 
   @include on-tablet {
+    margin-bottom: 64px;
     grid-template-columns: repeat(12, 1fr);
   }
 
   @include on-desktop {
+    margin-bottom: 80px;
     grid-template-columns: repeat(24, 1fr);
   }
 }

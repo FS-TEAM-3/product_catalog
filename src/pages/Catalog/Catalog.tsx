@@ -6,6 +6,7 @@ import './style.module.scss';
 import styles from './style.module.scss';
 import { ProductCard } from '@/components/organisms/ProductCard';
 import { House, ChevronRight } from 'lucide-react';
+import { Container } from '@/components/templates/Container';
 
 const sortOptions = [
   { label: 'Newest', value: 'age' },
@@ -73,88 +74,94 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
   );
 
   return (
-    <div className={styles.catalog}>
-      <div className={styles.catalog__breadcrumbs}>
-        <Link to={'/'} className={styles.catalog__homeLink}>
-          <House className={styles.catalog__homeIcon} />
-        </Link>
-        <ChevronRight className={styles.catalog__chevronIcon} />
-        <span className={styles.catalog__breadcrumbText}>
-          {category.charAt(0).toUpperCase() + category.slice(1)}
-        </span>
-      </div>
-      <div className={styles.catalog__header}>
-        <h1 className={styles.catalog__title}>{trueNameCategory}</h1>
-        <label className={styles.catalog__label}>{totalProducts} models</label>
+    <Container>
+      <div className="main-grid">
+        <div className={styles.catalog__breadcrumbs}>
+          <Link to={'/'} className={styles.catalog__homeLink}>
+            <House className={styles.catalog__homeIcon} />
+          </Link>
+          <ChevronRight className={styles.catalog__chevronIcon} />
+          <span className={styles.catalog__breadcrumbText}>
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </span>
+        </div>
+        <div className={styles.catalog__header}>
+          <h1 className={styles.catalog__title}>{trueNameCategory}</h1>
+          <label className={styles.catalog__label}>
+            {totalProducts} models
+          </label>
 
-        <div className={styles.catalog__controls}>
-          <Dropdown
-            label="Sort by"
-            value={sort}
-            onChange={val => handleParamChange('sort', val)}
-            options={sortOptions}
-          />
-          <Dropdown
-            label="Items on page"
-            value={perPage.toString()}
-            onChange={val => handleParamChange('perPage', val)}
-            options={perPageOptions}
-          />
+          <div className={styles.catalog__controls}>
+            <Dropdown
+              label="Sort by"
+              value={sort}
+              onChange={val => handleParamChange('sort', val)}
+              options={sortOptions}
+            />
+            <Dropdown
+              label="Items on page"
+              value={perPage.toString()}
+              onChange={val => handleParamChange('perPage', val)}
+              options={perPageOptions}
+            />
+          </div>
+        </div>
+
+        <div className={styles.catalog__grid}>
+          {paginatedProducts.map(product => (
+            <div className={styles.catalog__productCard}>
+              <ProductCard
+                key={product.id}
+                product={product}
+                path={`/${product.category}/${product.itemId}`}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.catalog__pagination}>
+          <button
+            className={`${styles.pageButton} ${styles.arrowButtonLeft}`}
+            onClick={() => {
+              if (page > 1) {
+                handleParamChange('page', (page - 1).toString());
+              }
+            }}
+          >
+            {'<'}
+          </button>
+
+          {Array.from({ length: 4 }).map((_, index) => {
+            const startPage = Math.floor((page - 1) / 4) * 4 + 1;
+            const pageNumber = startPage + index;
+
+            if (pageNumber > totalPages) return null;
+
+            const isActive = pageNumber === page;
+
+            return (
+              <button
+                key={pageNumber}
+                className={`${styles.pageButton} ${isActive ? styles.active : ''}`}
+                onClick={() => handleParamChange('page', pageNumber.toString())}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+
+          <button
+            className={`${styles.pageButton} ${styles.arrowButtonRight}`}
+            onClick={() => {
+              if (page < totalPages) {
+                handleParamChange('page', (page + 1).toString());
+              }
+            }}
+          >
+            {'>'}
+          </button>
         </div>
       </div>
-
-      <div className={styles.catalog__grid}>
-        {paginatedProducts.map(product => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            path={`/${product.category}/${product.itemId}`}
-          />
-        ))}
-      </div>
-
-      <div className={styles.catalog__pagination}>
-        <button
-          className={`${styles.pageButton} ${styles.arrowButtonLeft}`}
-          onClick={() => {
-            if (page > 1) {
-              handleParamChange('page', (page - 1).toString());
-            }
-          }}
-        >
-          {'<'}
-        </button>
-
-        {Array.from({ length: 4 }).map((_, index) => {
-          const startPage = Math.floor((page - 1) / 4) * 4 + 1;
-          const pageNumber = startPage + index;
-
-          if (pageNumber > totalPages) return null;
-
-          const isActive = pageNumber === page;
-
-          return (
-            <button
-              key={pageNumber}
-              className={`${styles.pageButton} ${isActive ? styles.active : ''}`}
-              onClick={() => handleParamChange('page', pageNumber.toString())}
-            >
-              {pageNumber}
-            </button>
-          );
-        })}
-
-        <button
-          className={`${styles.pageButton} ${styles.arrowButtonRight}`}
-          onClick={() => {
-            if (page < totalPages) {
-              handleParamChange('page', (page + 1).toString());
-            }
-          }}
-        >
-          {'>'}
-        </button>
-      </div>
-    </div>
+    </Container>
   );
 };

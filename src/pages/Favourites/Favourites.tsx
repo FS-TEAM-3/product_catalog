@@ -26,7 +26,7 @@ export const Favourites = () => {
             <h2 className={s.catalog__title}>Favourites</h2>
             <label className={s.catalog__label}>
               {favouritesFromStore.length}
-              {favouritesFromStore.length === 1 ? 'item' : 'items'}
+              {favouritesFromStore.length === 1 ? ' item' : ' items'}
             </label>
           </div>
           <div className={s.catalog__grid}>

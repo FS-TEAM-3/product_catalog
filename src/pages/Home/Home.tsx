@@ -56,8 +56,7 @@ export const Home = () => {
     const getCategoryData = (items: GeneralProduct[]) => {
       items.forEach(product => {
         console.log(categoryItems);
-        categoryItems[product.category].length =
-          categoryItems[product.category].length + 1;
+        categoryItems[product.category].length++;
       });
     };
 

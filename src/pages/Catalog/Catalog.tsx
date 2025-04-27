@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Dropdown } from '@/components/molecules/Dropdown';
 import productsData from '../../../public/api/products.json';
 import './style.module.scss';
 import styles from './style.module.scss';
 import { ProductCard } from '@/components/organisms/ProductCard';
-import { House, ChevronRight } from 'lucide-react';
 import { Container } from '@/components/templates/Container';
+import { BreadCrumbs } from '@/components/organisms/BreadCrumbs';
 
 const sortOptions = [
   { label: 'Newest', value: 'age' },
@@ -77,13 +77,7 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
     <Container>
       <div className="main-grid">
         <div className={styles.catalog__breadcrumbs}>
-          <Link to={'/'} className={styles.catalog__homeLink}>
-            <House className={styles.catalog__homeIcon} />
-          </Link>
-          <ChevronRight className={styles.catalog__chevronIcon} />
-          <span className={styles.catalog__breadcrumbText}>
-            {category.charAt(0).toUpperCase() + category.slice(1)}
-          </span>
+          <BreadCrumbs />
         </div>
         <div className={styles.catalog__header}>
           <h1 className={styles.catalog__title}>{trueNameCategory}</h1>

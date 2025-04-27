@@ -81,6 +81,9 @@ $video-height-desktop: 400px;
   overflow: hidden;
   display: flex;
   margin-inline: -16px;
+  @include on-tablet {
+    margin-inline: 0;
+  }
 }
 
 .videoBox {

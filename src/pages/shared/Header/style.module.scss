@@ -47,6 +47,8 @@ $menu-padding: 18px;
   display: flex;
   gap: 24px;
   padding: 10px 0 0 24px;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
@@ -72,9 +74,14 @@ $menu-padding: 18px;
   font-weight: 800;
   font-size: $font-size;
   letter-spacing: $link-spacing;
+  transition: color 0.3s ease-in-out;
 
   &::after {
     @include underline-animate;
+  }
+
+  &:hover {
+    color: $primary;
   }
 
   &.active {

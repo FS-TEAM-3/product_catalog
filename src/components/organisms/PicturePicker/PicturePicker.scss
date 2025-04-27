@@ -27,6 +27,10 @@
   transition: border 0.3s ease;
 }
 
+.thumbnail-block:hover {
+  border-color: $primary;
+}
+
 .thumbnail-block.active {
   border-color: $primary;
 }
@@ -43,7 +47,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid $icons;
+  border: 1px solid white;
+  transition: border 0.3s ease;
 }
 
 .main-photo {

@@ -9,6 +9,7 @@ import { SectionTitle } from '@/components/atoms/SectionTitle/SectionTitle';
 import { getHotPrice, getNewModels } from '@/utils/productsOptions';
 import sliderLinks from './sliderData.json';
 import s from './_styles.module.scss';
+import { VisuallyHidden } from '@radix-ui/themes';
 
 type CategoryData = {
   [key: string]: {
@@ -58,6 +59,9 @@ export const Home = () => {
 
   return (
     <Container>
+      <VisuallyHidden>
+        <h1>Welcome to Nice Gadgets store!</h1>
+      </VisuallyHidden>
       <section className={s.section}>
         <Slider links={sliderLinks} />
       </section>

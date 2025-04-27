@@ -17,9 +17,8 @@
 }
 
 .category {
-  display: flex;
-
   @include on-tablet {
+    display: flex;
     height: 262px;
   }
 

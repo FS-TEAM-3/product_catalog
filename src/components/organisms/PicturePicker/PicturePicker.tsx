@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useSwipeable } from 'react-swipeable';
 
@@ -15,6 +15,10 @@ export const PicturePicker: React.FC<PicturePickerProps> = ({ images }) => {
 
   const currentIndex = images.indexOf(selectedImage);
   const modalIndex = modalImage ? images.indexOf(modalImage) : -1;
+
+  useEffect(() => {
+    setSelectedImage(images[0]);
+  }, [images]);
 
   const showPrev = () => {
     const prevIndex = (currentIndex - 1 + images.length) % images.length;

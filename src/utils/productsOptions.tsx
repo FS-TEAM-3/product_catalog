@@ -17,7 +17,7 @@ export const getNewModels = (items: GeneralProduct[]) => {
 
 export const getRandom = (items: GeneralProduct[]) => {
   const randomIdxArr = generateRandomIdx(items.length, baseCountofItems);
-  return items.filter(item => randomIdxArr.includes(item.id));
+  return items.filter((_, idx) => randomIdxArr.includes(idx));
 };
 
 function generateRandomIdx(itemsLength: number, count: number) {

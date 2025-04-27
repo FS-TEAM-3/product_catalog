@@ -32,7 +32,7 @@ export const Favourites = () => {
           <div className={s.catalog__grid}>
             {favouritesToPage.map(item => (
               <ProductCard
-                path={`${item.category}/${item.name}`}
+                path={`/${item.category}/${item.itemId}`}
                 product={item}
               />
             ))}

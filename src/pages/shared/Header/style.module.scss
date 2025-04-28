@@ -106,18 +106,12 @@ $menu-padding: 18px;
     padding: $menu-padding;
     border-left: 1px solid $border-color;
 
-    a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    &::after {
+      @include underline-animate;
+    }
 
-      &::after {
-        @include underline-animate;
-      }
-
-      &.active::after {
-        transform: scaleX(1);
-      }
+    &.active::after {
+      transform: scaleX(1);
     }
   }
 }

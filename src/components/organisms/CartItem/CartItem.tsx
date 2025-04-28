@@ -31,14 +31,20 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         >
           <X className={styles.cart__icon} />
         </button>
-        <a className={styles.cart__link} href={`/${product.itemId}`}>
+        <a
+          className={styles.cart__link}
+          href={`/${product.category}/${product.itemId}`}
+        >
           <img
             className={styles.cart__img}
             src={product.image}
             alt={product.name}
           />
         </a>
-        <a href={`/${product.itemId}`} className={styles.cart__titleLink}>
+        <a
+          href={`/${product.category}/${product.itemId}`}
+          className={styles.cart__titleLink}
+        >
           <h3 className={styles.cart__title}>{product.name}</h3>
         </a>
       </div>

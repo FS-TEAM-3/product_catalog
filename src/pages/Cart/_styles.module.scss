@@ -2,7 +2,7 @@
 @use '@/styles/typography' as *;
 @use '@/styles/mixins' as *;
 
-.absolute {
+.contentHolder {
   display: flex;
   align-items: center;
   justify-content: center;

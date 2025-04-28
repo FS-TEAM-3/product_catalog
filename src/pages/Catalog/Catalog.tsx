@@ -87,6 +87,7 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
 
           <div className={styles.catalog__controls}>
             <Dropdown
+              isBig={true}
               label="Sort by"
               value={sort}
               onChange={val => handleParamChange('sort', val)}

@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
 import './style.module.scss';
 import s from './style.module.scss';
 import { Heart, ShoppingBag, Menu, X } from 'lucide-react';
@@ -90,30 +90,28 @@ export const Header = () => {
         </div>
 
         <div className={s.navRight}>
-          <Link to="/favourites">
-            <div className={s.iconWrapper}>
-              <NavLink
-                to="/favourites"
-                className={({ isActive }) => (isActive ? s.active : '')}
-              >
-                <IconLinkWithCounter count={favourites.length}>
-                  <Heart className={s.icon} />
-                </IconLinkWithCounter>
-              </NavLink>
-            </div>
-          </Link>
-          <Link to="/cart">
-            <div className={s.iconWrapper}>
-              <NavLink
-                to="/cart"
-                className={({ isActive }) => (isActive ? s.active : '')}
-              >
-                <IconLinkWithCounter count={cart.length}>
-                  <ShoppingBag className={s.icon} />
-                </IconLinkWithCounter>
-              </NavLink>
-            </div>
-          </Link>
+          <NavLink
+            to="/favourites"
+            className={({ isActive }) =>
+              `${s.iconWrapper} ${isActive ? s.active : ''}`
+            }
+          >
+            <IconLinkWithCounter count={favourites.length}>
+              <Heart className={s.icon} />
+            </IconLinkWithCounter>
+          </NavLink>
+
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              `${s.iconWrapper} ${isActive ? s.active : ''}`
+            }
+          >
+            <IconLinkWithCounter count={cart.length}>
+              <ShoppingBag className={s.icon} />
+            </IconLinkWithCounter>
+          </NavLink>
+
           <div
             className={s.menuButton}
             onClick={() => setMenuOpen(!isMenuOpen)}

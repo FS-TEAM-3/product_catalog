@@ -25,8 +25,10 @@ export const ColorSelector: React.FC<Props> = ({ colors }) => {
     colorFromUrl && colors.includes(colorFromUrl) ? colorFromUrl : colors[0];
 
   const handleValueChange = (value: string) => {
-    if (!value) return;
-    navigate(`/${category}/${baseId}-${capacity}-${value}`, { replace: true });
+    const slugColor = value.trim().toLowerCase().replace(/\s+/g, '-');
+    navigate(`/${category}/${baseId}-${capacity}-${slugColor}`, {
+      replace: true,
+    });
   };
 
   return (

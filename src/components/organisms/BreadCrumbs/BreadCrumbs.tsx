@@ -26,14 +26,14 @@ export const BreadCrumbs = () => {
               ? 'Tablets'
               : seg === 'accessories'
                 ? 'Accessories'
-                : seg === 'favourites'
-                  ? 'Favourites'
-                  : seg);
+                : seg);
         return (
           <span key={accumPath} className={styles.step}>
             <ChevronRight className={styles.icon} />
             {isLast ? (
-              <span className={styles.current}>{display}</span>
+              <span className={styles.current}>
+                {display.replace(/(^\w)/, (_, c) => c.toUpperCase())}
+              </span>
             ) : (
               <Link to={accumPath} className={styles.link}>
                 {display}

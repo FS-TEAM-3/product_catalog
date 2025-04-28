@@ -1,12 +1,12 @@
-import { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Dropdown } from '@/components/molecules/Dropdown';
 import productsData from '../../../public/api/products.json';
 import './style.module.scss';
 import styles from './style.module.scss';
-import { ProductCard } from '@/components/organisms/ProductCard';
+import { useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Dropdown } from '@/components/molecules/Dropdown';
 import { Container } from '@/components/templates/Container';
-import { BreadCrumbs } from '@/components/organisms/BreadCrumbs';
+import { GridCard } from '@/components/templates/GridCard';
+import { PageHeader } from '@/components/organisms/PageHeader';
 
 const sortOptions = [
   { label: 'Newest', value: 'age' },
@@ -73,46 +73,35 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
     page * perPage,
   );
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  });
+
   return (
     <Container>
       <div className="main-grid">
-        <div className={styles.catalog__breadcrumbs}>
-          <BreadCrumbs />
-        </div>
-        <div className={styles.catalog__header}>
-          <h1 className={styles.catalog__title}>{trueNameCategory}</h1>
-          <label className={styles.catalog__label}>
-            {totalProducts} models
-          </label>
+        <PageHeader
+          trueNameCategory={trueNameCategory}
+          totalProducts={totalProducts}
+        />
 
-          <div className={styles.catalog__controls}>
-            <Dropdown
-              isBig={true}
-              label="Sort by"
-              value={sort}
-              onChange={val => handleParamChange('sort', val)}
-              options={sortOptions}
-            />
-            <Dropdown
-              label="Items on page"
-              value={perPage.toString()}
-              onChange={val => handleParamChange('perPage', val)}
-              options={perPageOptions}
-            />
-          </div>
+        <div className={styles.catalog__controls}>
+          <Dropdown
+            isBig={true}
+            label="Sort by"
+            value={sort}
+            onChange={val => handleParamChange('sort', val)}
+            options={sortOptions}
+          />
+          <Dropdown
+            label="Items on page"
+            value={perPage.toString()}
+            onChange={val => handleParamChange('perPage', val)}
+            options={perPageOptions}
+          />
         </div>
 
-        <div className={styles.catalog__grid}>
-          {paginatedProducts.map(product => (
-            <div className={styles.catalog__productCard}>
-              <ProductCard
-                key={product.id}
-                product={product}
-                path={`/${product.category}/${product.itemId}`}
-              />
-            </div>
-          ))}
-        </div>
+        <GridCard products={paginatedProducts} />
 
         <div className={styles.catalog__pagination}>
           <button

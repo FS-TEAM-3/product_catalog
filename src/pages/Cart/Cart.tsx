@@ -9,6 +9,7 @@ import { CartItem } from '@/components/organisms/CartItem/CartItem';
 import { useStore } from '@/store/store';
 import { CartElement } from '@/types/Store';
 import { GeneralProduct } from '@/types/GeneralProduct';
+import { GoBackButton } from '@/components/molecules/GoBackButton';
 
 export const Cart = () => {
   const cart: CartElement[] = useStore(state => state.cart);
@@ -40,36 +41,43 @@ export const Cart = () => {
   const discount = totalFullPrice - totalPrice;
 
   return (
-    <Container>
-      {isEmpty ? (
-        <EmptyCart />
-      ) : (
-        <>
-          <h1 className="h1">Cart page</h1>
+    <>
+      <Container>
+        <div className={styles.cart__BackBtn}>
+          <GoBackButton />
+        </div>
+      </Container>
+      <Container className={`${isEmpty ? styles.contentHolder : ''}`}>
+        {isEmpty ? (
+          <EmptyCart />
+        ) : (
+          <>
+            <h1 className="h1">Cart page</h1>
 
-          <div className="main-grid">
-            <section className={styles.cart__itemsBlock}>
-              {cartItems.map(product => (
-                <CartItem product={product} />
-              ))}
-            </section>
-            <div className={`${styles.cart__priceBlock}`}>
-              <div className={`${styles.cart__innerPriceBlock}`}>
-                <TotalCartInfo
-                  count={totalCount}
-                  totalPrice={totalFullPrice}
-                  discount={discount}
-                />
+            <div className="main-grid">
+              <section className={styles.cart__itemsBlock}>
+                {cartItems.map(product => (
+                  <CartItem product={product} />
+                ))}
+              </section>
+              <div className={`${styles.cart__priceBlock}`}>
+                <div className={`${styles.cart__innerPriceBlock}`}>
+                  <TotalCartInfo
+                    count={totalCount}
+                    totalPrice={totalPrice}
+                    discount={discount}
+                  />
 
-                <AlertDialogCheckout
-                  onCancel={() => console.log('Your cart is not empty')}
-                  onAction={() => clearCart()}
-                />
+                  <AlertDialogCheckout
+                    onCancel={() => console.log('Your cart is not empty')}
+                    onAction={() => clearCart()}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </>
-      )}
-    </Container>
+          </>
+        )}
+      </Container>
+    </>
   );
 };

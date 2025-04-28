@@ -2,7 +2,24 @@
 @use '@/styles/typography' as *;
 @use '@/styles/mixins' as *;
 
+.contentHolder {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .cart {
+  &__BackBtn {
+    align-self: start;
+    margin: 24px 0;
+
+    @include on-tablet {
+      margin: 40px 0 16px;
+    }
+  }
+
   &__itemsBlock {
     grid-column: 1 / span 4;
     margin-bottom: 32px;

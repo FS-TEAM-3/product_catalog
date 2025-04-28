@@ -1,7 +1,24 @@
 @use '@/styles/variables.scss' as *;
 @use '@/styles/typography' as *;
+@use '@/styles/mixins' as *;
 
 .dropdown {
+  width: 100%;
+  max-width: 136px;
+  @include on-desktop {
+    max-width: 128px;
+  }
+
+  &__big {
+    @include on-tablet {
+      max-width: 187px;
+    }
+
+    @include on-desktop {
+      max-width: 176px;
+    }
+  }
+
   &__label {
     display: block;
     color: $secondary;
@@ -15,7 +32,7 @@
   padding: 9px 12px 8px;
   border: 1px solid hsla(206, 12%, 74%, 1);
   background-color: $white;
-  min-width: 136px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,10 +54,6 @@
   }
 
   @include font-style(body);
-
-  @media (min-width: 320px) {
-    min-width: 187px;
-  }
 }
 
 .selectContent {
@@ -49,7 +62,6 @@
   border: 1px solid hsla(206, 14%, 90%, 1);
   box-shadow: 0px 2px 15px 0px hsla(0, 0%, 0%, 0.05);
   padding: 8px 0;
-  transform: translateX(-10px);
 }
 
 .selectItem {

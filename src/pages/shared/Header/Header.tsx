@@ -13,10 +13,6 @@ export const Header = () => {
   const cart: CartElement[] = useStore(state => state.cart);
   const favourites: Favourites[] = useStore(state => state.favourites);
 
-  const getClassName = (isActive: boolean) => {
-    return isActive ? `${s.firstVariantLink} ${s.active}` : s.firstVariantLink;
-  };
-
   const getRealClassName = (isActive: boolean) => {
     return isActive ? `${s.link} ${s.active}` : s.link;
   };
@@ -46,17 +42,6 @@ export const Header = () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
-
-  const linksList = [
-    { name: 'Home', path: '/' },
-    { name: 'Phones', path: 'phones' },
-    { name: 'Tablets', path: 'tablets' },
-    { name: 'Accessories', path: 'accessories' },
-    { name: 'Item Card', path: 'phones/apple-iphone-14-128gb-yellow' },
-    { name: 'Favourites', path: 'favourites' },
-    { name: 'Cart', path: 'cart' },
-    { name: 'Not Found', path: 'random' },
-  ];
 
   const realLinkList = [
     { name: 'HOME', path: '/' },
@@ -175,20 +160,6 @@ export const Header = () => {
             </IconLinkWithCounter>
           </NavLink>
         </div>
-      </div>
-
-      <br></br>
-      <div>
-        {linksList.map(item => {
-          return (
-            <NavLink
-              className={({ isActive }) => getClassName(isActive)}
-              to={`${item.path}`}
-            >
-              {item.name}
-            </NavLink>
-          );
-        })}
       </div>
     </>
   );

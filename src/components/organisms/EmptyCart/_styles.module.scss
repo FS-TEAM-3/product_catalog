@@ -3,12 +3,8 @@
 @use '@/styles/mixins' as *;
 
 .emptyCart {
-  margin: 100px auto 50px;
+  margin: 0 auto;
   text-align: center;
-
-  @include on-tablet {
-    margin: 50px auto 20px;
-  }
 
   &__icon {
     color: $secondary;

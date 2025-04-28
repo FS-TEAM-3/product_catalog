@@ -61,7 +61,7 @@ export const ItemCard = () => {
             <BreadCrumbs />
           </div>
           <div className={styles.button}>
-            <GoBackButton category={product.category} />
+            <GoBackButton />
           </div>
 
           <h2 className={styles.itemName}>{item.name}</h2>

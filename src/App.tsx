@@ -7,9 +7,7 @@ export const App = () => (
   <div data-cy="app" className="page-content">
     <Header />
     <main className="section main-content">
-      <div className="container">
-        <Outlet />
-      </div>
+      <Outlet />
     </main>
     <Footer />
   </div>

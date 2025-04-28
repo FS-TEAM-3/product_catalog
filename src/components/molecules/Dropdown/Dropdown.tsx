@@ -15,6 +15,7 @@ type Props = {
   options: Option[];
   value: string;
   onChange: (value: string) => void;
+  isBig?: boolean;
 };
 
 export const Dropdown: React.FC<Props> = ({
@@ -22,16 +23,16 @@ export const Dropdown: React.FC<Props> = ({
   options,
   value,
   onChange,
+  isBig,
 }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={styles.dropdown}>
+    <div className={`${isBig ? styles.dropdown__big : ''} ${styles.dropdown}`}>
       <label className={styles.dropdown__label}>{label}</label>
       <Select.Root
         value={value}
         onValueChange={onChange}
-        open={open}
         onOpenChange={setOpen}
       >
         <Select.Trigger className={styles.selectTrigger}>

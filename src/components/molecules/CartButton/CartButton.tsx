@@ -20,7 +20,7 @@ export const CartButton: React.FC<CartButtonProps> = ({ productId }) => {
 
   return (
     <RectangleButton onClick={handleClick} isActive={isInCart}>
-      {isInCart ? 'In cart' : 'Add to cart'}
+      {isInCart ? 'Added to cart' : 'Add to cart'}
     </RectangleButton>
   );
 };

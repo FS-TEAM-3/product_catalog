@@ -40,7 +40,7 @@ export const Cart = () => {
   const discount = totalFullPrice - totalPrice;
 
   return (
-    <Container className={styles.absolute}>
+    <Container className={`${isEmpty ? styles.absolute : ''}`}>
       {isEmpty ? (
         <EmptyCart />
       ) : (

@@ -20,7 +20,9 @@ export const TotalCartInfo: React.FC<Props> = ({
       <p className={styles.totalPrice}>
         {'\u0024'} {totalPrice}
       </p>
-      <p className={styles.totalAmount}>Total for {count} items</p>
+      <p className={styles.totalAmount}>
+        Total for {count} {count > 1 ? 'items' : 'item'}
+      </p>
     </>
   );
 };

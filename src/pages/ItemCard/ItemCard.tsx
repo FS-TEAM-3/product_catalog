@@ -8,7 +8,7 @@ import { Description } from '@/components/molecules/Description';
 import { useParams } from 'react-router-dom';
 import { Container } from '@/components/templates/Container';
 import { GoBackButton } from '@/components/molecules/GoBackButton';
-import { EmptyCart } from '@/components/organisms/EmptyCart';
+import { EmptyCart } from '@/components/organisms/EmptyPage';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator';
 import { Price } from '@/components/molecules/Price';
 import { CardSlider } from '@/components/molecules/CardSlider/CardSlider';

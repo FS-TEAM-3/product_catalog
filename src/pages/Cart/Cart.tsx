@@ -2,8 +2,7 @@ import styles from './_styles.module.scss';
 import { Container } from '@/components/templates/Container';
 import { TotalCartInfo } from '@/components/atoms/TotalCartInfo/TotalCartInfo';
 import { AlertDialogCheckout } from '@/components/organisms/AlertDialogCheckout/AlertDialogCheckout';
-import { EmptyCart } from '@/components/organisms/EmptyCart';
-
+import { EmptyCart } from '@/components/organisms/EmptyPage';
 import products from '../../../public/api/products.json';
 import { CartItem } from '@/components/organisms/CartItem/CartItem';
 import { useStore } from '@/store/store';

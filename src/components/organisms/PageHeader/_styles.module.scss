@@ -1,0 +1,49 @@
+@use '@/styles/typography' as *;
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins' as *;
+
+.catalog {
+  &__header {
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      grid-column: 1 / span 12;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 24;
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    @include font-style(h1);
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      margin-top: 40px;
+    }
+  }
+
+  &__label {
+    margin-top: 8px;
+    color: $secondary;
+    @include font-style(body);
+  }
+
+  &__breadcrumbs {
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      grid-column: 1 / span 12;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 24;
+    }
+  }
+}

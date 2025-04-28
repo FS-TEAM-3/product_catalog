@@ -1,9 +1,11 @@
 import { useStore } from '../../store/store';
-import { ProductCard } from '@/components/organisms/ProductCard';
 import products from '../../../public/api/products.json';
-import { HeartCrack } from 'lucide-react';
-import s from '../Catalog/style.module.scss';
-import { BreadCrumbs } from '@/components/organisms/BreadCrumbs';
+import { GridCard } from '@/components/templates/GridCard';
+import { PageHeader } from '@/components/organisms/PageHeader';
+import { Container } from '@/components/templates/Container';
+import styles from './_styles.module.scss';
+import { EmptyFavourites } from '@/components/organisms/EmptyPage';
+import { GoBackButton } from '@/components/molecules/GoBackButton';
 
 export const Favourites = () => {
   const favouritesFromStore = useStore(store => store.favourites);
@@ -12,34 +14,29 @@ export const Favourites = () => {
   );
 
   return (
-    <div className={s.catalog}>
+    <>
       {favouritesFromStore.length > 0 ? (
-        <>
-          <div className={s.catalog__breadcrumbs}>
-            <BreadCrumbs />
+        <Container>
+          <div className="main-grid">
+            <PageHeader
+              totalProducts={favouritesFromStore.length}
+              trueNameCategory={'Favourites'}
+            />
+            <GridCard products={favouritesToPage} />
           </div>
-          <div className={s.catalog__header}>
-            <h2 className={s.catalog__title}>Favourites</h2>
-            <label className={s.catalog__label}>
-              {favouritesFromStore.length}
-              {favouritesFromStore.length === 1 ? ' item' : ' items'}
-            </label>
-          </div>
-          <div className={s.catalog__grid}>
-            {favouritesToPage.map(item => (
-              <ProductCard
-                path={`/${item.category}/${item.itemId}`}
-                product={item}
-              />
-            ))}
-          </div>
-        </>
+        </Container>
       ) : (
-        <div>
-          <HeartCrack size={45} />
-          You haven't liked anything yet
-        </div>
+        <>
+          <Container>
+            <div className={styles.empty}>
+              <GoBackButton />
+            </div>
+          </Container>
+          <Container className={styles.contentHolder}>
+            <EmptyFavourites />
+          </Container>
+        </>
       )}
-    </div>
+    </>
   );
 };

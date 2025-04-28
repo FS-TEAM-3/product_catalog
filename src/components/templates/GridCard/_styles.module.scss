@@ -1,0 +1,26 @@
+@use '@/styles/typography' as *;
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins' as *;
+
+.catalog {
+  &__grid {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 16px;
+    margin-top: 24px;
+    justify-content: center;
+
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+    }
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__productCard {
+    justify-self: center;
+  }
+}

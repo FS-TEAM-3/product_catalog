@@ -21,13 +21,10 @@ export const NotFound = () => {
       </main>
 
       <article className={s.content}>
-        <p className={s.text}>Damnit stranger,</p>
-        <p className={s.text}>
-          You got lost in the <strong>404</strong> galaxy.
-        </p>
+        <p className={s.text}>Page not found :(</p>
         <p className={s.text}>
           <Link to={'/'}>
-            <button className={s.buttonLink}>Go back to earth.</button>
+            <button className={s.buttonLink}>Home</button>
           </Link>
         </p>
       </article>

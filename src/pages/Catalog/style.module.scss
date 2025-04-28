@@ -3,38 +3,6 @@
 @use '@/styles/mixins' as *;
 
 .catalog {
-  &__header {
-    grid-column: 1 / span 4;
-
-    @include on-tablet {
-      grid-column: 1 / span 12;
-    }
-
-    @include on-desktop {
-      grid-column: 1 / span 24;
-    }
-  }
-
-  &__title {
-    margin-top: 24px;
-    margin-bottom: 8px;
-    @include font-style(h1);
-
-    @include on-tablet {
-      margin-top: 40px;
-    }
-
-    @include on-desktop {
-      margin-top: 40px;
-    }
-  }
-
-  &__label {
-    margin-top: 8px;
-    color: $secondary;
-    @include font-style(body);
-  }
-
   &__controls {
     display: flex;
     flex-wrap: wrap;
@@ -51,27 +19,6 @@
       margin-top: 40px;
       grid-column: 1 / span 24;
     }
-  }
-
-  &__grid {
-    display: grid;
-    grid-column: 1 / -1;
-    gap: 16px;
-    margin-top: 24px;
-    justify-content: center;
-
-    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-
-    @include on-tablet {
-      grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
-    }
-    @include on-desktop {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  &__productCard {
-    justify-self: center;
   }
 
   &__pagination {
@@ -112,16 +59,4 @@
 
 .arrowButtonRight {
   margin-left: 9px;
-}
-
-.catalog__breadcrumbs {
-  grid-column: 1 / span 4;
-
-  @include on-tablet {
-    grid-column: 1 / span 12;
-  }
-
-  @include on-desktop {
-    grid-column: 1 / span 24;
-  }
 }

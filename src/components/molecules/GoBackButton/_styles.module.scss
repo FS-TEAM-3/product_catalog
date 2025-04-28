@@ -9,15 +9,21 @@
   align-items: flex-end;
   justify-content: space-between;
   cursor: url('@/../public/img/cursor-pointer.png'), auto;
+  transition: color 0.4s;
 
   & svg {
     height: 16px;
     width: 16px;
     stroke: $primary;
+    transition: transform 0.4s;
   }
 
   &:hover {
     color: $primary;
+
+    svg {
+      transform: translateX(-3px);
+    }
   }
 
   @include font-style(small);

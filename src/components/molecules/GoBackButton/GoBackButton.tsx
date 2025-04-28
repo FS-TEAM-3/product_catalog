@@ -3,15 +3,11 @@ import { ChevronLeft } from 'lucide-react';
 import { Button } from '@radix-ui/themes';
 import { useNavigate } from 'react-router-dom';
 
-type Props = {
-  category: string;
-};
-
-export const GoBackButton: React.FC<Props> = ({ category }) => {
+export const GoBackButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/${category}`, { replace: true });
+    navigate(-1);
   };
 
   return (

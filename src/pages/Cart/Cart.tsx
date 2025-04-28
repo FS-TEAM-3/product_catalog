@@ -9,6 +9,7 @@ import { CartItem } from '@/components/organisms/CartItem/CartItem';
 import { useStore } from '@/store/store';
 import { CartElement } from '@/types/Store';
 import { GeneralProduct } from '@/types/GeneralProduct';
+import { GoBackButton } from '@/components/molecules/GoBackButton';
 
 export const Cart = () => {
   const cart: CartElement[] = useStore(state => state.cart);
@@ -41,6 +42,9 @@ export const Cart = () => {
 
   return (
     <Container className={`${isEmpty ? styles.contentHolder : ''}`}>
+      <div className={styles.cart__BackBtn}>
+        <GoBackButton />
+      </div>
       {isEmpty ? (
         <EmptyCart />
       ) : (

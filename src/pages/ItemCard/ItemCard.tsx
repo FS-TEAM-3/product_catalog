@@ -82,7 +82,7 @@ export const ItemCard = () => {
       setProduct(product);
       setProductID(productId);
     }
-  }, []);
+  }, [location.pathname]);
 
   const randomProducts = getRandom(products);
 

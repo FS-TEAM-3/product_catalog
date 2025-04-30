@@ -13,9 +13,9 @@ import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const sortOptions = [
-  { label: 'Newest', value: 'age' },
-  { label: 'Alphabetically', value: 'title' },
-  { label: 'Cheapest', value: 'fullPrice' },
+  { label: 'Newest', value: 'age', api: 'year' },
+  { label: 'Alphabetically', value: 'title', api: 'itemId' },
+  { label: 'Cheapest', value: 'fullPrice', api: 'price' },
 ];
 
 const perPageOptions = [
@@ -25,6 +25,7 @@ const perPageOptions = [
 ];
 
 export const Catalog: React.FC<{ category: string }> = ({ category }) => {
+  const [apiParams, setApiParams] = useState(new URLSearchParams());
   const [searchParams, setSearchParams] = useSearchParams();
   const [totalProducts, setTotalProducts] = useState(0);
 
@@ -39,11 +40,20 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
 
   const handleParamChange = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams);
+    const apiParamsString = new URLSearchParams(apiParams);
     params.set(key, value);
     if (key !== 'page') {
       params.set('page', '1');
     }
+    apiParamsString.set(key, value);
+    if (key === 'sort') {
+      const apiSwitchParams = sortOptions.find(
+        item => item.value === value,
+      )?.api;
+      apiParamsString.set('sort', apiSwitchParams || value);
+    }
     setSearchParams(params);
+    setApiParams(apiParamsString);
   };
 
   const trueNameCategory = useMemo(() => {
@@ -60,8 +70,8 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
   }, [category]);
 
   const { data, loading } = useApi(
-    () => getCatalogProducts(category, page, searchParams.toString()),
-    [category, page, searchParams.toString()],
+    () => getCatalogProducts(category, page, apiParams.toString()),
+    [category, page, apiParams],
   );
 
   useEffect(() => {
@@ -71,7 +81,7 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
     }
   }, [data]);
 
-  useScrollToTop(searchParams, { delay: 200, behavior: 'smooth' });
+  useScrollToTop(apiParams, { delay: 200, behavior: 'smooth' });
 
   return (
     <Container>

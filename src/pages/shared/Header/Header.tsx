@@ -6,8 +6,11 @@ import { IconLinkWithCounter } from '@/components/molecules/IconLinkWithCounter/
 import { CartElement, Favourites } from '@/types/Store';
 import { useEffect, useState } from 'react';
 import { useStore } from '@/store/store';
+import { LanguageSwitcher } from '@/components/organisms/LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const cart: CartElement[] = useStore(state => state.cart);
@@ -44,10 +47,10 @@ export const Header = () => {
   }, [isMenuOpen]);
 
   const realLinkList = [
-    { name: 'HOME', path: '/' },
-    { name: 'PHONES', path: 'phones' },
-    { name: 'TABLETS', path: 'tablets' },
-    { name: 'ACCESSORIES', path: 'accessories' },
+    { name: t('navbar.home'), path: '/' },
+    { name: t('navbar.phones'), path: 'phones' },
+    { name: t('navbar.tablets'), path: 'tablets' },
+    { name: t('navbar.accessories'), path: 'accessories' },
   ];
 
   return (
@@ -161,6 +164,7 @@ export const Header = () => {
           </NavLink>
         </div>
       </div>
+      <LanguageSwitcher />
     </>
   );
 };

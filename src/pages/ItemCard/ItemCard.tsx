@@ -22,6 +22,7 @@ import { Product } from '@/types/Product';
 import { useApi } from '@/hooks/useApi';
 import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useTranslation } from 'react-i18next';
 
 const tempItem: Product = {
   id: '',
@@ -61,6 +62,7 @@ const tempItem: Product = {
 };
 
 export const ItemCard = () => {
+  const { t } = useTranslation();
   const [item, setProduct] = useState<Product>(tempItem);
   const [productID, setProductID] = useState<number>();
   const location = useLocation();
@@ -80,7 +82,7 @@ export const ItemCard = () => {
       setProduct(product);
       setProductID(productId);
     }
-  });
+  }, []);
 
   const randomProducts = getRandom(products);
 
@@ -128,7 +130,7 @@ export const ItemCard = () => {
           </div>
 
           <div className={styles.description}>
-            <div className={styles.descriptionMain}>About</div>
+            <div className={styles.descriptionMain}>{t('itemCard.about')}</div>
             <CustomSeparator marginTop={16} />
             {item.description.map(item => {
               return (
@@ -144,7 +146,7 @@ export const ItemCard = () => {
 
           <div className={styles.specs}>
             <div className={`${styles.descriptionMain} ${styles.specsTitle}`}>
-              Tech specs
+              {t('itemCard.specs')}
             </div>
             <Description product={item} />
           </div>
@@ -153,7 +155,7 @@ export const ItemCard = () => {
             <CardSlider
               products={randomProducts}
               id={2}
-              title="You may also like"
+              title={t('itemCard.sliderLike')}
             />
           </div>
         </div>

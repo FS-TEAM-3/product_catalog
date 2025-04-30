@@ -9,8 +9,10 @@ import { useStore } from '@/store/store';
 import { CartElement } from '@/types/Store';
 import { GeneralProduct } from '@/types/GeneralProduct';
 import { GoBackButton } from '@/components/molecules/GoBackButton';
+import { useTranslation } from 'react-i18next';
 
 export const Cart = () => {
+  const { t } = useTranslation();
   const cart: CartElement[] = useStore(state => state.cart);
   const clearCart: () => void = useStore(state => state.clearCart);
 
@@ -51,7 +53,7 @@ export const Cart = () => {
           <EmptyCart />
         ) : (
           <>
-            <h1 className="h1">Cart page</h1>
+            <h1 className="h1">{t('cart.cart')}</h1>
 
             <div className="main-grid">
               <section className={styles.cart__itemsBlock}>

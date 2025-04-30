@@ -1,12 +1,14 @@
 import React from 'react';
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { useStore } from '@/store/store';
+import { useTranslation } from 'react-i18next';
 
 type CartButtonProps = {
   productId: string;
 };
 
 export const CartButton: React.FC<CartButtonProps> = ({ productId }) => {
+  const { t } = useTranslation();
   const cart = useStore(state => state.cart);
   const addToCart = useStore(state => state.addToCart);
   const removeFromCart = useStore(state => state.removeFromCart);
@@ -20,7 +22,7 @@ export const CartButton: React.FC<CartButtonProps> = ({ productId }) => {
 
   return (
     <RectangleButton onClick={handleClick} isActive={isInCart}>
-      {isInCart ? 'Added to cart' : 'Add to cart'}
+      {isInCart ? t('cartButton.added') : t('cartButton.add')}
     </RectangleButton>
   );
 };

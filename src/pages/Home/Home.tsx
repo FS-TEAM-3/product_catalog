@@ -9,6 +9,7 @@ import { getHotPrice, getNewModels } from '@/utils/productsOptions';
 import sliderLinks from './sliderData.json';
 import s from './_styles.module.scss';
 import products from '../../../public/api/products.json';
+import { useTranslation } from 'react-i18next';
 //import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 
 type CategoryData = {
@@ -25,6 +26,7 @@ type data = {
 };
 
 export const Home = () => {
+  const { t } = useTranslation();
   //const [products, setProducts] = useState<GeneralProduct[]>([]);
 
   const [pageData, setPageData] = useState<data>({
@@ -35,9 +37,9 @@ export const Home = () => {
 
   useEffect(() => {
     const categoryItems: CategoryData = {
-      phones: { title: 'Mobile phones', length: 0 },
-      tablets: { title: 'Tablets', length: 0 },
-      accessories: { title: 'Accessories', length: 0 },
+      phones: { title: t('categories.mobPhones'), length: 0 },
+      tablets: { title: t('categories.tablets'), length: 0 },
+      accessories: { title: t('categories.accessories'), length: 0 },
     };
 
     const getCategoryData = (items: GeneralProduct[]) => {
@@ -57,12 +59,12 @@ export const Home = () => {
       hotPrice: hotPriceList,
       newModel: newModels,
     });
-  }, []);
+  }, [t]);
 
   return (
     <Container>
       {/* <LoadingOverlay isLoading={true} /> */}
-      <div className={s.label}>Welcome to Nice Gadgets store!</div>
+      <div className={s.label}>{t('home.welcome')}</div>
       <section className={s.section}>
         <Slider links={sliderLinks} />
       </section>
@@ -70,12 +72,12 @@ export const Home = () => {
         <CardSlider
           products={pageData.newModel}
           id={1}
-          title="Brand new models"
+          title={t('home.sliderNew')}
         />
       </section>
 
       <section className={s.section}>
-        <SectionTitle title="Categories" />
+        <SectionTitle title={t('home.categories')} />
         <div className={s.category}>
           {Object.keys(pageData.categoryItems).map(category => {
             return (
@@ -91,7 +93,11 @@ export const Home = () => {
       </section>
 
       <section className={s.section}>
-        <CardSlider products={pageData.hotPrice} id={2} title="Hot prices" />
+        <CardSlider
+          products={pageData.hotPrice}
+          id={2}
+          title={t('home.sliderHot')}
+        />
       </section>
     </Container>
   );

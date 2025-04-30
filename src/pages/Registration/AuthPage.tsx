@@ -2,8 +2,10 @@ import styles from './_styles.module.scss';
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { Container } from '@/components/templates/Container';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const AuthPage = () => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
   // const navigate = useNavigate();
 
@@ -20,37 +22,49 @@ export const AuthPage = () => {
 
   return (
     <Container>
-      <h1 className={`${styles.authTitle} h1`}>Registration Page</h1>
+      <h1 className={`${styles.authTitle} h1`}>{t('auth.auth')}</h1>
       <div className={styles.authTabs}>
         <button
           className={activeTab === 'login' ? styles.active : ''}
           onClick={() => setActiveTab('login')}
         >
-          Log In
+          {t('auth.logIn')}
         </button>
         <button
           className={activeTab === 'signup' ? styles.active : ''}
           onClick={() => setActiveTab('signup')}
         >
-          Sign Up
+          {t('auth.signIn')}
         </button>
       </div>
 
       <form className={styles.authForm} onSubmit={handleSubmit}>
         {activeTab === 'signup' && (
-          <input type="text" placeholder="Name" name="name" required />
+          <input
+            type="text"
+            placeholder={t('auth.name')}
+            name="name"
+            required
+          />
         )}
 
-        <input type="email" placeholder="Email" name="email" required />
+        <input
+          type="email"
+          placeholder={t('auth.email')}
+          name="email"
+          required
+        />
 
         <input
           type="password"
-          placeholder="Password"
+          placeholder={t('auth.password')}
           name="password"
           required
         />
 
-        <RectangleButton onClick={() => handleSubmit}>Submit</RectangleButton>
+        <RectangleButton onClick={() => handleSubmit}>
+          {t('auth.submit')}
+        </RectangleButton>
       </form>
     </Container>
   );

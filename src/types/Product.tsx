@@ -1,5 +1,11 @@
 import { ColorSlug } from '@/constants/colors';
 
+export interface DescriptionBlock {
+  _id: string;
+  title: string;
+  text: string[];
+}
+
 export type Product = {
   id: string;
   namespaceId: string;
@@ -11,7 +17,7 @@ export type Product = {
   colorsAvailable: ColorSlug[];
   color: string[] | string;
   images: string[];
-  description: object[];
+  description: DescriptionBlock[];
   screen: string;
   resolution: string;
   processor: string;

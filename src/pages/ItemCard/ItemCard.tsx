@@ -1,14 +1,10 @@
 import styles from './_styles.module.scss';
 import products from '../../../public/api/products.json';
-import phones from '../../../public/api/phones.json';
-import tablets from '../../../public/api/tablets.json';
-import accessories from '../../../public/api/accessories.json';
 import { PicturePicker } from '@/components/organisms/PicturePicker/PicturePicker';
 import { Description } from '@/components/molecules/Description';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Container } from '@/components/templates/Container';
 import { GoBackButton } from '@/components/molecules/GoBackButton';
-import { EmptyCart } from '@/components/organisms/EmptyPage';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator';
 import { Price } from '@/components/molecules/Price';
 import { CardSlider } from '@/components/molecules/CardSlider/CardSlider';
@@ -17,45 +13,44 @@ import { FavouriteButton } from '@/components/molecules/FavouriteButton';
 import { ColorSelector } from '@/components/molecules/ColorSelector';
 import { CapacitySelector } from '@/components/molecules/CapacitySelector';
 import { getRandom } from '@/utils/productsOptions';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { parseSlug } from '@/utils/parseSlug';
 import { BreadCrumbs } from '@/components/organisms/BreadCrumbs';
+import { getProduct } from '../../../public/api/products';
+import { NotFound } from '@/pages/NotFound/NotFound';
+import { Product } from '@/types/Product';
+import { useApi } from '@/hooks/useApi';
+import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 export const ItemCard = () => {
+  const [item, setProduct] = useState<Product>();
+  const [productID, setProductID] = useState<number>();
+  const location = useLocation();
   const { slug } = useParams<{ slug?: string }>();
   const { itemId } = parseSlug(slug ?? '');
 
+  useScrollToTop(itemId, { delay: 300, behavior: 'smooth' });
+
+  const { data, loading } = useApi(
+    () => getProduct(location.pathname),
+    [location.pathname],
+  );
+
   useEffect(() => {
-    if (itemId) {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    if (data) {
+      const { product, productId } = data;
+      setProduct(product);
+      setProductID(productId);
     }
-  }, [itemId]);
+  });
 
-  const product = products.find(prod => prod.itemId === slug);
   const randomProducts = getRandom(products);
-
-  let item;
-
-  switch (product?.category) {
-    case 'phones':
-      item = phones.find(item => item.id === slug);
-      break;
-    case 'tablets':
-      item = tablets.find(item => item.id === slug);
-      break;
-    case 'accessories':
-      item = accessories.find(item => item.id === slug);
-      break;
-    default:
-      item = null;
-      break;
-  }
 
   return (
     <Container>
-      {!item || !product ? (
-        <EmptyCart />
-      ) : (
+      <LoadingOverlay isLoading={loading} />
+      {item ? (
         <div className="main-grid">
           <div className={styles.url}>
             <BreadCrumbs />
@@ -73,7 +68,7 @@ export const ItemCard = () => {
           <div className={styles.itemParams}>
             <div className={styles.itemIdMini}>
               <ColorSelector colors={item.colorsAvailable} />
-              <div className={styles.itemIdSmall}>ID: {product.id}</div>
+              <div className={styles.itemIdSmall}>ID: {productID}</div>
             </div>
             <CustomSeparator marginTop={24} marginBottom={24} />
             <CapacitySelector capacities={item.capacityAvailable} />
@@ -85,14 +80,14 @@ export const ItemCard = () => {
             />
             <div className={styles.itemButtons}>
               <div className={styles.itemButtonsContainer}>
-                <CartButton productId={product.name} />
+                <CartButton productId={item.name} />
               </div>
-              <FavouriteButton productId={product.name} />
+              <FavouriteButton productId={item.name} />
             </div>
             <Description product={item} fieldsCount={4} />
           </div>
           <div className={styles.itemId}>
-            <div className={styles.itemIdDescktop}>ID: {product.id}</div>
+            <div className={styles.itemIdDescktop}>ID: {productID}</div>
           </div>
 
           <div className={styles.description}>
@@ -125,6 +120,8 @@ export const ItemCard = () => {
             />
           </div>
         </div>
+      ) : (
+        <NotFound />
       )}
     </Container>
   );

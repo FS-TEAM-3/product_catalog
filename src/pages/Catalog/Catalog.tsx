@@ -1,17 +1,21 @@
-import productsData from '../../../public/api/products.json';
 import './style.module.scss';
 import styles from './style.module.scss';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Dropdown } from '@/components/molecules/Dropdown';
 import { Container } from '@/components/templates/Container';
 import { GridCard } from '@/components/templates/GridCard';
 import { PageHeader } from '@/components/organisms/PageHeader';
+import { getCatalogProducts } from '../../../public/api/products';
+import { GeneralProduct } from '@/types/GeneralProduct';
+import { useApi } from '@/hooks/useApi';
+import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const sortOptions = [
   { label: 'Newest', value: 'age' },
   { label: 'Alphabetically', value: 'title' },
-  { label: 'Cheapest', value: 'price' },
+  { label: 'Cheapest', value: 'fullPrice' },
 ];
 
 const perPageOptions = [
@@ -22,10 +26,16 @@ const perPageOptions = [
 
 export const Catalog: React.FC<{ category: string }> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [totalProducts, setTotalProducts] = useState(0);
 
   const sort = searchParams.get('sort') || 'age';
   const perPage = parseInt(searchParams.get('perPage') || '8', 10);
   const page = parseInt(searchParams.get('page') || '1', 10);
+
+  const totalPages = Math.ceil(totalProducts / perPage);
+  const [paginatedProducts, setPaginatedProducts] = useState<GeneralProduct[]>(
+    [],
+  );
 
   const handleParamChange = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -35,10 +45,6 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
     }
     setSearchParams(params);
   };
-
-  const filteredProducts = useMemo(() => {
-    return productsData.filter(product => product.category === category);
-  }, [category]);
 
   const trueNameCategory = useMemo(() => {
     switch (category) {
@@ -53,32 +59,23 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
     }
   }, [category]);
 
-  const sortedProducts = useMemo(() => {
-    return [...filteredProducts].sort((a, b) => {
-      if (sort === 'age') {
-        return b.year - a.year;
-      } else if (sort === 'title') {
-        return a.name.localeCompare(b.name);
-      } else if (sort === 'price') {
-        return a.price - b.price;
-      }
-      return 0;
-    });
-  }, [filteredProducts, sort]);
-
-  const totalProducts = sortedProducts.length;
-  const totalPages = Math.ceil(totalProducts / perPage);
-  const paginatedProducts = sortedProducts.slice(
-    (page - 1) * perPage,
-    page * perPage,
+  const { data, loading } = useApi(
+    () => getCatalogProducts(category, page, searchParams.toString()),
+    [category, page, searchParams.toString()],
   );
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  });
+    if (data) {
+      setPaginatedProducts(data.collection);
+      setTotalProducts(data.count);
+    }
+  }, [data]);
+
+  useScrollToTop(searchParams, { delay: 200, behavior: 'smooth' });
 
   return (
     <Container>
+      <LoadingOverlay isLoading={loading} />
       <div className="main-grid">
         <PageHeader
           trueNameCategory={trueNameCategory}

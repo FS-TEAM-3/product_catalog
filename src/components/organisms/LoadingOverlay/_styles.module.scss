@@ -1,0 +1,25 @@
+@use '@/styles/variables.scss' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba($background, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 2s linear infinite;
+  width: 40px;
+  height: 40px;
+  color: $icons;
+}

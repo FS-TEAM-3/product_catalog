@@ -38,10 +38,5 @@
 .category {
   @include on-tablet {
     display: flex;
-    height: 262px;
-  }
-
-  @include on-desktop {
-    height: 448px;
   }
 }

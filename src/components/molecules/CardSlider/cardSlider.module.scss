@@ -21,6 +21,14 @@
   }
 }
 
+.sliderWraper {
+  margin: -15px;
+
+  & .cardsSwiper {
+    padding: 15px;
+  }
+}
+
 .button {
   display: flex;
   justify-content: center;

@@ -5,8 +5,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { SquareButton } from '@/components/atoms/SquareButton';
 import s from './cardSlider.module.scss';
-import 'swiper/css';
 import { GeneralProduct } from '@/types/GeneralProduct';
+import 'swiper/css';
 
 type Props = {
   id: number;
@@ -42,9 +42,10 @@ export const CardSlider: React.FC<Props> = ({
           </SquareButton>
         </div>
       </div>
-      <div className="slider-wraper">
+      <div className={`${s.sliderWraper} cards-swiper`}>
         <Swiper
-          slidesPerView={2}
+          className={`${s.cardsSwiper}`}
+          slidesPerView={1.5}
           initialSlide={0}
           spaceBetween={16}
           modules={[Navigation, Autoplay, Controller]}
@@ -56,11 +57,10 @@ export const CardSlider: React.FC<Props> = ({
           autoplay={{ delay: 5000 }}
           onSwiper={() => setIdxSwiper}
           controller={{ control: idxSwiper }}
-          onSlideChange={() => console.log('slide change')}
           breakpoints={{
             // when window width is >= 480px
             640: {
-              slidesPerView: 3,
+              slidesPerView: 3.5,
             },
             // when window width is >= 640px
             1200: {
@@ -69,11 +69,14 @@ export const CardSlider: React.FC<Props> = ({
           }}
         >
           {products.map((item, idx) => (
-            <SwiperSlide key={(item.id, idx)}>
-              <ProductCard
-                product={item}
-                path={`/${item.category}/${item.itemId}`}
-              />
+            <SwiperSlide key={(item.id, idx)} className={s.swiperSlide}>
+              <div className={s.cardWrapper}>
+                {' '}
+                <ProductCard
+                  product={item}
+                  path={`/${item.category}/${item.itemId}`}
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

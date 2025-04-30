@@ -1,6 +1,5 @@
 import { Slider } from '@/components/molecules/HeroSlider/HeroSlider';
 import { Container } from '@/components/templates/Container';
-import products from '../../../public/api/products.json';
 import { CardSlider } from '@/components/molecules/CardSlider/CardSlider';
 import { useEffect, useState } from 'react';
 import { CategoryCard } from '@/components/molecules/CategoryCard/CategoryCard';
@@ -9,6 +8,8 @@ import { SectionTitle } from '@/components/atoms/SectionTitle/SectionTitle';
 import { getHotPrice, getNewModels } from '@/utils/productsOptions';
 import sliderLinks from './sliderData.json';
 import s from './_styles.module.scss';
+import products from '../../../public/api/products.json';
+//import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 
 type CategoryData = {
   [key: string]: {
@@ -24,6 +25,8 @@ type data = {
 };
 
 export const Home = () => {
+  //const [products, setProducts] = useState<GeneralProduct[]>([]);
+
   const [pageData, setPageData] = useState<data>({
     categoryItems: {},
     hotPrice: [],
@@ -58,6 +61,7 @@ export const Home = () => {
 
   return (
     <Container>
+      {/* <LoadingOverlay isLoading={true} /> */}
       <div className={s.label}>Welcome to Nice Gadgets store!</div>
       <section className={s.section}>
         <Slider links={sliderLinks} />

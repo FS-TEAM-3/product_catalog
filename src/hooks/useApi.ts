@@ -19,8 +19,6 @@ export function useApi<T>(
         setError((err as Error).message || 'Unknown error');
       })
       .finally(() => setLoading(false));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   return { data, loading, error };

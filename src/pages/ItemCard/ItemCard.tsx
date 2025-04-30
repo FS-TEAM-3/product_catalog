@@ -24,46 +24,9 @@ import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useTranslation } from 'react-i18next';
 
-const tempItem: Product = {
-  id: '',
-  namespaceId: '',
-  name: '',
-  capacityAvailable: [],
-  capacity: '',
-  priceRegular: 0,
-  priceDiscount: 0,
-  colorsAvailable: [],
-  color: '',
-  images: [],
-  description: [
-    {
-      _id: '0',
-      title: '',
-      text: [],
-    },
-    {
-      _id: '0',
-      title: '',
-      text: [],
-    },
-    {
-      _id: '0',
-      title: '',
-      text: [],
-    },
-  ],
-  screen: '',
-  resolution: '',
-  processor: '',
-  ram: '',
-  camera: '',
-  zoom: '',
-  cell: [],
-};
-
 export const ItemCard = () => {
   const { t } = useTranslation();
-  const [item, setProduct] = useState<Product>(tempItem);
+  const [item, setProduct] = useState<Product>();
   const [productID, setProductID] = useState<number>();
   const location = useLocation();
   const { slug } = useParams<{ slug?: string }>();
@@ -82,14 +45,14 @@ export const ItemCard = () => {
       setProduct(product);
       setProductID(productId);
     }
-  }, [location.pathname]);
+  });
 
   const randomProducts = getRandom(products);
 
   return (
     <Container>
       <LoadingOverlay isLoading={loading} />
-      {item || loading ? (
+      {item ? (
         <div className="main-grid">
           <div className={styles.url}>
             <BreadCrumbs />

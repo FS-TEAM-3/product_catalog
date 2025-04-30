@@ -1,4 +1,4 @@
-[DEMO LINK](https://product-catalog-gamma-navy.vercel.app)
+[NEWEST VERSION](https://product-catalog-csshahzij-sofiiapelenskas-projects.vercel.app)
 
 # To run the project locally, use:
 

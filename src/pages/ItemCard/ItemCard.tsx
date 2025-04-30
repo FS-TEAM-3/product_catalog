@@ -23,8 +23,45 @@ import { useApi } from '@/hooks/useApi';
 import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 
+const tempItem: Product = {
+  id: '',
+  namespaceId: '',
+  name: '',
+  capacityAvailable: [],
+  capacity: '',
+  priceRegular: 0,
+  priceDiscount: 0,
+  colorsAvailable: [],
+  color: '',
+  images: [],
+  description: [
+    {
+      _id: '0',
+      title: '',
+      text: [],
+    },
+    {
+      _id: '0',
+      title: '',
+      text: [],
+    },
+    {
+      _id: '0',
+      title: '',
+      text: [],
+    },
+  ],
+  screen: '',
+  resolution: '',
+  processor: '',
+  ram: '',
+  camera: '',
+  zoom: '',
+  cell: [],
+};
+
 export const ItemCard = () => {
-  const [item, setProduct] = useState<Product>();
+  const [item, setProduct] = useState<Product>(tempItem);
   const [productID, setProductID] = useState<number>();
   const location = useLocation();
   const { slug } = useParams<{ slug?: string }>();
@@ -50,7 +87,7 @@ export const ItemCard = () => {
   return (
     <Container>
       <LoadingOverlay isLoading={loading} />
-      {item ? (
+      {item || loading ? (
         <div className="main-grid">
           <div className={styles.url}>
             <BreadCrumbs />

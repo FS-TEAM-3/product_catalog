@@ -81,7 +81,7 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
     }
   }, [data]);
 
-  useScrollToTop(apiParams, { delay: 200, behavior: 'smooth' });
+  useScrollToTop(searchParams, { delay: 200, behavior: 'smooth' });
 
   return (
     <Container>

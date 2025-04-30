@@ -34,7 +34,7 @@ export const ItemCard = () => {
 
   useScrollToTop(itemId, { delay: 300, behavior: 'smooth' });
 
-  const { data, loading } = useApi(
+  const { data, loading, error } = useApi(
     () => getProduct(location.pathname),
     [location.pathname],
   );
@@ -49,10 +49,18 @@ export const ItemCard = () => {
 
   const randomProducts = getRandom(products);
 
+  if (error && !loading) {
+    return (
+      <Container>
+        <NotFound />
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <LoadingOverlay isLoading={loading} />
-      {item ? (
+      {item && (
         <div className="main-grid">
           <div className={styles.url}>
             <BreadCrumbs />
@@ -122,8 +130,6 @@ export const ItemCard = () => {
             />
           </div>
         </div>
-      ) : (
-        <NotFound />
       )}
     </Container>
   );

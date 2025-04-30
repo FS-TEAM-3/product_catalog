@@ -38,18 +38,3 @@ export const getCatalogProducts = (
 export const getProduct = (path: string) => {
   return client.get<ProductResponse>(path);
 };
-
-// export const getTodos = () => {
-//   return client.get<Todo[]>(`/todos?userId=${USER_ID}`);
-// };
-// export const addTodo = (newTodo: Omit<Todo, 'id'>) => {
-//   return client.post<Todo>(`/todos`, newTodo);
-// };
-
-// export const deleteTodo = (todoId: number) => {
-//   return client.delete(`/todos/${todoId}`);
-// };
-
-// export const updateTodo = (todoId: number, data: Partial<Todo>) => {
-//   return client.patch<Todo[]>(`/todos/${todoId}`, data);
-// };

@@ -11,6 +11,7 @@ import { Cart } from './pages/Cart';
 import { Catalog } from './pages/Catalog';
 import { Favourites } from './pages/Favourites';
 import { NotFound } from './pages/NotFound';
+import { AuthPage } from './pages/Registration';
 
 export const Root = () => {
   return (
@@ -33,6 +34,7 @@ export const Root = () => {
             <Route index element={<Catalog category="accessories" />} />
             <Route path="/accessories/:slug" element={<ItemCard />} />
           </Route>
+          <Route path="auth" element={<AuthPage />} />
           <Route path="cart" element={<Cart />} />
           <Route path="favourites" element={<Favourites />} />
 

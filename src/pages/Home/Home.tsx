@@ -10,7 +10,6 @@ import sliderLinks from './sliderData.json';
 import s from './_styles.module.scss';
 import products from '../../../public/api/products.json';
 import { useTranslation } from 'react-i18next';
-//import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 
 type CategoryData = {
   [key: string]: {

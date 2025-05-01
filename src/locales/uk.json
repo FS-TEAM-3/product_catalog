@@ -108,7 +108,9 @@
     "signInGoogleButton": "Зайти з Google",
     "logInButton": "Зареєструватися",
     "logInGoogleButton": "Зареєструватися з Google",
-    "or": "або"
+    "signout": "Вийти",
+    "or": "або",
+    "joinedOn": "Створено "
   },
 
   "personName": {

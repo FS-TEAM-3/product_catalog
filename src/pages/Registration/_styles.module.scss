@@ -80,3 +80,13 @@
   height: 1em;
   margin-right: 1em;
 }
+
+.user {
+  &Name {
+    @include font-style(h2);
+  }
+
+  &Avatar {
+    border-radius: 50%;
+  }
+}

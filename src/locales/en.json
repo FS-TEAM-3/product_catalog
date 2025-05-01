@@ -108,7 +108,9 @@
     "signInGoogleButton": "SignUp with Google",
     "logInButton": "LogIn",
     "logInGoogleButton": "LogIn with Google",
-    "or": "or"
+    "signout": "SignOut",
+    "or": "or",
+    "joinedOn": "Joined on "
   },
 
   "personName": {

@@ -8,18 +8,29 @@ import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebase.ts';
 import type { User } from 'firebase/auth';
+import { LoadingOverlay } from '@/components/organisms/LoadingOverlay/LoadingOverlay.tsx';
 
 export const AuthPage = () => {
   const { t } = useTranslation();
   const [authUser, setAuthUser] = useState<User | null>(null);
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
+  const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       setAuthUser(user);
+      setInitializing(false);
     });
     return unsubscribe;
   }, []);
+
+  if (initializing) {
+    return (
+      <Container>
+        <LoadingOverlay isLoading={true} />
+      </Container>
+    );
+  }
 
   if (authUser) {
     return <UserPage authUser={authUser} />;

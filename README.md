@@ -1,4 +1,4 @@
-[NEWEST VERSION](https://product-catalog-csshahzij-sofiiapelenskas-projects.vercel.app)
+[NEWEST VERSION](https://product-catalog-etqi.vercel.app/)
 
 # To run the project locally, use:
 

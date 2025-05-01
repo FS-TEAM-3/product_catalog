@@ -5,7 +5,7 @@
   display: flex;
   height: 16px;
   width: 50px;
-  color: $secondary;
+  color: var(--secondary);
   align-items: flex-end;
   justify-content: space-between;
   cursor: url('@/../public/img/cursor-pointer.png'), auto;
@@ -14,12 +14,12 @@
   & svg {
     height: 16px;
     width: 16px;
-    stroke: $primary;
+    stroke: var(--primary);
     transition: transform 0.4s;
   }
 
   &:hover {
-    color: $primary;
+    color: var(--primary);
 
     svg {
       transform: translateX(-3px);

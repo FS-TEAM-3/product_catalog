@@ -1,4 +1,5 @@
 import styles from './_styles.module.scss';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   count: number | 0;
@@ -10,18 +11,19 @@ export const TotalCartInfo: React.FC<Props> = ({
   totalPrice,
   discount,
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       {discount && (
         <p className={styles.discount}>
-          You save {'\u0024'} {discount}
+          {t('cart.save')} {'\u0024'} {discount}
         </p>
       )}
       <p className={styles.totalPrice}>
         {'\u0024'} {totalPrice}
       </p>
       <p className={styles.totalAmount}>
-        Total for {count} {count > 1 ? 'items' : 'item'}
+        {t('cart.total')} {count} {count > 1 ? t('cart.items') : t('cart.item')}
       </p>
     </>
   );

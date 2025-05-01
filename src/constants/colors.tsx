@@ -12,15 +12,19 @@ export enum ColorSlug {
   White = 'white',
   Purple = 'purple',
   Coral = 'coral',
-  RoseGold = 'rosegold',
   Midnight = 'midnight',
   SpaceBlack = 'spaceblack',
   Blue = 'blue',
   Pink = 'pink',
   SierraBlue = 'sierrablue',
   Graphite = 'graphite',
-  SkyBlue = 'sky-blue',
+  SkyBlueAlt = 'sky-blue',
+  SkyBlue = 'skyblue',
   Starlight = 'starlight',
+  RoseGold = 'rosegold',
+  RoseGoldDash = 'rose gold',
+  RoseGoldAlt = 'rose-gold',
+  SkyBlueDash = 'sky blue',
 }
 
 export const SLUG_TO_CSS_COLOR: Record<string, string> = {
@@ -38,6 +42,8 @@ export const SLUG_TO_CSS_COLOR: Record<string, string> = {
   [ColorSlug.Purple]: '#9C27B0',
   [ColorSlug.Coral]: '#FF7F50',
   [ColorSlug.RoseGold]: '#B76E79',
+  [ColorSlug.RoseGoldDash]: '#B76E79',
+  [ColorSlug.RoseGoldAlt]: '#B76E79',
   [ColorSlug.Midnight]: '#1A1A2E',
   [ColorSlug.SpaceBlack]: '#2E2E2E',
   [ColorSlug.Blue]: '#2196F3',
@@ -45,5 +51,7 @@ export const SLUG_TO_CSS_COLOR: Record<string, string> = {
   [ColorSlug.SierraBlue]: '#0066CC',
   [ColorSlug.Graphite]: '#444444',
   [ColorSlug.SkyBlue]: '#87CEEB',
+  [ColorSlug.SkyBlueAlt]: '#87CEEB',
+  [ColorSlug.SkyBlueDash]: '#87CEEB',
   [ColorSlug.Starlight]: '#F0E68C',
 };

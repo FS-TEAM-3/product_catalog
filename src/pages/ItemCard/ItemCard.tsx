@@ -22,8 +22,10 @@ import { Product } from '@/types/Product';
 import { useApi } from '@/hooks/useApi';
 import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useTranslation } from 'react-i18next';
 
 export const ItemCard = () => {
+  const { t } = useTranslation();
   const [item, setProduct] = useState<Product>();
   const [productID, setProductID] = useState<number>();
   const location = useLocation();
@@ -32,7 +34,7 @@ export const ItemCard = () => {
 
   useScrollToTop(itemId, { delay: 300, behavior: 'smooth' });
 
-  const { data, loading } = useApi(
+  const { data, loading, error } = useApi(
     () => getProduct(location.pathname),
     [location.pathname],
   );
@@ -47,10 +49,20 @@ export const ItemCard = () => {
 
   const randomProducts = getRandom(products);
 
+  if (error && !loading) {
+    return (
+      <Container>
+        <NotFound />
+      </Container>
+    );
+  }
+
+  console.log(item);
+
   return (
     <Container>
       <LoadingOverlay isLoading={loading} />
-      {item ? (
+      {item && (
         <div className="main-grid">
           <div className={styles.url}>
             <BreadCrumbs />
@@ -91,7 +103,7 @@ export const ItemCard = () => {
           </div>
 
           <div className={styles.description}>
-            <div className={styles.descriptionMain}>About</div>
+            <div className={styles.descriptionMain}>{t('itemCard.about')}</div>
             <CustomSeparator marginTop={16} />
             {item.description.map(item => {
               return (
@@ -107,7 +119,7 @@ export const ItemCard = () => {
 
           <div className={styles.specs}>
             <div className={`${styles.descriptionMain} ${styles.specsTitle}`}>
-              Tech specs
+              {t('itemCard.specs')}
             </div>
             <Description product={item} />
           </div>
@@ -116,12 +128,10 @@ export const ItemCard = () => {
             <CardSlider
               products={randomProducts}
               id={2}
-              title="You may also like"
+              title={t('itemCard.sliderLike')}
             />
           </div>
         </div>
-      ) : (
-        <NotFound />
       )}
     </Container>
   );

@@ -1,15 +1,16 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useCallback } from 'react';
 import { ChevronUp } from 'lucide-react';
-
 import { Container } from '@/components/templates/Container';
 import { SquareButton } from '@/components/atoms/SquareButton';
-
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import s from './footer.module.scss';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   const linkList = [
     { name: 'github', path: 'https://github.com/FS-TEAM-3' },
     { name: 'contacts', path: '/contacts' },
@@ -42,7 +43,7 @@ export const Footer = () => {
           ))}
         </div>
         <div className={clsx(s.toTopContainer, s.section)}>
-          <p className={s.toTopText}>Back to top</p>
+          <p className={s.toTopText}>{t('footer.toTop')}</p>
           <SquareButton onClick={scrollToTop}>
             <ChevronUp />
           </SquareButton>

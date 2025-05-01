@@ -4,6 +4,7 @@ import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './_styles.module.scss';
 import { parseSlug } from '@/utils/parseSlug';
+import { useTranslation } from 'react-i18next';
 
 type Params = {
   slug: string;
@@ -14,6 +15,7 @@ type Props = {
 };
 
 export const CapacitySelector: React.FC<Props> = ({ capacities }) => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const category = pathname.split('/')[1];
   const { slug = '' } = useParams<Params>();
@@ -34,7 +36,7 @@ export const CapacitySelector: React.FC<Props> = ({ capacities }) => {
 
   return (
     <div className={styles.selectorContainer}>
-      <span className={styles.label}>Select capacity</span>
+      <span className={styles.label}>{t('itemCard.capacity')}</span>
       <ToggleGroup.Root
         type="single"
         className={styles.featureContainer}

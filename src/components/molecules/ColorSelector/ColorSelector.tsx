@@ -4,49 +4,49 @@ import styles from './_styles.module.scss';
 import { parseSlug } from '@/utils/parseSlug';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { SLUG_TO_CSS_COLOR } from '@/constants/colors';
+import { useTranslation } from 'react-i18next';
 
-type Params = {
-  slug: string;
-};
-
-type Props = {
-  colors: string[];
-};
+type Params = { slug: string };
+type Props = { colors: string[] };
 
 export const ColorSelector: React.FC<Props> = ({ colors }) => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const category = pathname.split('/')[1];
   const { slug = '' } = useParams<Params>();
   const navigate = useNavigate();
 
-  const { itemId: baseId, capacity, color: colorFromUrl } = parseSlug(slug);
+  const formattedColors = colors.map(c =>
+    c.trim().toLowerCase().replace(/\s+/g, '-'),
+  );
 
-  const selected =
-    colorFromUrl && colors.includes(colorFromUrl) ? colorFromUrl : colors[0];
+  const { itemId: baseId, capacity, color: colorFromUrl } = parseSlug(slug);
+  const slugColorFromUrl = colorFromUrl?.trim().toLowerCase() || '';
+
+  const selected = formattedColors.includes(slugColorFromUrl)
+    ? slugColorFromUrl
+    : formattedColors[0];
 
   const handleValueChange = (value: string) => {
-    const slugColor = value.trim().toLowerCase().replace(/\s+/g, '-');
-    navigate(`/${category}/${baseId}-${capacity}-${slugColor}`, {
+    navigate(`/${category}/${baseId}-${capacity}-${value}`, {
       replace: true,
     });
   };
 
   return (
     <div className={styles.selectorContainer}>
-      <span className={styles.label}>Available colors</span>
+      <span className={styles.label}>{t('itemCard.colors')}</span>
       <ToggleGroup.Root
         type="single"
         className={styles.featureContainer}
         value={selected}
         onValueChange={handleValueChange}
       >
-        {colors.map(c => (
+        {formattedColors.map(c => (
           <ToggleGroup.Item
             key={c}
             value={c}
-            className={`${styles.colorToggle} ${
-              selected === c ? styles.active : ''
-            }`}
+            className={`${styles.colorToggle} ${selected === c ? styles.active : ''}`}
           >
             <div
               className={styles.colorCircle}

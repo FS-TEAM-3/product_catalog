@@ -53,6 +53,11 @@ $menu-padding: 18px;
 
 .logo {
   width: 128px;
+  transition: transform 0.4s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   img {
     width: 80px;

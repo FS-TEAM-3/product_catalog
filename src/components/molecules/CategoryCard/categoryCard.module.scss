@@ -52,6 +52,7 @@
 .image {
   display: block;
   position: absolute;
+  object-fit: contain;
   top: 5%;
   left: 5%;
 
@@ -71,7 +72,6 @@
     width: 107%;
   }
   &.accessories {
-    object-fit: contain;
     width: 180%;
     height: 117%;
     background-color: #973d5f;

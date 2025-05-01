@@ -1,7 +1,6 @@
 import { AlertDialog } from 'radix-ui';
-
 import { RectangleButton } from '@/components/atoms/RectangleButton';
-
+import { useTranslation } from 'react-i18next';
 import styles from './_styles.module.scss';
 
 type Props = {
@@ -13,19 +12,20 @@ export const AlertDialogCheckout: React.FC<Props> = ({
   onCancel,
   onAction,
 }) => {
+  const { t } = useTranslation();
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger asChild>
-        <RectangleButton>Checkout</RectangleButton>
+        <RectangleButton>{t('cart.checkout')}</RectangleButton>
       </AlertDialog.Trigger>
       <AlertDialog.Portal>
         <AlertDialog.Overlay className={styles.Overlay} />
         <AlertDialog.Content className={styles.Content}>
           <AlertDialog.Title className={styles.Title}>
-            Checkout is not implemented yet.
+            {t('cart.notImplement')}
           </AlertDialog.Title>
           <AlertDialog.Description className={styles.Description}>
-            Do you wan't to clear the Cart?
+            {t('cart.wantClear')}
           </AlertDialog.Description>
           <div
             className={styles.btnHolder}
@@ -37,7 +37,7 @@ export const AlertDialogCheckout: React.FC<Props> = ({
           >
             <AlertDialog.Cancel asChild>
               <RectangleButton onClick={() => onCancel()}>
-                Cancel
+                {t('cart.cancel')}
               </RectangleButton>
             </AlertDialog.Cancel>
             <AlertDialog.Action asChild>
@@ -45,7 +45,7 @@ export const AlertDialogCheckout: React.FC<Props> = ({
                 className={`${styles.Button} green`}
                 onClick={() => onAction()}
               >
-                Yes, clear the Cart!
+                {t('cart.yesClear')}
               </button>
             </AlertDialog.Action>
           </div>

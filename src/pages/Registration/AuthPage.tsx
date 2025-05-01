@@ -1,13 +1,29 @@
 import styles from './_styles.module.scss';
 import { Container } from '@/components/templates/Container';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
+import { UserPage } from './UserPage';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../firebase.ts';
+import type { User } from 'firebase/auth';
 
 export const AuthPage = () => {
   const { t } = useTranslation();
+  const [authUser, setAuthUser] = useState<User | null>(null);
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      setAuthUser(user);
+    });
+    return unsubscribe;
+  }, []);
+
+  if (authUser) {
+    return <UserPage authUser={authUser} />;
+  }
 
   return (
     <Container>
@@ -26,8 +42,7 @@ export const AuthPage = () => {
           {t('auth.signIn')}
         </button>
       </div>
-
-      {activeTab === 'signup' ? <SignUp /> : <SignIn />}
+      {activeTab === 'login' ? <SignIn /> : <SignUp />}
     </Container>
   );
 };

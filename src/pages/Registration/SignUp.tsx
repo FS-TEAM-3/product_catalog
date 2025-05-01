@@ -84,13 +84,10 @@ export const SignUp = () => {
           required
         />
 
-        <RectangleButton>
-          {/* {t('auth.submit')} */}
-          SigIn
-        </RectangleButton>
+        <RectangleButton>{t('auth.logInButton')}</RectangleButton>
 
         <CustomSeparator />
-        <span>or</span>
+        <span>{t('auth.or')}</span>
 
         <RectangleButton type="button" onClick={loginWithGoogle}>
           <img
@@ -98,7 +95,7 @@ export const SignUp = () => {
             className={styles.iconImg}
             alt="Google sign-in"
           />
-          {t('auth.googleSignIn')}
+          {t('auth.logInGoogleButton')}
         </RectangleButton>
       </form>
     </div>

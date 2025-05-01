@@ -105,6 +105,9 @@
     "email": "Email",
     "password": "Password",
     "signInButton": "SignUp",
+    "signInGoogleButton": "SignUp with Google",
+    "logInButton": "LogIn",
+    "logInGoogleButton": "LogIn with Google",
     "or": "or"
   },
 

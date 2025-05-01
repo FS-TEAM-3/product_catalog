@@ -105,6 +105,9 @@
     "email": "Пошта",
     "password": "Пароль",
     "signInButton": "Зайти",
+    "signInGoogleButton": "Зайти з Google",
+    "logInButton": "Зареєструватися",
+    "logInGoogleButton": "Зареєструватися з Google",
     "or": "або"
   },
 

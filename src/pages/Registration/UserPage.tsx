@@ -1,8 +1,7 @@
 import styles from './_styles.module.scss';
 import { Container } from '@/components/templates/Container';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.ts';
 import type { User } from 'firebase/auth';
 import { RectangleButton } from '@/components/atoms/RectangleButton';
@@ -17,22 +16,12 @@ function signout() {
     });
 }
 
-export const UserPage = () => {
-  const { t } = useTranslation();
-  const [authUser, setAuthUser] = useState<User | null>(null);
+type Props = {
+  authUser: User | null;
+};
 
-  useEffect(() => {
-    const listen = onAuthStateChanged(auth, user => {
-      if (user) {
-        setAuthUser(user);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => {
-      listen();
-    };
-  }, []);
+export const UserPage: React.FC<Props> = ({ authUser }) => {
+  const { t } = useTranslation();
 
   return (
     <Container>

@@ -14,8 +14,8 @@ export const Footer = () => {
   const theme = useThemeStore(state => state.theme);
   const linkList = [
     { name: 'github', path: 'https://github.com/FS-TEAM-3' },
-    { name: 'contacts', path: '/contacts' },
-    { name: 'rights', path: '/rights' },
+    { name: t('footer.contacts'), path: '/contacts' },
+    { name: t('footer.rights'), path: '/rights' },
   ];
   const location = useLocation();
 

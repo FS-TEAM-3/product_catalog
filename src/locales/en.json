@@ -1,0 +1,107 @@
+{
+  "techspecs": {
+    "screen": "Screen",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "ram": "RAM",
+    "capacity": "Built in memory",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell"
+  },
+
+  "navbar": {
+    "home": "HOME",
+    "phones": "PHONES",
+    "tablets": "TABLETS",
+    "accessories": "ACCESSORIES"
+  },
+
+  "footer": {
+    "contacts": "contacts",
+    "rights": "rights",
+    "toTop": "Back to top"
+  },
+
+  "home": {
+    "welcome": "Welcome to Nice Gadgets store!",
+    "sliderNew": "Brand new models",
+    "categories": "Categories",
+    "sliderHot": "Hot prices"
+  },
+
+  "heroCard": {
+    "available": "Now available",
+    "inStore": "in our store!",
+    "beFirst": "Be the first!",
+    "orderNow": "Order Now"
+  },
+
+  "cartButton": {
+    "add": "Add to cart",
+    "added": "Added to cart"
+  },
+
+  "categories": {
+    "mobPhones": "Mobile phones",
+    "phon": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favourites": "Favourites"
+  },
+
+  "catalog": {
+    "newest": "Newest",
+    "alphabetically": "Alphabetically",
+    "cheapest": "Cheapest",
+    "sortBy": "Sort by",
+    "perPage": "Items on page",
+    "models": "models",
+    "items": "items"
+  },
+
+  "goBack": {
+    "back": "Back"
+  },
+
+  "itemCard": {
+    "about": "About",
+    "specs": "Tech specs",
+    "sliderLike": "You may also like",
+    "colors": "Available colors",
+    "capacity": "Select capacity"
+  },
+
+  "cart": {
+    "cart": "Cart page",
+    "save": "You save",
+    "total": "Total for",
+    "item": "item",
+    "items": "items",
+    "checkout": "Checkout",
+    "notImplement": "Checkout is not implemented yet.",
+    "wantClear": "Do you wan't to clear the Cart?",
+    "cancel": "Cancel",
+    "yesClear": "Yes, clear the Cart!",
+    "empty": "Your cart is empty"
+  },
+
+  "notFound": {
+    "notFound": "Page not found :(",
+    "home": "Home"
+  },
+
+  "favourites": {
+    "empty": "You haven't liked anything yet"
+  },
+
+  "auth": {
+    "auth": "Registration Page",
+    "logIn": "Log In",
+    "signIn": "Sign Up",
+    "submit": "Submit",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password"
+  }
+}

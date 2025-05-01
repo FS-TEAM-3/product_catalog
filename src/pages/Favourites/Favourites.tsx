@@ -6,8 +6,10 @@ import { Container } from '@/components/templates/Container';
 import styles from './_styles.module.scss';
 import { EmptyFavourites } from '@/components/organisms/EmptyPage';
 import { GoBackButton } from '@/components/molecules/GoBackButton';
+import { useTranslation } from 'react-i18next';
 
 export const Favourites = () => {
+  const { t } = useTranslation();
   const favouritesFromStore = useStore(store => store.favourites);
   const favouritesToPage = products.filter(product =>
     favouritesFromStore.includes(product.name),
@@ -20,7 +22,7 @@ export const Favourites = () => {
           <div className="main-grid">
             <PageHeader
               totalProducts={favouritesFromStore.length}
-              trueNameCategory={'Favourites'}
+              trueNameCategory={t('categories.favourites')}
             />
             <GridCard products={favouritesToPage} />
           </div>

@@ -11,12 +11,7 @@ import { GeneralProduct } from '@/types/GeneralProduct';
 import { useApi } from '@/hooks/useApi';
 import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
-
-const sortOptions = [
-  { label: 'Newest', value: 'age', api: 'year' },
-  { label: 'Alphabetically', value: 'title', api: 'itemId' },
-  { label: 'Cheapest', value: 'fullPrice', api: 'price' },
-];
+import { useTranslation } from 'react-i18next';
 
 const perPageOptions = [
   { label: '8', value: '8' },
@@ -25,6 +20,14 @@ const perPageOptions = [
 ];
 
 export const Catalog: React.FC<{ category: string }> = ({ category }) => {
+  const { t } = useTranslation();
+
+  const sortOptions = [
+    { label: t('catalog.newest'), value: 'age', api: 'year' },
+    { label: t('catalog.alphabetically'), value: 'title', api: 'itemId' },
+    { label: t('catalog.cheapest'), value: 'fullPrice', api: 'price' },
+  ];
+
   const [apiParams, setApiParams] = useState(new URLSearchParams());
   const [searchParams, setSearchParams] = useSearchParams();
   const [totalProducts, setTotalProducts] = useState(0);
@@ -59,15 +62,15 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
   const trueNameCategory = useMemo(() => {
     switch (category) {
       case 'phones':
-        return 'Mobile phones';
+        return t('categories.mobPhones');
       case 'tablets':
-        return 'Tablets';
+        return t('categories.tablets');
       case 'accessories':
-        return 'Accessories';
+        return t('categories.accessories');
       default:
         return 'Unknown Category';
     }
-  }, [category]);
+  }, [category, t]);
 
   const { data, loading } = useApi(
     () => getCatalogProducts(category, page, apiParams.toString()),
@@ -81,7 +84,7 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
     }
   }, [data]);
 
-  useScrollToTop(apiParams, { delay: 200, behavior: 'smooth' });
+  useScrollToTop(searchParams, { delay: 200, behavior: 'smooth' });
 
   return (
     <Container>
@@ -95,13 +98,13 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
         <div className={styles.catalog__controls}>
           <Dropdown
             isBig={true}
-            label="Sort by"
+            label={t('catalog.sortBy')}
             value={sort}
             onChange={val => handleParamChange('sort', val)}
             options={sortOptions}
           />
           <Dropdown
-            label="Items on page"
+            label={t('catalog.perPage')}
             value={perPage.toString()}
             onChange={val => handleParamChange('perPage', val)}
             options={perPageOptions}

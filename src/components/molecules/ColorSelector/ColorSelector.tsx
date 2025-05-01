@@ -4,6 +4,7 @@ import styles from './_styles.module.scss';
 import { parseSlug } from '@/utils/parseSlug';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { SLUG_TO_CSS_COLOR } from '@/constants/colors';
+import { useTranslation } from 'react-i18next';
 
 type Params = {
   slug: string;
@@ -14,6 +15,7 @@ type Props = {
 };
 
 export const ColorSelector: React.FC<Props> = ({ colors }) => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const category = pathname.split('/')[1];
   const { slug = '' } = useParams<Params>();
@@ -33,7 +35,7 @@ export const ColorSelector: React.FC<Props> = ({ colors }) => {
 
   return (
     <div className={styles.selectorContainer}>
-      <span className={styles.label}>Available colors</span>
+      <span className={styles.label}>{t('itemCard.colors')}</span>
       <ToggleGroup.Root
         type="single"
         className={styles.featureContainer}

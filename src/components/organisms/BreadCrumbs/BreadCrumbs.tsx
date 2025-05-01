@@ -2,8 +2,10 @@ import styles from './_styles.module.scss';
 import products from '../../../../public/api/products.json';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, House } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const BreadCrumbs = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const segments = pathname.split('/').filter(Boolean);
   let accumPath = '';
@@ -21,12 +23,14 @@ export const BreadCrumbs = () => {
         const display =
           products.find(p => p.itemId === seg)?.name ||
           (seg === 'phones'
-            ? 'Phones'
+            ? t('categories.phon')
             : seg === 'tablets'
-              ? 'Tablets'
+              ? t('categories.tablets')
               : seg === 'accessories'
-                ? 'Accessories'
-                : seg);
+                ? t('categories.accessories')
+                : seg === 'favourites'
+                  ? t('categories.favourites')
+                  : seg);
         return (
           <span key={accumPath} className={styles.step}>
             <ChevronRight className={styles.icon} />

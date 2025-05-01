@@ -13,7 +13,7 @@ export const Contacts: React.FC = () => {
     {
       id: 1,
       name: t('personName.Sonia'),
-      photo: '/public/img/ContactPhotos/Sonia.jpg',
+      photo: './public/img/ContactPhotos/Sonia.jpg',
       description: t('personDescription.Sonia'),
     },
     {
@@ -25,13 +25,13 @@ export const Contacts: React.FC = () => {
     {
       id: 3,
       name: t('personName.Tania'),
-      photo: '/public/img/ContactPhotos/Tania.jpg',
+      photo: './public/img/ContactPhotos/Tania.jpg',
       description: t('personDescription.Tania'),
     },
     {
       id: 4,
       name: t('personName.Dmytro'),
-      photo: '/public/img/ContactPhotos/Dmytro.jpg',
+      photo: './public/img/ContactPhotos/Dmytro.jpg',
       description: t('personDescription.Dmytro'),
     },
   ];

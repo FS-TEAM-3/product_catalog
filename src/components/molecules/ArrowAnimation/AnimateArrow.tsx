@@ -1,4 +1,4 @@
-import { ArrowUp } from 'lucide-react';
+import { ChevronUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 type Props = {
@@ -11,7 +11,7 @@ export const ArrowAnimation: React.FC<Props> = ({ isOpen }) => {
       animate={{ rotate: isOpen ? 180 : 0 }}
       transition={{ duration: 0.3 }}
     >
-      <ArrowUp size={32} />
+      <ChevronUp size={32} />
     </motion.div>
   );
 };

@@ -13,6 +13,7 @@ import { Favourites } from './pages/Favourites';
 import { NotFound } from './pages/NotFound';
 import { AuthPage } from './pages/Registration';
 import { Contacts } from './pages/Contacts';
+import { Rights } from './pages/Rights';
 
 export const Root = () => {
   return (
@@ -38,6 +39,7 @@ export const Root = () => {
           <Route path="auth" element={<AuthPage />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="rights" element={<Rights />} />
           <Route path="favourites" element={<Favourites />} />
 
           <Route path="*" element={<NotFound />} />

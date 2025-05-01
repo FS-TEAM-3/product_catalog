@@ -3,38 +3,38 @@ import { ArrowAnimation } from '@/components/molecules/ArrowAnimation/AnimateArr
 import { motion, AnimatePresence } from 'framer-motion';
 import './_style.module.scss';
 import styles from './_style.module.scss';
-
-const contacts = [
-  {
-    id: 1,
-    name: 'Іван Іваненко',
-    photo: 'https://via.placeholder.com/150',
-    description:
-      'Опис Івана — розробник з Києва.gko[gdkfg sdfogkdfgk sdfgoksdg k spdfkgg psdkgdp ogksd[g ksdf[gk dfg kds[fg ksd[g k Працює над фронтенд частиною проекту. Іван має великий досвід у JavaScript та React.',
-  },
-  {
-    id: 2,
-    name: 'Марія Петрівна',
-    photo: 'https://via.placeholder.com/150',
-    description: 'Опис Марії',
-  },
-  {
-    id: 3,
-    name: 'Олег Степанов',
-    photo: 'https://via.placeholder.com/150',
-    description:
-      'Опис Олега — менеджер з Львова. Він відповідає за комунікацію з клієнтами, Працює над покращенням обслуговування клієнтів.',
-  },
-  {
-    id: 4,
-    name: 'Аліна Коваль',
-    photo: 'https://via.placeholder.com/150',
-    description: 'Опис Аліни',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export const Contacts: React.FC = () => {
   const [openId, setOpenId] = useState<number | null>(null);
+  const { t } = useTranslation();
+
+  const contacts = [
+    {
+      id: 1,
+      name: t('personName.Sonia'),
+      photo: '/public/img/ContactPhotos/Sonia.jpg',
+      description: t('personDescription.Sonia'),
+    },
+    {
+      id: 2,
+      name: t('personName.Kate'),
+      photo: 'https://via.placeholder.com/150',
+      description: t('personDescription.Kate'),
+    },
+    {
+      id: 3,
+      name: t('personName.Tania'),
+      photo: '/public/img/ContactPhotos/Tania.jpg',
+      description: t('personDescription.Tania'),
+    },
+    {
+      id: 4,
+      name: t('personName.Dmytro'),
+      photo: '/public/img/ContactPhotos/Dmytro.jpg',
+      description: t('personDescription.Dmytro'),
+    },
+  ];
 
   const toggleDescription = (id: number) => {
     setOpenId(openId === id ? null : id);

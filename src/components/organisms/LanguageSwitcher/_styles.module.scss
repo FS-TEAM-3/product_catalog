@@ -1,0 +1,27 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/typography' as *;
+@use '@/styles/mixins' as *;
+
+.languageHolder {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #e0e0e0;
+
+  button {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+    width: 48px;
+    height: 100%;
+    flex-shrink: 1;
+    &:hover {
+      cursor: url('@/../public/img/cursor-pointer.png'), auto;
+    }
+    @include on-desktop {
+      width: 65px;
+    }
+  }
+}

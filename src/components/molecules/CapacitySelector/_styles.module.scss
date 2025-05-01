@@ -27,7 +27,7 @@
   width: 60px;
   justify-content: center;
   align-items: center;
-  color: inherit;
+  color: var(--primary-on-light);
   box-sizing: border-box;
   text-transform: uppercase;
   cursor: url('@/../public/img/cursor-pointer.png'), auto;
@@ -36,14 +36,14 @@
     background-color 400ms;
 
   &:hover {
-    border-color: $primary;
+    border-color: var(--primary-on-light);
   }
 
   @include font-style(button);
 }
 
 .active {
-  background-color: $primary;
+  background-color: var(--button-bg);
   color: $white;
   pointer-events: none;
 }

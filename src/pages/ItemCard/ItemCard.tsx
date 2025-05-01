@@ -26,7 +26,6 @@ export const ItemCard = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
   const langKey = i18n.language === 'uk' ? 'ukr' : 'eng';
-  console.log(i18n.language);
   const [item, setProduct] = useState<Product>();
   const [productID, setProductID] = useState<number>();
   const location = useLocation();
@@ -45,7 +44,7 @@ export const ItemCard = () => {
     data: randomProducts,
     loading: randomLoading,
     error: randomError,
-  } = useApi(() => getSliderProducts('random'), []);
+  } = useApi(() => getSliderProducts('random'), [location.pathname]);
 
   const loading = itemLoading || randomLoading;
   const error = itemError || randomError;
@@ -56,8 +55,7 @@ export const ItemCard = () => {
       setProduct(product);
       setProductID(productId);
     }
-    // eslint-disable-next-line
-  }, []);
+  });
 
   if (error && !loading) {
     return (

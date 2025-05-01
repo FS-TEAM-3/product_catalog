@@ -103,6 +103,8 @@
     "submit": "Надіслати",
     "name": "Ім'я",
     "email": "Пошта",
-    "password": "Пароль"
+    "password": "Пароль",
+    "signInButton": "Зайти",
+    "or": "або"
   }
 }

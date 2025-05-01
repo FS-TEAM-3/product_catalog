@@ -26,7 +26,7 @@ export const SignIn = () => {
         setEmail('');
         setPassword('');
         setError('');
-        navigate('/home');
+        navigate('/user');
       })
       .catch(e => {
         console.log(error, e);
@@ -67,10 +67,7 @@ export const SignIn = () => {
           required
         />
 
-        <RectangleButton>
-          {/* {t('auth.submit')} */}
-          SigIn
-        </RectangleButton>
+        <RectangleButton>{t('auth.signInButton')}</RectangleButton>
 
         <CustomSeparator />
         <span>or</span>

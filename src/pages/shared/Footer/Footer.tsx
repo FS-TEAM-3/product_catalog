@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useCallback } from 'react';
 import { ChevronUp } from 'lucide-react';
 import { Container } from '@/components/templates/Container';
@@ -6,15 +6,17 @@ import { SquareButton } from '@/components/atoms/SquareButton';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import s from './footer.module.scss';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 export const Footer = () => {
   const { t } = useTranslation();
 
   const linkList = [
     { name: 'github', path: 'https://github.com/FS-TEAM-3' },
-    { name: t('footer.contacts'), path: 'https://github.com/FS-TEAM-3' },
-    { name: t('footer.rights'), path: '/rights' },
+    { name: 'contacts', path: '/contacts' },
+    { name: 'rights', path: '/rights' },
   ];
+  const location = useLocation();
 
   const scrollToTop = useCallback(() => {
     document.body.scrollIntoView({
@@ -22,6 +24,8 @@ export const Footer = () => {
       block: 'start',
     });
   }, []);
+
+  useScrollToTop(location.pathname, { delay: 300, behavior: 'smooth' });
 
   return (
     <footer className={s.box}>

@@ -103,7 +103,9 @@
     "submit": "Submit",
     "name": "Name",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "signInButton": "SignUp",
+    "or": "or"
   },
 
   "personName": {

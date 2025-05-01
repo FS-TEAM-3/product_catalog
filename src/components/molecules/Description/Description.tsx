@@ -49,7 +49,6 @@ export const Description: React.FC<TechSpecsProps> = ({
         {specsToShow.map(({ key, value }) => (
           <li className={styles.techspecs__row} key={key}>
             <p className={styles.techspecs__key}>
-              {`${isSmall}`}
               {t(
                 `techspecs.${key}`,
                 key.charAt(0).toUpperCase() + key.slice(1),

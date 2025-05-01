@@ -1,5 +1,4 @@
 import styles from './_styles.module.scss';
-import products from '../../../public/api/products.json';
 import { PicturePicker } from '@/components/organisms/PicturePicker/PicturePicker';
 import { Description } from '@/components/molecules/Description';
 import { useLocation, useParams } from 'react-router-dom';
@@ -12,11 +11,10 @@ import { CartButton } from '@/components/molecules/CartButton';
 import { FavouriteButton } from '@/components/molecules/FavouriteButton';
 import { ColorSelector } from '@/components/molecules/ColorSelector';
 import { CapacitySelector } from '@/components/molecules/CapacitySelector';
-import { getRandom } from '@/utils/productsOptions';
 import { useEffect, useState } from 'react';
 import { parseSlug } from '@/utils/parseSlug';
 import { BreadCrumbs } from '@/components/organisms/BreadCrumbs';
-import { getProduct } from '../../../public/api/products';
+import { getProduct, getSliderProducts } from '../../../public/api/products';
 import { NotFound } from '@/pages/NotFound/NotFound';
 import { Product } from '@/types/Product';
 import { useApi } from '@/hooks/useApi';
@@ -36,10 +34,20 @@ export const ItemCard = () => {
 
   useScrollToTop(itemId, { delay: 300, behavior: 'smooth' });
 
-  const { data, loading, error } = useApi(
-    () => getProduct(location.pathname),
-    [location.pathname],
-  );
+  const {
+    data,
+    loading: itemLoading,
+    error: itemError,
+  } = useApi(() => getProduct(location.pathname), [location.pathname]);
+
+  const {
+    data: randomProducts,
+    loading: randomLoading,
+    error: randomError,
+  } = useApi(() => getSliderProducts('random'), [location.pathname]);
+
+  const loading = itemLoading || randomLoading;
+  const error = itemError || randomError;
 
   useEffect(() => {
     if (data) {
@@ -48,8 +56,6 @@ export const ItemCard = () => {
       setProductID(productId);
     }
   });
-
-  const randomProducts = getRandom(products);
 
   if (error && !loading) {
     return (
@@ -127,7 +133,7 @@ export const ItemCard = () => {
 
           <div className={styles.slider}>
             <CardSlider
-              products={randomProducts}
+              products={randomProducts ?? []}
               id={2}
               title={t('itemCard.sliderLike')}
             />

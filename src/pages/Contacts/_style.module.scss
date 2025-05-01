@@ -1,0 +1,74 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/_typography.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.contactsContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  background-color: #f3f4f6;
+  padding: 24px;
+}
+
+.contactsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px; // було 24px
+  max-width: 1024px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contactCard {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactPhoto {
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+.contactName {
+  @include font-style(h3);
+}
+
+.contactButton {
+  @include font-style(small);
+}
+
+.contactCardWrapper {
+  position: relative;
+}
+
+.contactDescriptionOverlay {
+  @include font-style(body);
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 16px;
+  margin-top: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 456px;
+  z-index: 10;
+  text-align: center;
+  pointer-events: auto;
+
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}

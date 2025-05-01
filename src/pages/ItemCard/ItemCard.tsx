@@ -57,6 +57,8 @@ export const ItemCard = () => {
     );
   }
 
+  console.log(item);
+
   return (
     <Container>
       <LoadingOverlay isLoading={loading} />

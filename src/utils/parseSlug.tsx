@@ -1,5 +1,3 @@
-import { ColorSlug } from '@/constants/colors';
-
 export interface ParsedSlug {
   itemId: string;
   capacity: string;
@@ -7,24 +5,21 @@ export interface ParsedSlug {
 }
 
 export function parseSlug(slug: string): ParsedSlug {
-  const allColors = Object.values(ColorSlug);
   let color: string | undefined;
-  let withoutColor = slug;
 
-  for (const col of allColors) {
-    if (slug.endsWith(`-${col}`)) {
-      color = col;
-      withoutColor = slug.slice(0, slug.length - col.length - 1);
-      break;
-    }
+  console.log(slug);
+  const regex = /^([a-z0-9-]+)-(\d+(?:gb|mm))-([a-z-]+)$/i;
+  const match = slug.match(regex);
+
+  if (match) {
+    const itemId = match[1];
+    const capacity = match[2];
+    color = match[3];
+    console.log('itemId', itemId);
+    console.log('capacity', capacity);
+    console.log('color', color);
+    return { itemId, capacity, color };
   }
 
-  const dash = withoutColor.lastIndexOf('-');
-  if (dash === -1) {
-    return { itemId: withoutColor, capacity: '', color };
-  }
-
-  const itemId = withoutColor.slice(0, dash);
-  const capacity = withoutColor.slice(dash + 1);
-  return { itemId, capacity, color };
+  return { itemId: '', capacity: '', color: '' };
 }

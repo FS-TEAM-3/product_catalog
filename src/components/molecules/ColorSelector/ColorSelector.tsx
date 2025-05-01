@@ -6,13 +6,8 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { SLUG_TO_CSS_COLOR } from '@/constants/colors';
 import { useTranslation } from 'react-i18next';
 
-type Params = {
-  slug: string;
-};
-
-type Props = {
-  colors: string[];
-};
+type Params = { slug: string };
+type Props = { colors: string[] };
 
 export const ColorSelector: React.FC<Props> = ({ colors }) => {
   const { t } = useTranslation();
@@ -21,14 +16,20 @@ export const ColorSelector: React.FC<Props> = ({ colors }) => {
   const { slug = '' } = useParams<Params>();
   const navigate = useNavigate();
 
+  const formattedColors = colors.map(c =>
+    c.trim().toLowerCase().replace(/\s+/g, '-'),
+  );
+
   const { itemId: baseId, capacity, color: colorFromUrl } = parseSlug(slug);
 
-  const selected =
-    colorFromUrl && colors.includes(colorFromUrl) ? colorFromUrl : colors[0];
+  const slugColorFromUrl = colorFromUrl?.trim().toLowerCase() || '';
+
+  const selected = formattedColors.includes(slugColorFromUrl)
+    ? slugColorFromUrl
+    : formattedColors[0];
 
   const handleValueChange = (value: string) => {
-    const slugColor = value.trim().toLowerCase().replace(/\s+/g, '-');
-    navigate(`/${category}/${baseId}-${capacity}-${slugColor}`, {
+    navigate(`/${category}/${baseId}-${capacity}-${value}`, {
       replace: true,
     });
   };
@@ -42,13 +43,11 @@ export const ColorSelector: React.FC<Props> = ({ colors }) => {
         value={selected}
         onValueChange={handleValueChange}
       >
-        {colors.map(c => (
+        {formattedColors.map(c => (
           <ToggleGroup.Item
             key={c}
             value={c}
-            className={`${styles.colorToggle} ${
-              selected === c ? styles.active : ''
-            }`}
+            className={`${styles.colorToggle} ${selected === c ? styles.active : ''}`}
           >
             <div
               className={styles.colorCircle}

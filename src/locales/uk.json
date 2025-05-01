@@ -27,12 +27,13 @@
     "welcome": "Ласкаво просимо до магазину Nice Gadgets!",
     "sliderNew": "Найновіші моделі",
     "categories": "Категорії",
-    "sliderHot": "Гарячі пропозиції"
+    "sliderHot": "Гарячі пропозиції",
+    "models": "моделей"
   },
 
   "heroCard": {
-    "available": "Вже доступно в",
-    "inStore": "нашому магазині!",
+    "available": "Вже в нашому",
+    "inStore": "магазині!",
     "beFirst": "Будь першим!",
     "orderNow": "Замов Зараз"
   },

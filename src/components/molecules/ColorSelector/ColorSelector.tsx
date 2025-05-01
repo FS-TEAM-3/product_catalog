@@ -16,14 +16,18 @@ export const ColorSelector: React.FC<Props> = ({ colors }) => {
   const { slug = '' } = useParams<Params>();
   const navigate = useNavigate();
 
+  // 1) Форматуємо масив кольорів у slug-форму: lower-case + дефіси замість пробілів
   const formattedColors = colors.map(c =>
     c.trim().toLowerCase().replace(/\s+/g, '-'),
   );
 
+  // 2) Розбираємо URL
   const { itemId: baseId, capacity, color: colorFromUrl } = parseSlug(slug);
 
+  // 3) Приводимо URL-колір до нижнього регістру (він уже з дефісами)
   const slugColorFromUrl = colorFromUrl?.trim().toLowerCase() || '';
 
+  // 4) Вибираємо його, якщо є в formattedColors, інакше перший
   const selected = formattedColors.includes(slugColorFromUrl)
     ? slugColorFromUrl
     : formattedColors[0];

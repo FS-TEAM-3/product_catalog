@@ -14,10 +14,6 @@ export function parseSlug(slug: string): ParsedSlug {
   if (match) {
     const itemId = match[1];
     const capacity = match[2];
-    color = match[3];
-    console.log('itemId', itemId);
-    console.log('capacity', capacity);
-    console.log('color', color);
     return { itemId, capacity, color };
   }
 

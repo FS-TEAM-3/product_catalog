@@ -135,7 +135,7 @@ export const SignUp = () => {
         )}
         {error && <div className={styles.fieldError}>{t('auth.exist')}</div>}
 
-        <RectangleButton>{t('auth.logInButton')}</RectangleButton>
+        <RectangleButton>{t('auth.signInButton')}</RectangleButton>
 
         <CustomSeparator />
         <span>{t('auth.or')}</span>
@@ -146,7 +146,7 @@ export const SignUp = () => {
             className={styles.iconImg}
             alt="Google sign-in"
           />
-          {t('auth.logInGoogleButton')}
+          {t('auth.signInGoogleButton')}
         </RectangleButton>
       </form>
     </div>

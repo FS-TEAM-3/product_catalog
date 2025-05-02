@@ -104,7 +104,9 @@ export const ItemCard = () => {
               </div>
               <FavouriteButton productId={item.name} />
             </div>
-            <Description product={item} fieldsCount={4} isSmall={true} />
+            <div className={styles.descriptionSmall}>
+              <Description product={item} fieldsCount={4} />
+            </div>
           </div>
           <div className={styles.itemId}>
             <div className={styles.itemIdDescktop}>ID: {productID}</div>

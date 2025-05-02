@@ -1,3 +1,7 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/typography' as *;
+@use '@/styles/mixins' as *;
+
 .formWrapper {
   display: flex;
   flex-direction: column;
@@ -11,7 +15,7 @@
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: $white;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
@@ -29,13 +33,14 @@
 }
 
 .closeButton {
-  margin-top: 1rem;
   padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
+  background-color: $red;
+  color: $white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  display: block;
+  margin: 20px auto 0;
 }
 
 .popupContainer {
@@ -60,16 +65,28 @@
   width: 300px;
 }
 
-.closeButton {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.closeButton:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.closeButton:hover {
-  background-color: #0056b3;
+.BackBtn {
+  align-self: start;
+  margin: 24px 0;
+
+  @include on-tablet {
+    margin: 40px 0 16px;
+  }
+}
+
+.auth {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: flex-start;
+}
+
+.title {
+  justify-self: center;
+  @include font-style(h2);
 }

@@ -1,20 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { useTranslation } from 'react-i18next';
 import styles from './_styles.module.scss';
-import { useState } from 'react';
-import {
-  createUserWithEmailAndPassword,
-  updateProfile,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth';
-import { auth } from '../../firebase.ts';
+import { FormEvent, useState } from 'react';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator/CustomSeparator.tsx';
 import googleLogo from '../../../public/google-icon-logo-svgrepo-com.svg';
 import { Eye, EyeClosed } from 'lucide-react';
+import { useAuthStore } from '@/store/useAuthStore.ts';
 
-const googleProvider = new GoogleAuthProvider();
 const NAME_REGEX = /^[A-Za-z\u0400-\u04FF ]{2,40}$/;
 const PASS_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/;
 
@@ -23,15 +15,18 @@ export const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
   const [nameError, setNameError] = useState(false);
   const [passError, setPassError] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+
+  const signUp = useAuthStore(s => s.signUp);
+  const signInWithGoogle = useAuthStore(s => s.signInWithGoogle);
+  const error = useAuthStore(s => s.error);
 
   function validateName() {
     if (!NAME_REGEX.test(username.trim())) {
       setNameError(true);
-      //setNameError(t('auth.invalidName'));
       return false;
     }
     setNameError(false);
@@ -41,46 +36,32 @@ export const SignUp = () => {
   function validatePass() {
     if (!PASS_REGEX.test(password)) {
       setPassError(true);
-      //setPassError(t('auth.weakPassword'));
       return false;
     }
     setPassError(false);
     return true;
   }
 
-  async function register(e: React.FormEvent<HTMLFormElement>) {
+  const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
+
     const nameOk = validateName();
     const passOk = validatePass();
     if (!nameOk || !passOk) return;
 
     try {
-      const { user } = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password,
-      );
-      await updateProfile(user, { displayName: username });
+      await signUp(email, password, username);
       setUsername('');
       setEmail('');
       setPassword('');
-      setError('');
-    } catch (err: any) {
-      setError(err.message);
+    } catch {
+      console.log(error);
     }
-  }
-
-  function loginWithGoogle() {
-    signInWithPopup(auth, googleProvider)
-      .then(result => {
-        console.log('Google sign in:', result.user);
-      })
-      .catch(err => setError(err.message));
-  }
+  };
 
   return (
     <div className={styles.auth}>
-      <form className={styles.authForm} onSubmit={register}>
+      <form className={styles.authForm} onSubmit={handleRegister}>
         <div className={styles.passwordWrapper}>
           <input
             type="text"
@@ -140,7 +121,7 @@ export const SignUp = () => {
         <CustomSeparator />
         <span>{t('auth.or')}</span>
 
-        <RectangleButton type="button" onClick={loginWithGoogle}>
+        <RectangleButton type="button" onClick={signInWithGoogle}>
           <img
             src={googleLogo}
             className={styles.iconImg}

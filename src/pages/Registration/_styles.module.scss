@@ -90,3 +90,37 @@
     border-radius: 50%;
   }
 }
+
+.fieldError {
+  color: $red;
+}
+
+.cont {
+  align-items: center;
+  width: 100%;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding-right: 2.5rem;
+  }
+
+  .toggleBtn {
+    position: absolute;
+    top: 55%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  button {
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}

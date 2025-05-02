@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { Favourites, CartElement } from '@/types/Store';
 
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+
 const getUserCollection = async () => {
   const { data } = await axios.get('/user/collection');
   return data;

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { CartElement } from '@/types/Store';
 
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+
 const getOrder = async (id: string) => {
   const { data } = await axios.get(`/order/${id}`);
   return data;
@@ -8,7 +10,7 @@ const getOrder = async (id: string) => {
 
 const createOrder = async (orderData: {
   isAuth: boolean;
-  user: { name: string; email: string; phone: string };
+  user: { name: string; email: string; phone: string; adress: string };
   order: CartElement[];
 }) => {
   if (orderData.isAuth) {

@@ -10,8 +10,10 @@ import { CartElement } from '@/types/Store';
 import { GeneralProduct } from '@/types/GeneralProduct';
 import { GoBackButton } from '@/components/molecules/GoBackButton';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const cart: CartElement[] = useStore(state => state.cart);
   const clearCart: () => void = useStore(state => state.clearCart);
@@ -68,9 +70,11 @@ export const Cart = () => {
                     totalPrice={totalPrice}
                     discount={discount}
                   />
-
                   <AlertDialogCheckout
-                    onCancel={() => console.log('Your cart is not empty')}
+                    onCancel={() => {
+                      navigate('/order');
+                      console.log('Your cart is not empty');
+                    }}
                     onAction={() => clearCart()}
                   />
                 </div>

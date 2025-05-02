@@ -1,8 +1,7 @@
 import { Regisrtation, LogIn } from '../types/Auth';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://localhost:5000';
-axios.defaults.baseURL = 'https://product-catalog-server-wzh2.onrender.com';
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const token = {
   set(token: string) {

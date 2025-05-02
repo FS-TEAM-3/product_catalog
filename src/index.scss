@@ -3,11 +3,10 @@
 @use './styles/custom-body.scss';
 @use 'normalize.css';
 @use './styles/variables.scss' as *;
+@use './styles/theme.scss' as *;
 
 body {
   margin: 0;
-  background-color: #fff;
-  color: #000;
   cursor: url('@/../public/img/cursor.png'), auto;
   @include font-style(body);
 }

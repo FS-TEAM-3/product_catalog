@@ -26,6 +26,8 @@ import { useTranslation } from 'react-i18next';
 
 export const ItemCard = () => {
   const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const langKey = i18n.language === 'uk' ? 'ukr' : 'eng';
   const [item, setProduct] = useState<Product>();
   const [productID, setProductID] = useState<number>();
   const location = useLocation();
@@ -96,7 +98,7 @@ export const ItemCard = () => {
               </div>
               <FavouriteButton productId={item.name} />
             </div>
-            <Description product={item} fieldsCount={4} />
+            <Description product={item} fieldsCount={4} isSmall={true} />
           </div>
           <div className={styles.itemId}>
             <div className={styles.itemIdDescktop}>ID: {productID}</div>
@@ -106,12 +108,11 @@ export const ItemCard = () => {
             <div className={styles.descriptionMain}>{t('itemCard.about')}</div>
             <CustomSeparator marginTop={16} />
             {item.description.map(item => {
+              const { title, text } = item[langKey];
               return (
                 <>
-                  <div className={styles.itemDescriptionTitle}>
-                    {item.title}
-                  </div>
-                  <div className={styles.itemDescriptionText}>{item.text}</div>
+                  <div className={styles.itemDescriptionTitle}>{title}</div>
+                  <div className={styles.itemDescriptionText}>{text}</div>
                 </>
               );
             })}

@@ -16,9 +16,9 @@ export const ColorSelector: React.FC<Props> = ({ colors }) => {
   const { slug = '' } = useParams<Params>();
   const navigate = useNavigate();
 
-  const formattedColors = colors.map(c =>
-    c.trim().toLowerCase().replace(/\s+/g, '-'),
-  );
+  const formattedColors = colors
+    .map(c => c.trim().toLowerCase().replace(/\s+/g, '-'))
+    .sort((a, b) => a.localeCompare(b));
 
   const { itemId: baseId, capacity, color: colorFromUrl } = parseSlug(slug);
   const slugColorFromUrl = colorFromUrl?.trim().toLowerCase() || '';

@@ -6,9 +6,9 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: $white;
+  background-color: var(--bg-checkbox);
   border: 1px solid $icons;
-  stroke: $primary;
+  stroke: inherit;
   flex: 0 0 40px;
   cursor: url('@/../public/img/cursor-pointer.png'), auto;
   transition:
@@ -16,13 +16,13 @@
     border-color 400ms;
 
   &:hover {
-    border-color: $primary;
+    border-color: var(--primary-on-light);
   }
 
   & svg {
     height: 16px;
     width: 16px;
-    color: $primary;
+    color: var(--primary);
   }
 }
 

@@ -1,20 +1,28 @@
 import { NavLink } from 'react-router';
 import './style.module.scss';
 import s from './style.module.scss';
-import { Heart, ShoppingBag, Menu, X } from 'lucide-react';
+import { Heart, ShoppingBag, Menu, X, UserCog } from 'lucide-react';
 import { IconLinkWithCounter } from '@/components/molecules/IconLinkWithCounter/IconLinkWithCounter';
 import { CartElement, Favourites } from '@/types/Store';
 import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { useStore } from '@/store/store';
 import { LanguageSwitcher } from '@/components/organisms/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
+import { ThemeToggle } from '@/components/molecules/ThemeToggle';
+import { useThemeStore } from '@/store/useThemeStore';
 
 export const Header = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const langKey = i18n.language;
+  const isUa = langKey === 'uk' ? true : false;
+
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isNavRightVisible, setIsNavRightVisible] = useState(false);
 
   const cart: CartElement[] = useStore(state => state.cart);
   const favourites: Favourites[] = useStore(state => state.favourites);
+  const theme = useThemeStore(state => state.theme);
 
   const getRealClassName = (isActive: boolean) => {
     return isActive ? `${s.link} ${s.active}` : s.link;
@@ -59,7 +67,7 @@ export const Header = () => {
         <div className={s.navLeft}>
           <NavLink to={'/'} className={s.logo}>
             <img
-              src="/img/Logo.png"
+              src={theme === 'light-theme' ? '/img/Logo.png' : '/img/Logo.svg'}
               alt="Logo"
               onClick={() => setMenuOpen(false)}
             />
@@ -77,7 +85,19 @@ export const Header = () => {
           </nav>
         </div>
 
-        <div className={s.navRight}>
+        {/* right user menu start */}
+        <button
+          className={s.navToggleButton}
+          onClick={() => setIsNavRightVisible(prev => !prev)}
+        >
+          {isNavRightVisible ? <X /> : <UserCog />}
+        </button>
+        <div
+          className={classNames(s.navRight, {
+            [s.navRightVisible]: isNavRightVisible,
+          })}
+        >
+          <LanguageSwitcher isUa={isUa} />
           <NavLink
             to="/favourites"
             className={({ isActive }) =>
@@ -120,7 +140,10 @@ export const Header = () => {
             </IconLinkWithCounter>
           </div>
         </div>
+
+        {/* right user menu end */}
       </header>
+      <ThemeToggle />
 
       <div className={`${s.mobileMenu} ${isMenuOpen ? s.active : ''}`}>
         <div className={s.mobileMenuLinks}>
@@ -164,7 +187,6 @@ export const Header = () => {
           </NavLink>
         </div>
       </div>
-      <LanguageSwitcher />
     </>
   );
 };

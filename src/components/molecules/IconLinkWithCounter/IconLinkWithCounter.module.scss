@@ -5,7 +5,7 @@ $icon-size: 14px;
 .iconLink {
   position: relative;
   border: none;
-  color: $secondary;
+  color: var(--icon-color);
   width: $box-size;
   height: $box-size;
   display: flex;

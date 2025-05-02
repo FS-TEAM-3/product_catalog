@@ -19,7 +19,7 @@ $color: #595959;
 .container {
   position: relative;
   height: 100%;
-  color: $primary;
+  color: var(--primary);
   font-family: arial, sans-serif;
   overflow: hidden;
   z-index: 5;

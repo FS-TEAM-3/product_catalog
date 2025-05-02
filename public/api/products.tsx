@@ -1,6 +1,6 @@
 import { client } from '../../src/utils/fetchClient';
 import { GeneralProduct } from '../../src/types/GeneralProduct';
-import { Product } from '@/types/Product';
+import { Product } from '../../src/types/Product';
 
 export interface CatalogResponse {
   collection: GeneralProduct[];
@@ -37,4 +37,8 @@ export const getCatalogProducts = (
 
 export const getProduct = (path: string) => {
   return client.get<ProductResponse>(path);
+};
+
+export const getSliderProducts = (sliderType: string) => {
+  return client.get<GeneralProduct[]>(`/products/${sliderType}`);
 };

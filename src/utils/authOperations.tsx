@@ -1,8 +1,8 @@
 import { Regisrtation, LogIn } from '../types/Auth';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:5000';
-// axios.defaults.baseURL = 'https://product-catalog-server-wzh2.onrender.com';
+// axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://product-catalog-server-wzh2.onrender.com';
 
 const token = {
   set(token: string) {

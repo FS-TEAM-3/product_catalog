@@ -9,7 +9,7 @@
 }
 
 .price {
-  color: $primary;
+  color: inherit;
   @include font-style(h3);
 
   &.big {

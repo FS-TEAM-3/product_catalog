@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './categoryCard.module.scss';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   path: string;
@@ -15,6 +16,7 @@ export const CategoryCard: React.FC<Props> = ({
   length,
   title,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className={s.card}>
       <Link to={category} className={`${s.imageBox} ${s[category]}`}>
@@ -26,7 +28,7 @@ export const CategoryCard: React.FC<Props> = ({
       </Link>
       <div className={s.thumb}>
         <h4 className={s.title}>{title}</h4>
-        <p className={s.text}>{`${length} models`}</p>
+        <p className={s.text}>{`${length} ${t('home.models')}`}</p>
       </div>
     </div>
   );

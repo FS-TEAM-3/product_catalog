@@ -19,7 +19,7 @@
 .title {
   margin: 0 0 4px;
 
-  color: $primary;
+  color: var(--primary);
   @include font-style(h4);
 }
 .text {

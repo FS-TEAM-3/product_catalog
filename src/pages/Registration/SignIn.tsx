@@ -5,14 +5,12 @@ import styles from './_styles.module.scss';
 import { useState } from 'react';
 import { auth } from '../../firebase.ts';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator/CustomSeparator.tsx';
 import googleLogo from '../../../public/google-icon-logo-svgrepo-com.svg';
 
 const googleProvider = new GoogleAuthProvider();
 
 export const SignIn = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +24,6 @@ export const SignIn = () => {
         setEmail('');
         setPassword('');
         setError('');
-        navigate('/user');
       })
       .catch(e => {
         console.log(error, e);
@@ -70,15 +67,14 @@ export const SignIn = () => {
         <RectangleButton>{t('auth.signInButton')}</RectangleButton>
 
         <CustomSeparator />
-        <span>or</span>
+        <span>{t('auth.or')}</span>
         <RectangleButton type="button" onClick={loginWithGoogle}>
           <img
             src={googleLogo}
             className={styles.iconImg}
             alt="Google sign-in"
           />
-          SignIn with Google
-          {/* {t('auth.googleSignIn')} */}
+          {t('auth.signInGoogleButton')}
         </RectangleButton>
       </form>
     </div>

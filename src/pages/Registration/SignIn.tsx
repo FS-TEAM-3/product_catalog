@@ -1,47 +1,44 @@
 import { RectangleButton } from '@/components/atoms/RectangleButton';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import styles from './_styles.module.scss';
-import { useState } from 'react';
-import { auth } from '../../firebase.ts';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { FormEvent, useState } from 'react';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator/CustomSeparator.tsx';
 import googleLogo from '../../../public/google-icon-logo-svgrepo-com.svg';
-
-const googleProvider = new GoogleAuthProvider();
+import { useAuthStore } from '@/store/useAuthStore.ts';
+import { Container } from 'lucide-react';
+import { LoadingOverlay } from '@/components/organisms/LoadingOverlay/LoadingOverlay.tsx';
 
 export const SignIn = () => {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
 
-  function login(e: React.FormEvent<HTMLFormElement>) {
+  const signIn = useAuthStore(s => s.signIn);
+  const signInWithGoogle = useAuthStore(s => s.signInWithGoogle);
+  const loading = useAuthStore(s => s.loading);
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(user => {
-        console.log('Signed up:', user);
-        setEmail('');
-        setPassword('');
-        setError('');
-      })
-      .catch(e => {
-        console.log(error, e);
-        setError('not found account');
-      });
-  }
+    try {
+      await signIn(email, password);
+      setEmail('');
+      setPassword('');
+    } catch {
+      console.log('error');
+    }
+  };
 
-  function loginWithGoogle() {
-    signInWithPopup(auth, googleProvider)
-      .then(result => {
-        console.log('Google sign in:', result.user);
-      })
-      .catch(err => setError(err.message));
+  if (loading) {
+    return (
+      <Container>
+        <LoadingOverlay isLoading />
+      </Container>
+    );
   }
 
   return (
     <div className={styles.auth}>
-      <form className={styles.authForm} onSubmit={login}>
+      <form className={styles.authForm} onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder={t('auth.email')}
@@ -64,17 +61,17 @@ export const SignIn = () => {
           required
         />
 
-        <RectangleButton>{t('auth.signInButton')}</RectangleButton>
+        <RectangleButton>{t('auth.logInButton')}</RectangleButton>
 
         <CustomSeparator />
         <span>{t('auth.or')}</span>
-        <RectangleButton type="button" onClick={loginWithGoogle}>
+        <RectangleButton type="button" onClick={signInWithGoogle}>
           <img
             src={googleLogo}
             className={styles.iconImg}
             alt="Google sign-in"
           />
-          {t('auth.signInGoogleButton')}
+          {t('auth.logInGoogleButton')}
         </RectangleButton>
       </form>
     </div>

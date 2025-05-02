@@ -1,28 +1,15 @@
 import styles from './_styles.module.scss';
 import { Container } from '@/components/templates/Container';
 import { useTranslation } from 'react-i18next';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../firebase.ts';
-import type { User } from 'firebase/auth';
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator/CustomSeparator.tsx';
+import { useAuthStore } from '@/store/useAuthStore.ts';
 
-function signout() {
-  signOut(auth)
-    .then(() => {
-      console.log('succsses');
-    })
-    .catch(e => {
-      console.log(e);
-    });
-}
-
-type Props = {
-  authUser: User | null;
-};
-
-export const UserPage: React.FC<Props> = ({ authUser }) => {
+export const UserPage = () => {
   const { t } = useTranslation();
+
+  const authUser = useAuthStore(state => state.user);
+  const signout = useAuthStore(state => state.signOut);
 
   if (!authUser) return null;
 

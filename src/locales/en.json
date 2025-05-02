@@ -80,9 +80,9 @@
     "item": "item",
     "items": "items",
     "checkout": "Checkout",
-    "notImplement": "Checkout is not implemented yet.",
+    "notImplement": "What would you like to do?.",
     "wantClear": "Do you wan't to clear the Cart?",
-    "cancel": "Cancel",
+    "cancel": "Order now",
     "yesClear": "Yes, clear the Cart!",
     "empty": "Your cart is empty"
   },
@@ -114,6 +114,12 @@
     "invalidName": "Name must contain only letters and be between 2 and 40 characters long.",
     "weakPassword": "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.",
     "exist": "User with this email already exist"
+  },
+
+  "order": {
+    "info": "Please fill out the details to place an order",
+    "close": "Close",
+    "order": "Make an order"
   },
 
   "personName": {

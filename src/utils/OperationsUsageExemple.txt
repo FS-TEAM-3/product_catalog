@@ -1,0 +1,89 @@
+const { getOrder, createOrder } = operations 
+ 
+ 
+  const newUser = {
+    login: 'tedssr',
+    password: 'llll',
+    email: 'tedssr@rer.er',
+  };
+
+  const user = {
+    password: 'llll',
+    email: 'tedssr@rer.er',
+  };
+
+  const verifyLink = '576ac0c9-66cc-41f1-bd43-eabc4b857e9e';
+
+  // AUTH
+  //
+  // signUp
+  // const { data } = useApi(() => signUpUser(newUser));
+  // const data = await signUpUser(newUser)
+
+  // verify
+  // const {data} = useApi(() => emailVerify(verifyLink));
+  // const data = await emailVerify(verifyLink)
+
+
+  // login
+  //const { data } = useApi(() => logInUser(user));
+  //const data = await logInUser(user)
+
+
+  // current
+  // const { data } = useApi(() => fetchCurrentUser());
+  //const data = await fetchCurrentUser()
+
+  // logOut res status 200
+  // const { data } = useApi(() => logOut());
+  //const data = logOut()
+
+  // deleteUser
+  // const {data} = useApi(() => deleteAccount());
+  //const data = deleteAccount()
+
+    // USER
+
+    // collection
+    // const {data} = useApi(() => getUserCollection());
+    // const data = await getUserCollection()
+
+    // getFav
+    // const {data} = useApi(() => getFavourites());
+    // const data = await getFavourites()
+
+    // addFav
+    // const {data} = useApi(() => addToFavourites('sdfsefs'));
+    // const data = await addToFavourites('sdfsefs');
+
+
+    // delFav
+    // const {data} = useApi(() => removeFromFavourites('sdfsefs'));
+    // const data = await removeFromFavourites('sdfsefs');
+
+
+    // getCard
+    // const {data} = useApi(() => getCard());
+    // const data = await getCard();
+
+    // addCard
+    // const {data} = useApi(() => addToCard({ id: 'sasddddsd', count: 1 }));
+    // const data = await addToCard({ id: 'sasddddsd', count: 1 });
+
+
+    // delCard
+    // const {data} = useApi(() => removeFromCard('sasddddsd'));
+    // const data = await removeFromCard('sasddddsd');
+
+    // ORDER
+
+    //order
+    // const data = await createOrder({
+    //   isAuth: false,
+    //   user: { email: 'sdfssd', name: 'Asdaa', phone: 'aqqwdassad' },
+    //   order: [{ id: 'fsdfs', count: 8 }],
+    // });
+
+    // getOrder
+    // const data = useApi(() => getOrder('KSJ74JO'));
+    // const data = await getOrder('KSJ74JO')

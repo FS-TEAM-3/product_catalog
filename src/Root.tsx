@@ -14,6 +14,7 @@ import { NotFound } from './pages/NotFound';
 import { AuthPage } from './pages/Registration';
 import { Contacts } from './pages/Contacts';
 import { Rights } from './pages/Rights';
+import { OrderPage } from './pages/Order/Order';
 
 export const Root = () => {
   return (
@@ -41,6 +42,7 @@ export const Root = () => {
           <Route path="cart" element={<Cart />} />
           <Route path="rights" element={<Rights />} />
           <Route path="favourites" element={<Favourites />} />
+          <Route path="order" element={<OrderPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

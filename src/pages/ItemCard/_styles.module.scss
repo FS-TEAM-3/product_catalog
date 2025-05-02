@@ -152,6 +152,10 @@
     color: var(--primary);
     @include font-style(h3);
   }
+
+  &Small {
+    margin-top: 7px;
+  }
 }
 
 .specs {

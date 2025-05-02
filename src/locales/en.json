@@ -119,7 +119,10 @@
   "order": {
     "info": "Please fill out the details to place an order",
     "close": "Close",
-    "order": "Make an order"
+    "title": "Order Card",
+    "order": "ORDER",
+    "adress": "Adress",
+    "phone": "Phone"
   },
 
   "personName": {

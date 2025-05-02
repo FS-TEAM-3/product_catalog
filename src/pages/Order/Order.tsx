@@ -2,11 +2,13 @@ import { useState } from 'react';
 import operations from '@/utils/orderOperations';
 import { Container } from '@/components/templates/Container';
 import { GoBackButton } from '@/components/molecules/GoBackButton';
-import baseStyles from './order.module.scss';
-import s from './order.module.scss';
+import baseStyles from './_styles.module.scss';
+import s from './_styles.module.scss';
+import styles from '../Registration/_styles.module.scss';
 import { useStore } from '@/store/store';
 import { CartElement } from '@/types/Store';
 import { useTranslation } from 'react-i18next';
+import { RectangleButton } from '@/components/atoms/RectangleButton';
 
 type ModalData =
   | {
@@ -90,42 +92,46 @@ export const OrderPage = () => {
       )}
 
       <Container>
-        <div className={baseStyles.cart__BackBtn}>
+        <div className={baseStyles.BackBtn}>
           <GoBackButton />
         </div>
       </Container>
-
-      <form onSubmit={onFormSubmit} className={s.formWrapper}>
-        <input
-          type="text"
-          name="name"
-          placeholder={t('auth.name')}
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone"
-          value={formData.phone}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="email"
-          placeholder={t('auth.email')}
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="adress"
-          placeholder="Address"
-          value={formData.adress}
-          onChange={handleChange}
-        />
-        <button type="submit">{t('order.order')}</button>
-      </form>
+      <Container>
+        <h1 className={`${s.title}`}>{t('order.title')}</h1>
+        <div className={s.auth}>
+          <form onSubmit={onFormSubmit} className={styles.authForm}>
+            <input
+              type="text"
+              name="name"
+              placeholder={t('auth.name')}
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="phone"
+              placeholder={t('order.phone')}
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="email"
+              placeholder={t('auth.email')}
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="adress"
+              placeholder={t('order.adress')}
+              value={formData.adress}
+              onChange={handleChange}
+            />
+            <RectangleButton type="submit">{t('order.order')}</RectangleButton>
+          </form>
+        </div>
+      </Container>
 
       {showModal && modalData && (
         <div className={s.modal}>
@@ -156,11 +162,14 @@ export const OrderPage = () => {
                   ),
                 )}
               </ul>
+              <button
+                className={s.closeButton}
+                onClick={() => setShowModal(false)}
+              >
+                Close
+              </button>
             </>
           )}
-          <button className={s.closeButton} onClick={() => setShowModal(false)}>
-            Close
-          </button>
         </div>
       )}
     </>

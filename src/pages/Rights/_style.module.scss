@@ -1,0 +1,24 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/_typography.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.rightsPage {
+  min-height: 100vh;
+  padding: 24px;
+
+  @media (min-width: 640px) {
+    padding: 48px;
+  }
+}
+
+h1 {
+  @include font-style(h1);
+}
+
+h2 {
+  @include font-style(h3);
+}
+
+p {
+  @include font-style(small);
+}

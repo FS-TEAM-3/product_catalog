@@ -106,5 +106,55 @@
     "password": "Password",
     "signInButton": "SignUp",
     "or": "or"
+  },
+
+  "personName": {
+    "Dmytro": "Dmytro Kolesnikov",
+    "Tania": "Tetiana Radykhovska",
+    "Kate": "Kate Piekharieva",
+    "Sonia": "Sonia Pelenska"
+  },
+
+  "personDescription": {
+    "Dmytro": "With experience as a Fullstack Developer, I build end-to-end web solutions that are responsive, accessible, and maintainable. My front-end work leverages React and Tailwind, while my backend experience includes PostgreSQL and Node.js. I use Redux Toolkit for handling application state, and tools like Git, Vite, and Webpack are part of my daily workflow. I value collaboration, clarity, and continuous growth.",
+    "Tania": "I’m a Fullstack Engineer with a focus on intuitive design and efficient architecture. I build responsive web apps using React and Tailwind, manage complex states with Redux Toolkit, and develop backend features using Node.js and PostgreSQL. I’m fluent in modern dev tools like Git, Webpack, and Vite, and thrive in dynamic, Agile environments. I’m driven by learning and bringing ideas to life through clean code.",
+    "Kate": "As a Fullstack Developer, I specialize in delivering responsive, user-friendly applications. My expertise spans React and Tailwind for front-end work, along with Redux Toolkit for state management. I’ve also gained hands-on experience with backend technologies like Node.js and PostgreSQL. I work well in Agile teams and enjoy using tools such as Git, Vite, and Webpack. I’m passionate about building scalable digital solutions and continuously improving my skills.",
+    "Sonia": "I develop modern web applications as a Fullstack Developer, combining clean UI/UX with robust backend systems. I’ve built frontends using React and Tailwind CSS, and supported them with backend logic using Node.js and PostgreSQL. Redux Toolkit helps manage complex state in my projects. I’m familiar with Agile workflows and tools like Git, Vite, and Webpack. I enjoy evolving as a developer and transforming ideas into functional apps."
+  },
+
+  "rights": {
+    "title": "Consumer Rights",
+    "1": {
+      "title": "Return and Exchange",
+      "description": "You have the right to return or exchange a product within 14 days of purchase, provided it has not been used and retains its original condition."
+    },
+    "2": {
+      "title": "Warranty",
+      "description": "All devices come with a warranty ranging from 12 to 24 months depending on the model. In case of a manufacturing defect, we will provide free service or a replacement. The warranty does not cover physical damage, liquid exposure, or unauthorized repairs."
+    },
+    "3": {
+      "title": "Intellectual Property",
+      "description": "All images, product descriptions, logos, and texts on this website are the property of our company or the respective brands. It is prohibited to copy or use materials without written permission."
+    },
+    "4": {
+      "title": "Liability",
+      "description": "We are not responsible for any consequences resulting from improper use of devices or actions of third parties linked through our website."
+    },
+    "5": {
+      "title": "Data Privacy",
+      "description": "We respect your privacy. All personal information provided during checkout is used solely for order processing and is not shared with third parties."
+    },
+    "6": {
+      "title": "Delivery Terms",
+      "description": "Orders are delivered within 1–3 business days after confirmation. In case of delays, we will inform you in advance."
+    },
+    "7": {
+      "title": "Payment",
+      "description": "We accept online payments (credit/debit cards), cash on delivery, or payment upon receipt. All transactions are protected by modern security standards."
+    },
+    "8": {
+      "title": "Contact Information",
+      "description": "If you have questions regarding consumer rights, feel free to contact our support team at +380 (XX) XXX-XX-XX or email us at support@example.com."
+    }
   }
 }

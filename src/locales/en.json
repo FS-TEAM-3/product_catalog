@@ -105,7 +105,15 @@
     "email": "Email",
     "password": "Password",
     "signInButton": "SignUp",
-    "or": "or"
+    "signInGoogleButton": "SignUp with Google",
+    "logInButton": "LogIn",
+    "logInGoogleButton": "LogIn with Google",
+    "signout": "SignOut",
+    "or": "or",
+    "joinedOn": "Joined on ",
+    "invalidName": "Name must contain only letters and be between 2 and 40 characters long.",
+    "weakPassword": "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.",
+    "exist": "User with this email already exist"
   },
 
   "personName": {

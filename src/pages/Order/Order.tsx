@@ -41,6 +41,7 @@ export const OrderPage = () => {
   const [modalData, setModalData] = useState<ModalData | null>(null);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const clearCart: () => void = useStore(state => state.clearCart);
   const cart: CartElement[] = useStore(state => state.cart);
 
   useEffect(() => {
@@ -120,6 +121,7 @@ export const OrderPage = () => {
               onClick={() => {
                 setShowModal(false);
                 navigate('/');
+                clearCart();
               }}
             >
               HOME

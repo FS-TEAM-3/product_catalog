@@ -178,5 +178,10 @@
       "title": "Contact Information",
       "description": "If you have questions regarding consumer rights, feel free to contact our support team at +380 (XX) XXX-XX-XX or email us at support@example.com."
     }
+  },
+
+  "search": {
+    "label": "Search in",
+    "search": "Search..."
   }
 }

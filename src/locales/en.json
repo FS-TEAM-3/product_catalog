@@ -101,6 +101,7 @@
     "logIn": "Log In",
     "signIn": "Sign Up",
     "submit": "Submit",
+    "signUp": "sign Up",
     "name": "Name",
     "email": "Email",
     "password": "Password",
@@ -122,7 +123,11 @@
     "title": "Order Card",
     "order": "ORDER",
     "adress": "Adress",
-    "phone": "Phone"
+    "phone": "Phone",
+    "created": "Order Created",
+    "home": "HOME",
+    "id": "Order ID",
+    "items": "Items"
   },
 
   "personName": {

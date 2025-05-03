@@ -92,20 +92,21 @@ export const OrderPage = () => {
               <p>{modalData.message}</p>
             ) : (
               <>
-                <h3>Order Created</h3>
+                <h2>{t('order.created')}</h2>
                 <p>
-                  <strong>Order ID:</strong> {modalData.orderId}
+                  <strong>{t('order.id')}: </strong> {modalData.orderId}
                 </p>
                 <p>
-                  <strong>Name:</strong> {modalData.owner.name}
+                  <strong>{t('auth.name')}: </strong> {modalData.owner.name}
                 </p>
                 <p>
-                  <strong>Email:</strong> {modalData.owner.email}
+                  <strong>{t('auth.email')}: </strong> {modalData.owner.email}
                 </p>
                 <p>
-                  <strong>Phone:</strong> {modalData.owner.phone}
+                  <strong>{t('order.phone')}: </strong> {modalData.owner.phone}
                 </p>
-                <h4>Items:</h4>
+                <CustomSeparator />
+                <h4>{t('order.items')}:</h4>
                 <ul>
                   {modalData.order.map(
                     (item: { id: string; count: number }, index: number) => (
@@ -125,7 +126,7 @@ export const OrderPage = () => {
                 clearCart();
               }}
             >
-              HOME
+              {t('order.home')}
             </button>
           </div>
         </div>

@@ -31,9 +31,17 @@
   z-index: 1001;
 }
 
+.modal h2 {
+  text-align: center;
+}
+
 .modal h3,
 .modal h4 {
   margin: 0.5em 0;
+}
+
+.modal p {
+  @include font-style(body);
 }
 
 .modal ul {

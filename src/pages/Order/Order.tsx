@@ -145,36 +145,40 @@ export const OrderPage = () => {
             <div className={s.auth}>
               <form onSubmit={onFormSubmit} className={styles.authForm}>
                 <input
+                  className={s.formInput}
                   type="text"
                   name="name"
                   placeholder={t('auth.name')}
                   value={formData.name}
                   onChange={handleChange}
-                  //required
+                  required
                 />
                 <input
+                  className={s.formInput}
                   type="phone"
                   name="phone"
                   placeholder={t('order.phone')}
                   value={formData.phone}
                   onChange={handleChange}
-                  //required
+                  required
                 />
                 <input
+                  className={s.formInput}
                   type="email"
                   name="email"
                   placeholder={t('auth.email')}
                   value={formData.email}
                   onChange={handleChange}
-                  //required
+                  required
                 />
                 <input
-                  type="text"
+                  className={s.formInput}
+                  type="adress"
                   name="adress"
                   placeholder={t('order.adress')}
                   value={formData.adress}
                   onChange={handleChange}
-                  //required
+                  required
                 />
                 <RectangleButton type="submit">
                   {t('order.order')}

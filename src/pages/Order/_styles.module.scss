@@ -22,7 +22,7 @@
 
 .modal {
   position: relative;
-  background-color: $white;
+  background-color: var(--icons);
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
@@ -51,7 +51,7 @@
 .closeButton {
   padding: 8px 16px;
   background-color: $red;
-  color: $white;
+  color: var(--white);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -73,7 +73,7 @@
 }
 
 .popup {
-  background-color: white;
+  background-color: var(--white);
   padding: 20px;
   border-radius: 8px;
   text-align: center;
@@ -127,4 +127,8 @@
     color: $red;
     @include font-style(body);
   }
+}
+
+.formInput {
+  background-color: var(--white);
 }

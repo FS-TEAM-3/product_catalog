@@ -10,6 +10,7 @@ import { CartElement } from '@/types/Store';
 import { useTranslation } from 'react-i18next';
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { useNavigate } from 'react-router-dom';
+import { CustomSeparator } from '@/components/atoms/CustomSeparator';
 
 type ModalData =
   | {
@@ -186,6 +187,7 @@ export const OrderPage = () => {
                     </span>
                   );
                 })}
+                <CustomSeparator />
               </div>
             </div>
           </Container>

@@ -60,7 +60,7 @@ export const Cart = () => {
             <div className="main-grid">
               <section className={styles.cart__itemsBlock}>
                 {cartItems.map(product => (
-                  <CartItem product={product} />
+                  <CartItem key={product.id} product={product} />
                 ))}
               </section>
               <div className={`${styles.cart__priceBlock}`}>

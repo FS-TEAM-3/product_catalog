@@ -35,7 +35,7 @@
     background-color 400ms;
 
   &:hover {
-    border-color: $icons;
+    border-color: var(--icons);
   }
 
   .colorCircle {

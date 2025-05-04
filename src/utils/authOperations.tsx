@@ -1,5 +1,6 @@
-import { Regisrtation, LogIn } from '../types/Auth';
 import axios from 'axios';
+import { useStore } from '@/store/store';
+import { CartElement, Favourites } from '@/types/Store';
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -12,66 +13,53 @@ const token = {
   },
 };
 
-const signUpUser = async (userData: Regisrtation) => {
-  const { data } = await axios.post('/auth/signup', userData);
-
-  verifyNotification(userData.email, data.user.linkToVerify);
-
+const signUpUser = async (firebaseToken: string) => {
+  token.set(firebaseToken);
+  const { data } = await axios.post('/auth/signup');
+  const addUserCollection = useStore.getState().addUserCollection;
+  const userCollection = (await axios.get('/user/collection')) as {
+    cart: CartElement[];
+    favourites: Favourites[];
+  };
+  addUserCollection(userCollection);
+  window.location.reload();
   return data;
 };
 
-const logInUser = async (
-  userData: LogIn,
-  // setUser: ({ status }: { status: string }) => void,
-  // setIsLoggedIn: (status: boolean) => void,
-) => {
-  const { data } = await axios.post('/auth/login', userData);
-  token.set(data.token);
-  // setUser(data.user);
-  localStorage.setItem('token', data.token);
-  // setIsLoggedIn(true);
-
-  return data;
-};
-
-const logOut = async () =>
-  // setUser: ({ status }: { status: string }) => void,
-  // setIsLoggedIn: (status: boolean) => void,
-  {
-    await axios.get('/auth/logout');
-    token.unset();
-    // setUser({ status: 'unauthorise' });
-    // setIsLoggedIn(false);
-    localStorage.removeItem('token');
+const logInUser = async (firebaseToken: string) => {
+  token.set(firebaseToken);
+  const { data } = await axios.post('/auth/login');
+  const addUserCullection = useStore.getState().addUserCollection;
+  const userCollection = (await axios.get('/user/collection')) as {
+    cart: CartElement[];
+    favourites: Favourites[];
   };
 
-const fetchCurrentUser = async () =>
-  // setUser: (data: string) => void,
-  // setIsLoggedIn: (status: boolean) => void,
-  {
-    const usertoken = localStorage.getItem('token');
-    if (usertoken) {
-      token.set(usertoken);
-    }
-    const { data } = await axios.get('/auth/current');
-    const newToken = data.data.token;
-    // setUser(data.data.user);
-    // setIsLoggedIn(true);
-    localStorage.setItem('token', newToken);
-    token.set(newToken);
-    return data;
-  };
-
-const emailVerify = async (VerificationToken: string) => {
-  const { data } = await axios.get(`/auth/verify/${VerificationToken}`);
-
+  addUserCullection(userCollection);
   return data;
 };
 
-const verifyNotification = async (email: string, linkToVerify: string) => {
-  const verify = await fetch(linkToVerify);
-  window.open(linkToVerify, '_self');
-  return { verify, email };
+const logOut = async () => {
+  await axios.get('/auth/logout');
+  token.unset();
+  const clearUserCullection = useStore.getState().clearCollection;
+  clearUserCullection();
+};
+
+const fetchCurrentUser = async (firebaseToken: string) => {
+  if (firebaseToken) {
+    token.set(firebaseToken);
+  }
+  const { data } = await axios.get('/auth/current');
+  const addUserCullection = useStore.getState().addUserCollection;
+  const userCollection = (await axios.get('/user/collection')) as {
+    cart: CartElement[];
+    favourites: Favourites[];
+  };
+  const { cart, favourites } = userCollection;
+  const userCart = cart.map(item => ({ id: item.id, count: item.count }));
+  addUserCullection({ cart: userCart, favourites });
+  return data;
 };
 
 const deleteAccount = async () => {
@@ -84,7 +72,6 @@ const operations = {
   logOut,
   logInUser,
   fetchCurrentUser,
-  emailVerify,
   deleteAccount,
 };
 export default operations;

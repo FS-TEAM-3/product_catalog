@@ -2,21 +2,27 @@ import React from 'react';
 import styles from './_styles.module.scss';
 import * as Radix from '@radix-ui/react-checkbox';
 import clsx from 'clsx';
-import { Heart } from 'lucide-react';
+import { Heart, Loader } from 'lucide-react';
 
 type Props = {
   liked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
+  isLoading: boolean;
 };
 
-export const LikeCheckBox: React.FC<Props> = ({ liked, onCheckedChange }) => {
+export const LikeCheckBox: React.FC<Props> = ({
+  liked,
+  onCheckedChange,
+  isLoading = false,
+}) => {
   return (
     <Radix.Checkbox
       className={clsx(styles.checkbox, liked && styles.liked)}
-      checked={liked}
+      checked={!!liked}
+      disabled={isLoading}
       onCheckedChange={onCheckedChange}
     >
-      <Heart />
+      {isLoading ? <Loader className={styles.spinner} /> : <Heart />}
     </Radix.Checkbox>
   );
 };

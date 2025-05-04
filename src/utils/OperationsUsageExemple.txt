@@ -67,8 +67,8 @@ const { getOrder, createOrder } = operations
     // const data = await getCard();
 
     // addCard
-    // const {data} = useApi(() => addToCard({ id: 'sasddddsd', count: 1 }));
-    // const data = await addToCard({ id: 'sasddddsd', count: 1 });
+    // const {data} = useApi(() => addToCart({ id: 'sasddddsd', count: 1 }));
+    // const data = await addToCart({ id: 'sasddddsd', count: 1 });
 
 
     // delCard

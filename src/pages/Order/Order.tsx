@@ -8,6 +8,7 @@ import styles from '../Registration/_styles.module.scss';
 import { useStore } from '@/store/store';
 import { CartElement } from '@/types/Store';
 import { useTranslation } from 'react-i18next';
+import { useAuthStore } from '@/store/useAuthStore';
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { useNavigate } from 'react-router-dom';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator';
@@ -42,8 +43,11 @@ export const OrderPage = () => {
   const [modalData, setModalData] = useState<ModalData | null>(null);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const clearCart: () => void = useStore(state => state.clearCart);
-  const cart: CartElement[] = useStore(state => state.cart);
+  const clearCart = useStore(state => state.clearCart);
+  const isAuth = !!useAuthStore(s => s.user);
+  const cart: CartElement[] = useStore(state =>
+    isAuth ? state.user.cart : state.guest.cart,
+  );
 
   useEffect(() => {
     document.body.style.overflow = showModal ? 'hidden' : '';
@@ -123,7 +127,7 @@ export const OrderPage = () => {
               onClick={() => {
                 setShowModal(false);
                 navigate('/');
-                clearCart();
+                clearCart(isAuth);
               }}
             >
               {t('order.home')}

@@ -14,7 +14,6 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product, path }) => {
   const { image, name, fullPrice, price, screen, ram, capacity } = product;
   const specs = { screen: screen, ram: ram, capacity: capacity };
-
   return (
     <div className={styles.card}>
       <NavLink to={path} className={styles.cardImageContainer}>
@@ -35,9 +34,9 @@ export const ProductCard: React.FC<Props> = ({ product, path }) => {
 
       <div className={styles.cardButtons}>
         <div className={styles.cardButtonsContainer}>
-          <CartButton productId={product.name} />
+          <CartButton productId={product.itemId} />
         </div>
-        <FavouriteButton productId={product.name} />
+        <FavouriteButton productId={product.itemId} />
       </div>
     </div>
   );

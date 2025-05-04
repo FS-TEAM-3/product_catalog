@@ -54,7 +54,7 @@
   color: $white;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
   display: block;
   margin: 20px auto 0;
 }

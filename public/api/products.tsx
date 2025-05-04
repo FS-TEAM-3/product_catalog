@@ -13,8 +13,8 @@ export interface ProductResponse {
 }
 
 export const getCatalogProducts = (
-  category: string,
-  page: number,
+  category?: string,
+  page?: number,
   paramsString: string = '',
 ) => {
   const pathSegments = ['/products', page ? String(page) : null].filter(

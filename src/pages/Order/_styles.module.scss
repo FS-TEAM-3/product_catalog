@@ -51,7 +51,7 @@
 .closeButton {
   padding: 8px 16px;
   background-color: $red;
-  color: var(--white);
+  color: $white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -130,5 +130,6 @@
 }
 
 .formInput {
+  color: var(--white);
   background-color: var(--white);
 }

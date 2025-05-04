@@ -9,11 +9,12 @@ import { PageHeader } from '@/components/organisms/PageHeader';
 import { getCatalogProducts } from '../../../public/api/products';
 import { GeneralProduct } from '@/types/GeneralProduct';
 import { useApi } from '@/hooks/useApi';
-import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useTranslation } from 'react-i18next';
 import { SearchField } from '@/components/molecules/SearchField';
 import { useDebouncedCallback } from 'use-debounce';
+import { Loader } from 'lucide-react';
+import { EmptyCatalog } from '@/components/organisms/EmptyPage';
 
 const perPageOptions = [
   { label: '8', value: '8' },
@@ -96,11 +97,10 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
     }
   }, [data]);
 
-  useScrollToTop(searchParams, { delay: 200, behavior: 'smooth' });
+  useScrollToTop(category, { delay: 200, behavior: 'smooth' });
 
   return (
     <Container>
-      <LoadingOverlay isLoading={loading} />
       <div className="main-grid">
         <PageHeader
           trueNameCategory={trueNameCategory}
@@ -126,52 +126,80 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
             value={search}
             onChange={handleSearchChange}
           />
-        </div>
-
-        <GridCard products={paginatedProducts} />
-
-        <div className={styles.catalog__pagination}>
-          <button
-            className={`${styles.pageButton} ${styles.arrowButtonLeft}`}
+          <a
+            className={styles.reset}
             onClick={() => {
-              if (page > 1) {
-                handleParamChange('page', (page - 1).toString());
-              }
+              handleParamChange('search', '');
+              setSearch('');
             }}
           >
-            {'<'}
-          </button>
+            {t('catalog.reset')}
+          </a>
+        </div>
 
-          {Array.from({ length: 4 }).map((_, index) => {
-            const startPage = Math.floor((page - 1) / 4) * 4 + 1;
-            const pageNumber = startPage + index;
-
-            if (pageNumber > totalPages) return null;
-
-            const isActive = pageNumber === page;
-
-            return (
+        {paginatedProducts.length > 0 ? (
+          <>
+            <div className={styles.catalog__gridWrapper}>
+              {loading ? (
+                <div className={styles.catalog__localOverlay}>
+                  <Loader className={styles.spinner} />
+                </div>
+              ) : (
+                <GridCard products={paginatedProducts} />
+              )}
+            </div>
+            <div className={styles.catalog__pagination}>
               <button
-                key={pageNumber}
-                className={`${styles.pageButton} ${isActive ? styles.active : ''}`}
-                onClick={() => handleParamChange('page', pageNumber.toString())}
+                className={`${styles.pageButton} ${styles.arrowButtonLeft}`}
+                onClick={() => {
+                  if (page > 1) {
+                    handleParamChange('page', (page - 1).toString());
+                  }
+                }}
               >
-                {pageNumber}
+                {'<'}
               </button>
-            );
-          })}
 
-          <button
-            className={`${styles.pageButton} ${styles.arrowButtonRight}`}
-            onClick={() => {
-              if (page < totalPages) {
-                handleParamChange('page', (page + 1).toString());
-              }
-            }}
-          >
-            {'>'}
-          </button>
-        </div>
+              {Array.from({ length: 4 }).map((_, index) => {
+                const startPage = Math.floor((page - 1) / 4) * 4 + 1;
+                const pageNumber = startPage + index;
+
+                if (pageNumber > totalPages) return null;
+
+                const isActive = pageNumber === page;
+
+                return (
+                  <button
+                    key={pageNumber}
+                    className={`${styles.pageButton} ${isActive ? styles.active : ''}`}
+                    onClick={() =>
+                      handleParamChange('page', pageNumber.toString())
+                    }
+                  >
+                    {pageNumber}
+                  </button>
+                );
+              })}
+
+              <button
+                className={`${styles.pageButton} ${styles.arrowButtonRight}`}
+                onClick={() => {
+                  if (page < totalPages) {
+                    handleParamChange('page', (page + 1).toString());
+                  }
+                }}
+              >
+                {'>'}
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className={styles.catalog__gridWrapper}>
+            <div className={styles.catalog__localOverlay}>
+              <EmptyCatalog />
+            </div>
+          </div>
+        )}
       </div>
     </Container>
   );

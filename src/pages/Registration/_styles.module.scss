@@ -68,10 +68,10 @@
     button {
       padding: 8px 16px;
       border: none;
-      cursor: url('@/../public/img/cursor.png'), auto;
       max-width: 230px;
 
       &:hover {
+        cursor: url('@/../public/img/cursor-pointer.png'), auto;
         box-shadow: 0px 3px 13px 0px var(--shadow);
       }
     }
@@ -119,7 +119,7 @@
     transform: translateY(-50%);
     background: transparent;
     border: none;
-    cursor: pointer;
+    cursor: url('@/../public/img/cursor-pointer.png'), auto;
   }
   button {
     &:hover {

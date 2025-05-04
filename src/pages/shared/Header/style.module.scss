@@ -236,11 +236,11 @@ $menu-padding: 18px;
   }
 
   .mobileMenu {
-    position: absolute;
+    position: fixed;
     top: $footer-height;
     left: 0;
     right: 0;
-    background-color: white;
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

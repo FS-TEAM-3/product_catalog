@@ -43,7 +43,7 @@ export const OrderPage = () => {
   const [modalData, setModalData] = useState<ModalData | null>(null);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const clearCart: () => void = useStore(state => state.clearCart);
+  const clearCart = useStore(state => state.clearCart);
   const isAuth = !!useAuthStore(s => s.user);
   const cart: CartElement[] = useStore(state =>
     isAuth ? state.user.cart : state.guest.cart,
@@ -127,7 +127,7 @@ export const OrderPage = () => {
               onClick={() => {
                 setShowModal(false);
                 navigate('/');
-                clearCart();
+                clearCart(isAuth);
               }}
             >
               {t('order.home')}

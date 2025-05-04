@@ -59,7 +59,8 @@
     "perPage": "Items on page",
     "models": "models",
     "items": "items",
-    "empty": "Not found products"
+    "empty": "Not found products",
+    "reset": "Reset filters"
   },
 
   "goBack": {

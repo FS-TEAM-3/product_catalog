@@ -133,7 +133,7 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
               setSearch('');
             }}
           >
-            Reset filters
+            {t('catalog.reset')}
           </a>
         </div>
 

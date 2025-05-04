@@ -33,7 +33,6 @@ export const ItemCard = () => {
   const { itemId } = parseSlug(slug ?? '');
 
   useScrollToTop(itemId, { delay: 300, behavior: 'smooth' });
-
   const {
     data,
     loading: itemLoading,
@@ -45,17 +44,15 @@ export const ItemCard = () => {
     loading: randomLoading,
     error: randomError,
   } = useApi(() => getSliderProducts('random'), [location.pathname]);
-
   const loading = itemLoading || randomLoading;
   const error = itemError || randomError;
-
   useEffect(() => {
     if (data) {
       const { product, productId } = data;
       setProduct(product);
       setProductID(productId);
     }
-  });
+  }, [data]);
 
   if (error && !loading) {
     return (
@@ -64,8 +61,6 @@ export const ItemCard = () => {
       </Container>
     );
   }
-
-  console.log(item);
 
   return (
     <Container>
@@ -100,9 +95,9 @@ export const ItemCard = () => {
             />
             <div className={styles.itemButtons}>
               <div className={styles.itemButtonsContainer}>
-                <CartButton productId={item.name} />
+                <CartButton productId={item.id} />
               </div>
-              <FavouriteButton productId={item.name} />
+              <FavouriteButton productId={item.id} />
             </div>
             <Description product={item} fieldsCount={4} isSmall={true} />
           </div>

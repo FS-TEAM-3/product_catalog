@@ -28,7 +28,7 @@ const getCard = async () => {
   return data;
 };
 
-const addToCard = async (item: CartElement) => {
+const addToCart = async (item: CartElement) => {
   const { data } = await axios.post(`/user/card`, {
     itemId: item.id,
     count: item.count,
@@ -41,13 +41,19 @@ const removeFromCard = async (itemId: string) => {
   return data;
 };
 
+const clearCart = async () => {
+  const { data } = await axios.delete(`/user/card/clear`);
+  return data;
+};
+
 const operations = {
   getUserCollection,
   getFavourites,
   addToFavourites,
   removeFromFavourites,
   getCard,
-  addToCard,
+  addToCart,
   removeFromCard,
+  clearCart,
 };
 export default operations;

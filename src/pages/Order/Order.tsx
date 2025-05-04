@@ -7,6 +7,7 @@ import s from './order.module.scss';
 import { useStore } from '@/store/store';
 import { CartElement } from '@/types/Store';
 import { useTranslation } from 'react-i18next';
+import { useAuthStore } from '@/store/useAuthStore';
 
 type ModalData =
   | {
@@ -39,7 +40,10 @@ export const OrderPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showPopup, setShowPopup] = useState(true);
 
-  const cart: CartElement[] = useStore(state => state.cart);
+  const isAuth = !!useAuthStore(s => s.user);
+  const cart: CartElement[] = useStore(state =>
+    isAuth ? state.user.cart : state.guest.cart,
+  );
 
   const onFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -31,3 +31,15 @@
   stroke: $red;
   border-color: $elements;
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 2s linear infinite;
+  width: 20px;
+  height: 20px;
+}

@@ -4,12 +4,18 @@ import { useTranslation } from 'react-i18next';
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator/CustomSeparator.tsx';
 import { useAuthStore } from '@/store/useAuthStore.ts';
+import operations from '@/utils/authOperations';
 
 export const UserPage = () => {
   const { t } = useTranslation();
 
   const authUser = useAuthStore(state => state.user);
   const signout = useAuthStore(state => state.signOut);
+
+  const handleSignOut = () => {
+    signout();
+    operations.logOut();
+  };
 
   if (!authUser) return null;
 
@@ -49,7 +55,7 @@ export const UserPage = () => {
               )}
 
               <CustomSeparator />
-              <RectangleButton type="button" onClick={signout}>
+              <RectangleButton type="button" onClick={handleSignOut}>
                 {t('auth.signout')}
               </RectangleButton>
             </>

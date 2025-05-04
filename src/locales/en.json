@@ -101,6 +101,7 @@
     "logIn": "Log In",
     "signIn": "Sign Up",
     "submit": "Submit",
+    "signUp": "sign Up",
     "name": "Name",
     "email": "Email",
     "password": "Password",
@@ -119,7 +120,14 @@
   "order": {
     "info": "Please fill out the details to place an order",
     "close": "Close",
-    "order": "Make an order"
+    "title": "Order Card",
+    "order": "ORDER",
+    "adress": "Adress",
+    "phone": "Phone",
+    "created": "Order Created",
+    "home": "HOME",
+    "id": "Order ID",
+    "items": "Items"
   },
 
   "personName": {
@@ -170,5 +178,10 @@
       "title": "Contact Information",
       "description": "If you have questions regarding consumer rights, feel free to contact our support team at +380 (XX) XXX-XX-XX or email us at support@example.com."
     }
+  },
+
+  "search": {
+    "label": "Search in",
+    "search": "Search..."
   }
 }

@@ -7,7 +7,7 @@ import { CartElement, Favourites } from '@/types/Store';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useStore } from '@/store/store';
-import { LanguageSwitcher } from '@/components/organisms/LanguageSwitcher';
+import { LanguageSwitcher, UserIcon } from '@/components/organisms/Switchers';
 import { useTranslation } from 'react-i18next';
 import { ThemeToggle } from '@/components/molecules/ThemeToggle';
 import { useThemeStore } from '@/store/useThemeStore';
@@ -97,6 +97,13 @@ export const Header = () => {
             [s.navRightVisible]: isNavRightVisible,
           })}
         >
+          {/* <div className={st.languageHolder}>
+            <button
+            >
+              <UserRoundCheck />
+            </button>
+          </div> */}
+          <UserIcon />
           <LanguageSwitcher isUa={isUa} />
           <NavLink
             to="/favourites"

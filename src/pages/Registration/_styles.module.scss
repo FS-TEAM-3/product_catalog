@@ -31,7 +31,7 @@
       font-weight: bold;
       text-decoration: underline;
       cursor: pointer;
-      color: $primary;
+      color: var(--primary);
 
       transition: color 0.4s;
     }
@@ -39,7 +39,7 @@
 
   &Tabs button.active,
   &Tabs button:hover {
-    color: $secondary;
+    color: var(--secondary);
   }
 
   &Form {
@@ -50,16 +50,19 @@
     max-width: 400px;
     width: 100%;
     padding: 40px;
-    background: $white;
+    background: var(--white);
     border-radius: 8px;
-    box-shadow: 0 4px 12px $icons;
+    box-shadow: 0 4px 12px var(--icons);
+
     input {
+      color: var(--white);
+      background-color: var(--white);
       padding: 8px;
-      border: 1px solid $icons;
+      border: 1px solid var(--icons);
       width: 100%;
       box-sizing: border-box;
       &:focus {
-        outline: 1px solid $primary;
+        outline: 1px solid var(--primary);
       }
     }
     button {
@@ -69,7 +72,7 @@
       max-width: 230px;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px $shadow;
+        box-shadow: 0px 3px 13px 0px var(--shadow);
       }
     }
   }

@@ -1,0 +1,135 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/typography' as *;
+@use '@/styles/mixins' as *;
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  background-color: var(--icons);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  max-width: 350px;
+  width: 90%;
+  z-index: 1001;
+}
+
+.modal h2 {
+  text-align: center;
+}
+
+.modal h3,
+.modal h4 {
+  margin: 0.5em 0;
+}
+
+.modal p {
+  @include font-style(body);
+}
+
+.modal ul {
+  padding-left: 1em;
+}
+
+.closeButton {
+  padding: 8px 16px;
+  background-color: $red;
+  color: $white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto 0;
+}
+
+.popupContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.popup {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.closeButton:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.BackBtn {
+  align-self: start;
+  margin: 24px 0;
+
+  @include on-tablet {
+    margin: 40px 0 16px;
+  }
+}
+
+.auth {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 100vh;
+    gap: 20px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+.title {
+  justify-self: center;
+  @include font-style(h2);
+
+  &Mini {
+    display: block;
+    text-align: center;
+    color: $red;
+    @include font-style(body);
+  }
+}
+
+.formInput {
+  color: var(--white);
+  background-color: var(--white);
+}

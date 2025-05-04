@@ -32,7 +32,7 @@ export const Cart = () => {
     const fetchProducts = async () => {
       try {
         const response = await getCatalogProducts();
-        setProducts(response);
+        setProducts(response.collection);
       } catch (error) {
         console.error('Error loading products:', error);
       } finally {

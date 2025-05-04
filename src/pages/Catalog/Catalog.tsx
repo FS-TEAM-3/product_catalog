@@ -126,6 +126,15 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
             value={search}
             onChange={handleSearchChange}
           />
+          <a
+            className={styles.reset}
+            onClick={() => {
+              handleParamChange('search', '');
+              setSearch('');
+            }}
+          >
+            Reset filters
+          </a>
         </div>
 
         {paginatedProducts.length > 0 ? (

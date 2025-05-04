@@ -6,6 +6,7 @@
   &__controls {
     display: flex;
     flex-wrap: wrap;
+    align-items: end;
     gap: 16px;
     margin-top: 32px;
     grid-column: 1 / span 4;
@@ -87,5 +88,15 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+.reset {
+  text-decoration: underline;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
+  color: var(--primary);
+
+  &:hover {
+    text-decoration: none;
   }
 }

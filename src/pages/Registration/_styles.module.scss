@@ -53,7 +53,10 @@
     background: var(--white);
     border-radius: 8px;
     box-shadow: 0 4px 12px var(--icons);
+
     input {
+      color: var(--white);
+      background-color: var(--white);
       padding: 8px;
       border: 1px solid var(--icons);
       width: 100%;

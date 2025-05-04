@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import operations from '@/utils/orderOperations';
 import { Container } from '@/components/templates/Container';
 import { GoBackButton } from '@/components/molecules/GoBackButton';
@@ -12,6 +12,8 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { RectangleButton } from '@/components/atoms/RectangleButton';
 import { useNavigate } from 'react-router-dom';
 import { CustomSeparator } from '@/components/atoms/CustomSeparator';
+import products from '../../../public/api/products.json';
+import { Price } from '@/components/molecules/Price';
 
 type ModalData =
   | {
@@ -86,6 +88,17 @@ export const OrderPage = () => {
       [name]: value,
     }));
   };
+
+  const totalPrice = useMemo(() => {
+    return cart.reduce((sum, cartItem) => {
+      const prod = products.find(p => p.itemId === cartItem.id);
+      if (!prod) return sum;
+      return sum + prod.price * cartItem.count;
+    }, 0);
+  }, [cart]);
+
+  console.log(products[0]);
+  console.log(cart);
 
   return (
     <>
@@ -189,14 +202,24 @@ export const OrderPage = () => {
                 </RectangleButton>
               </form>
               <div className={styles.authForm}>
-                {cart.map(item => {
+                {cart?.map(item => {
+                  const itemName = item.id
+                    .split('-')
+                    .map(
+                      word =>
+                        word.charAt(0).toUpperCase() +
+                        word.slice(1).toLowerCase(),
+                    )
+                    .join(' ');
+
                   return (
-                    <span>
-                      {item.count} x {item.id}
+                    <span key={item.id}>
+                      {item.count} x {itemName}
                     </span>
                   );
                 })}
                 <CustomSeparator />
+                <Price currentPrice={totalPrice} />
               </div>
             </div>
           </Container>

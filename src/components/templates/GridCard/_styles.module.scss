@@ -4,11 +4,13 @@
 
 .catalog {
   &__grid {
+    position: relative;
     display: grid;
     grid-column: 1 / -1;
     gap: 16px;
     margin-top: 24px;
     justify-content: center;
+    min-height: 500px;
 
     grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
 

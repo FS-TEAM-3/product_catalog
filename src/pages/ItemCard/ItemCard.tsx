@@ -11,7 +11,7 @@ import { CartButton } from '@/components/molecules/CartButton';
 import { FavouriteButton } from '@/components/molecules/FavouriteButton';
 import { ColorSelector } from '@/components/molecules/ColorSelector';
 import { CapacitySelector } from '@/components/molecules/CapacitySelector';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { parseSlug } from '@/utils/parseSlug';
 import { BreadCrumbs } from '@/components/organisms/BreadCrumbs';
 import { getProduct, getSliderProducts } from '../../../public/api/products';
@@ -99,7 +99,9 @@ export const ItemCard = () => {
               </div>
               <FavouriteButton productId={item.id} />
             </div>
-            <Description product={item} fieldsCount={4} isSmall={true} />
+            <div className={styles.descriptionSmall}>
+              <Description product={item} fieldsCount={4} />
+            </div>
           </div>
           <div className={styles.itemId}>
             <div className={styles.itemIdDescktop}>ID: {productID}</div>
@@ -111,10 +113,10 @@ export const ItemCard = () => {
             {item.description.map(item => {
               const { title, text } = item[langKey];
               return (
-                <>
+                <React.Fragment key={item._id}>
                   <div className={styles.itemDescriptionTitle}>{title}</div>
                   <div className={styles.itemDescriptionText}>{text}</div>
-                </>
+                </React.Fragment>
               );
             })}
           </div>

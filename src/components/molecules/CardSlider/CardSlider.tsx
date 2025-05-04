@@ -54,15 +54,18 @@ export const CardSlider: React.FC<Props> = ({
             nextEl: `.swiper-catalog-button-next-${id}`,
             prevEl: `.swiper-catalog-button-prev-${id}`,
           }}
-          autoplay={{ delay: 5000 }}
+          // autoplay={{ delay: 5000 }}
           onSwiper={() => setIdxSwiper}
           controller={{ control: idxSwiper }}
           breakpoints={{
             // when window width is >= 480px
             640: {
-              slidesPerView: 3.5,
+              slidesPerView: 2.5,
             },
             // when window width is >= 640px
+            900: {
+              slidesPerView: 3.5,
+            },
             1200: {
               slidesPerView: 4,
             },

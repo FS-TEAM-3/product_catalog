@@ -15,7 +15,7 @@ $card-margin-tablet: 4px;
     height: calc(100% - $card-margin-tablet * 2);
     width: 45%;
     max-width: 300px;
-    background-color: rgba(var(--primary), 0.7);
+    background-color: rgba($primary, 0.7);
     color: $white;
     border-radius: 15px;
     flex-direction: column;

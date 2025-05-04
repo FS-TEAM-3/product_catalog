@@ -34,7 +34,7 @@
 .pageButton {
   width: 32px;
   height: 32px;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $elements;
   background-color: transparent;
   color: var(--primary);
   font-size: 14px;
@@ -43,7 +43,7 @@
   margin-right: 1px;
 
   &:hover {
-    background-color: #e2e6e9;
+    border-color: var(--primary-on-light);
   }
 
   &.active {

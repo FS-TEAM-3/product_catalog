@@ -12,6 +12,8 @@ import { useApi } from '@/hooks/useApi';
 import { LoadingOverlay } from '@/components/organisms/LoadingOverlay';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useTranslation } from 'react-i18next';
+import { SearchField } from '@/components/molecules/SearchField';
+import { useDebouncedCallback } from 'use-debounce';
 
 const perPageOptions = [
   { label: '8', value: '8' },
@@ -31,6 +33,16 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
   const [apiParams, setApiParams] = useState(new URLSearchParams());
   const [searchParams, setSearchParams] = useSearchParams();
   const [totalProducts, setTotalProducts] = useState(0);
+  const [search, setSearch] = useState('');
+
+  const debouncedSearch = useDebouncedCallback((val: string) => {
+    handleParamChange('search', val);
+  }, 400);
+
+  const handleSearchChange = (val: string) => {
+    setSearch(val);
+    debouncedSearch(val);
+  };
 
   const sort = searchParams.get('sort') || 'age';
   const perPage = parseInt(searchParams.get('perPage') || '8', 10);
@@ -108,6 +120,11 @@ export const Catalog: React.FC<{ category: string }> = ({ category }) => {
             value={perPage.toString()}
             onChange={val => handleParamChange('perPage', val)}
             options={perPageOptions}
+          />
+          <SearchField
+            category={category}
+            value={search}
+            onChange={handleSearchChange}
           />
         </div>
 

@@ -39,9 +39,12 @@ $menu-padding: 18px;
   justify-content: space-between;
   align-items: center;
   padding: 0;
+  background-color: var(--background);
   border-bottom: 1px solid $border-color;
   height: 64px;
-  position: relative;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
 }
 
 .navLeft {
@@ -189,7 +192,9 @@ $menu-padding: 18px;
     position: absolute;
     top: 100%;
     right: 0;
+    transform: translateY(1px);
     transition: opacity 0.4s;
+    background-color: inherit;
     border-bottom: 1px solid $border-color;
     &.navRightVisible {
       opacity: 1;

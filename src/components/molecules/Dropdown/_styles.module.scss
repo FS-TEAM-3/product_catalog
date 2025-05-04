@@ -31,14 +31,14 @@
 .selectTrigger {
   padding: 9px 12px 8px;
   border: 1px solid hsla(206, 12%, 74%, 1);
-  background-color: $white;
+  background-color: transparent;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   & > span {
-    color: var(--primary-on-light);
+    color: var(--primary);
   }
 
   span {
@@ -75,7 +75,7 @@
     background-color,
     color 400ms;
   &:hover {
-    color: var(--primary);
+    color: var(--primary-on-light);
     background-color: hsla(210, 25%, 98%, 1);
     cursor: url('@/../public/img/cursor-pointer.png'), auto;
     outline: none;

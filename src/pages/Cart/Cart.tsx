@@ -50,8 +50,7 @@ export const Cart = () => {
         await operations.clearCart();
         clearCart(isAuth);
       } catch (error) {
-        console.error('clear error:', error);
-        return;
+        console.error('Clear error:', error);
       } finally {
         setLoading(false);
       }
@@ -59,6 +58,7 @@ export const Cart = () => {
       clearCart(isAuth);
     }
   };
+
   const cartItems = useMemo(() => {
     return cart
       ?.map(cartItem => {
@@ -92,48 +92,45 @@ export const Cart = () => {
 
   return (
     <>
-      <LoadingOverlay isLoading={loading} />
-      {!loading && (
-        <>
-          <Container>
-            <div className={styles.cart__BackBtn}>
-              <GoBackButton />
-            </div>
-          </Container>
-          <Container className={`${isEmpty ? styles.contentHolder : ''}`}>
-            {isEmpty ? (
-              <EmptyCart />
-            ) : (
-              <>
-                <h1 className="h1">{t('cart.cart')}</h1>
-                <div className="main-grid">
-                  <section className={styles.cart__itemsBlock}>
-                    {cartItems.map(product => (
-                      <CartItem key={product.itemId} product={product} />
-                    ))}
-                  </section>
-                  <div className={styles.cart__priceBlock}>
-                    <div className={styles.cart__innerPriceBlock}>
-                      <TotalCartInfo
-                        count={totalCount}
-                        totalPrice={totalPrice}
-                        discount={discount}
-                      />
-                      <AlertDialogCheckout
-                        onCancel={() => {
-                          navigate('/order');
-                          console.log('Your cart is not empty');
-                        }}
-                        onAction={handleChange}
-                      />
-                    </div>
-                  </div>
+      <Container>
+        <div className={styles.cart__BackBtn}>
+          <GoBackButton />
+        </div>
+      </Container>
+      <Container className={isEmpty ? styles.contentHolder : ''}>
+        {loading ? (
+          <LoadingOverlay isLoading={loading} />
+        ) : isEmpty ? (
+          <EmptyCart />
+        ) : (
+          <>
+            <h1 className="h1">{t('cart.cart')}</h1>
+            <div className="main-grid">
+              <section className={styles.cart__itemsBlock}>
+                {cartItems.map(product => (
+                  <CartItem key={product.id} product={product} />
+                ))}
+              </section>
+              <div className={styles.cart__priceBlock}>
+                <div className={styles.cart__innerPriceBlock}>
+                  <TotalCartInfo
+                    count={totalCount}
+                    totalPrice={totalPrice}
+                    discount={discount}
+                  />
+                  <AlertDialogCheckout
+                    onCancel={() => {
+                      navigate('/order');
+                      console.log('Your cart is not empty');
+                    }}
+                    onAction={handleChange}
+                  />
                 </div>
-              </>
-            )}
-          </Container>
-        </>
-      )}
+              </div>
+            </div>
+          </>
+        )}
+      </Container>
     </>
   );
 };

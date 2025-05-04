@@ -89,20 +89,11 @@ export const useAuthStore = create<AuthState>(set => ({
         const token = await user.getIdToken();
         console.log('token', token);
         try {
-          await operations.logInUser(token);
+          await operations.authWithGoogle(token);
           set({ user });
           return;
-        } catch (loginError) {
-          console.warn('Login via Firebase failed', loginError);
-
-          try {
-            await operations.signUpUser(token);
-            set({ user });
-            return;
-          } catch (signupError) {
-            console.error('Signup via Firebase failed', signupError);
-            throw signupError;
-          }
+        } catch (error) {
+          console.warn('Login via Firebase failed', error);
         }
       }
 

@@ -29,13 +29,10 @@ const signUpUser = async (firebaseToken: string) => {
 const logInUser = async (firebaseToken: string) => {
   token.set(firebaseToken);
   const { data } = await axios.post('/auth/login');
-  const addUserCullection = useStore.getState().addUserCollection;
-  const userCollection = (await axios.get('/user/collection')) as {
-    cart: CartElement[];
-    favourites: Favourites[];
-  };
-
-  addUserCullection(userCollection);
+  const addUserCollection = useStore.getState().addUserCollection;
+  const userCollection = await axios.get('/user/collection');
+  console.log(userCollection);
+  addUserCollection(userCollection.data);
   return data;
 };
 
@@ -62,6 +59,16 @@ const fetchCurrentUser = async (firebaseToken: string) => {
   return data;
 };
 
+const authWithGoogle = async (firebaseToken: string) => {
+  token.set(firebaseToken);
+  const { data } = await axios.post('/auth/google');
+  const addUserCollection = useStore.getState().addUserCollection;
+  const userCollection = await axios.get('/user/collection');
+  console.log(userCollection);
+  addUserCollection(userCollection.data);
+  return data;
+};
+
 const deleteAccount = async () => {
   const status = await axios.delete(`/auth/delete`);
   return status;
@@ -73,5 +80,6 @@ const operations = {
   logInUser,
   fetchCurrentUser,
   deleteAccount,
+  authWithGoogle,
 };
 export default operations;

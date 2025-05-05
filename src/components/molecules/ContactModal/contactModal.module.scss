@@ -94,7 +94,7 @@
 
 .contactFormButton {
   padding: 10px 20px;
-  background-color: $secondary;
+  background-color: $primary;
   color: $white;
   border: none;
   border-radius: 4px;
@@ -102,7 +102,7 @@
   cursor: url('@/../public/img/cursor-pointer.png'), auto;
 
   &:hover {
-    background-color: $primary;
+    box-shadow: 0px 3px 13px 0px $shadow;
   }
 
   &:disabled {

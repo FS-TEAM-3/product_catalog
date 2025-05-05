@@ -106,6 +106,7 @@ $video-height-desktop: 400px;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
+  min-width: 95%;
   background-image: url('/public/img/image_P_small.png');
   & source {
     min-width: 100%;

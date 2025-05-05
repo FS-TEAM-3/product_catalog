@@ -12,10 +12,8 @@ export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
   useEffect(() => {
     if (isLoading) {
       document.body.style.overflow = 'hidden';
-      document.body.style.marginRight = '15px';
     } else {
       document.body.style.overflow = '';
-      document.body.style.marginRight = '0';
     }
     return () => {
       document.body.style.overflow = '';

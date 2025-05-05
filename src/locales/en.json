@@ -58,7 +58,9 @@
     "sortBy": "Sort by",
     "perPage": "Items on page",
     "models": "models",
-    "items": "items"
+    "items": "items",
+    "empty": "Not found products",
+    "reset": "Reset filters"
   },
 
   "goBack": {

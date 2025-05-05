@@ -6,6 +6,7 @@
   &__controls {
     display: flex;
     flex-wrap: wrap;
+    align-items: end;
     gap: 16px;
     margin-top: 32px;
     grid-column: 1 / span 4;
@@ -29,6 +30,22 @@
     gap: 8px;
     flex-wrap: wrap;
   }
+
+  &__gridWrapper {
+    position: relative;
+    grid-column: 1 / -1;
+    min-height: 500px;
+    margin-top: 24px;
+  }
+
+  &__localOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
 }
 
 .pageButton {
@@ -38,7 +55,7 @@
   background-color: transparent;
   color: var(--primary);
   font-size: 14px;
-  cursor: pointer;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
   transition: all 0.3s;
   margin-right: 1px;
 
@@ -59,4 +76,27 @@
 
 .arrowButtonRight {
   margin-left: 9px;
+}
+
+.spinner {
+  animation: spin 2s linear infinite;
+  width: 40px;
+  height: 40px;
+  color: $icons;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.reset {
+  text-decoration: underline;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
+  color: var(--primary);
+
+  &:hover {
+    text-decoration: none;
+  }
 }

@@ -26,7 +26,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const handleChange = async (action: string) => {
     if (loading) return;
-
     setLoading(true);
     try {
       switch (action) {
@@ -62,16 +61,23 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     }
   };
 
+  const handleRemove = async () => {
+    if (isAuth) {
+      try {
+        operations.removeFromCard(product.itemId);
+        removeFromCart(isAuth, product.itemId);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      removeFromCart(isAuth, product.itemId);
+    }
+  };
+
   return (
     <div className={styles.cart__item} key={product.itemId}>
       <div className={styles.cart__itemHolder}>
-        <button
-          className={styles.cart__delete}
-          onClick={event => {
-            event.preventDefault();
-            removeFromCart(isAuth, product.itemId);
-          }}
-        >
+        <button className={styles.cart__delete} onClick={handleRemove}>
           <X className={styles.cart__icon} />
         </button>
         <a

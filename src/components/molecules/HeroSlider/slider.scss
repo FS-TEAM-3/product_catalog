@@ -103,6 +103,10 @@ $video-height-desktop: 400px;
   box-sizing: border-box;
   background-color: rgba(var(--primary), 0.7);
   height: $video-height-mobile;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('/public/img/image_P_small.png');
   & source {
     min-width: 100%;
   }
@@ -110,6 +114,7 @@ $video-height-desktop: 400px;
     height: $video-height-tablet;
     margin: 0;
     margin-inline: 5px;
+    background-image: url('/public/img/image_P_medium.png');
   }
   @include on-desktop {
     height: $video-height-desktop;

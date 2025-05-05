@@ -1,0 +1,144 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/typography' as *;
+@use '@/styles/mixins' as *;
+
+@keyframes slideInFromBottomRight {
+  0% {
+    opacity: 0;
+    transform: translate(100%, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.contactModal {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  max-width: 75%;
+  max-height: 75%;
+  color: $primary;
+  animation: slideInFromBottomRight 0.5s ease-out;
+
+  @include on-tablet {
+    width: 90%;
+    max-height: 75%;
+    max-width: 400px;
+  }
+  @include on-desktop {
+    padding: 32px;
+  }
+}
+
+.contactModalContent {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  gap: 16px;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contactFormInput,
+.contactFormTextarea {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 14px;
+  font-size: 16px;
+  background-color: white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  color: var(--white);
+  resize: none;
+  @include font-style(body);
+
+  @include on-tablet {
+    padding: 4px 14px;
+  }
+
+  @include on-desktop {
+    padding: 10px 14px;
+  }
+
+  &::placeholder {
+    color: $secondary;
+  }
+}
+
+.title {
+  margin: 0 0 4px;
+  color: $primary;
+  @include font-style(h4);
+}
+
+.contactFormTextarea {
+  min-height: 80px;
+}
+
+.contactFormButton {
+  padding: 10px 20px;
+  background-color: $secondary;
+  color: $white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: url('@/../public/img/cursor-pointer.png'), auto;
+
+  &:hover {
+    background-color: $primary;
+  }
+
+  &:disabled {
+    background-color: $icons;
+    cursor: not-allowed;
+  }
+}
+
+.button {
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.toastContent {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 300px;
+  position: fixed;
+  top: 20px;
+  z-index: 1100;
+}
+
+.toastAction {
+  background-color: inherit;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.toastContent.error {
+  background-color: #f44336;
+}

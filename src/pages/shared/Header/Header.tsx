@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { ThemeToggle } from '@/components/molecules/ThemeToggle';
 import { useThemeStore } from '@/store/useThemeStore';
 import { useAuthStore } from '@/store/useAuthStore';
+import { ContactForm } from '@/components/organisms/ContactForm/ContactForm';
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
@@ -152,6 +153,7 @@ export const Header = () => {
         {/* right user menu end */}
       </header>
       <ThemeToggle />
+      <ContactForm />
 
       <div className={`${s.mobileMenu} ${isMenuOpen ? s.active : ''}`}>
         <div className={s.mobileMenuLinks}>

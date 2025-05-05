@@ -50,8 +50,13 @@ export const useAuthStore = create<AuthState>(set => ({
       await operations.logInUser(token);
       set({ user });
     } catch (e: any) {
+      set({ loading: true });
+      await firebaseSignOut(auth);
+      await operations.logOut();
       set({ error: e.message });
-      throw e;
+      set({ user: null, loading: false });
+
+      throw new Error('No this user in our database');
     } finally {
       set({ loading: false });
     }
@@ -72,7 +77,13 @@ export const useAuthStore = create<AuthState>(set => ({
       set({ user });
     } catch (e: any) {
       set({ error: e.message });
-      throw e;
+      set({ loading: true });
+      await firebaseSignOut(auth);
+      await operations.logOut();
+      set({ error: e.message });
+      set({ user: null, loading: false });
+
+      throw new Error('Something wrong');
     } finally {
       set({ loading: false });
     }
@@ -100,7 +111,13 @@ export const useAuthStore = create<AuthState>(set => ({
       throw new Error('No user returned from Firebase');
     } catch (e: any) {
       set({ error: e.message });
-      throw e;
+
+      set({ loading: true });
+      await firebaseSignOut(auth);
+      await operations.logOut();
+      set({ user: null, loading: false });
+
+      throw new Error('No this user in our dataBase');
     } finally {
       set({ loading: false });
     }

@@ -27,7 +27,8 @@
     "welcome": "Welcome to Nice Gadgets store!",
     "sliderNew": "Brand new models",
     "categories": "Categories",
-    "sliderHot": "Hot prices"
+    "sliderHot": "Hot prices",
+    "models": "models"
   },
 
   "heroCard": {
@@ -57,7 +58,9 @@
     "sortBy": "Sort by",
     "perPage": "Items on page",
     "models": "models",
-    "items": "items"
+    "items": "items",
+    "empty": "Not found products",
+    "reset": "Reset filters"
   },
 
   "goBack": {
@@ -79,9 +82,9 @@
     "item": "item",
     "items": "items",
     "checkout": "Checkout",
-    "notImplement": "Checkout is not implemented yet.",
+    "notImplement": "What would you like to do?.",
     "wantClear": "Do you wan't to clear the Cart?",
-    "cancel": "Cancel",
+    "cancel": "Order now",
     "yesClear": "Yes, clear the Cart!",
     "empty": "Your cart is empty"
   },
@@ -100,9 +103,33 @@
     "logIn": "Log In",
     "signIn": "Sign Up",
     "submit": "Submit",
+    "signUp": "sign Up",
     "name": "Name",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "signInButton": "SignUp",
+    "signInGoogleButton": "SignUp with Google",
+    "logInButton": "LogIn",
+    "logInGoogleButton": "LogIn with Google",
+    "signout": "SignOut",
+    "or": "or",
+    "joinedOn": "Joined on ",
+    "invalidName": "Name must contain only letters and be between 2 and 40 characters long.",
+    "weakPassword": "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.",
+    "exist": "User with this email already exist"
+  },
+
+  "order": {
+    "info": "Please fill out the details to place an order",
+    "close": "Close",
+    "title": "Order Card",
+    "order": "ORDER",
+    "adress": "Adress",
+    "phone": "Phone",
+    "created": "Order Created",
+    "home": "HOME",
+    "id": "Order ID",
+    "items": "Items"
   },
 
   "personName": {
@@ -153,5 +180,22 @@
       "title": "Contact Information",
       "description": "If you have questions regarding consumer rights, feel free to contact our support team at +380 (XX) XXX-XX-XX or email us at support@example.com."
     }
+  },
+
+  "search": {
+    "label": "Search in",
+    "search": "Search..."
+  },
+
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "submit": "Send",
+    "sending": "Sending...",
+    "successMessage": "Your request has been sent! We will contact you.",
+    "errorMessage": "Error while sending the form.",
+    "ContactUs": "Contact us"
   }
 }

@@ -1,0 +1,51 @@
+@use './variables.scss' as *;
+
+:root {
+  --primary-light: #{$primary};
+  --secondary-light: #{$secondary};
+  --icons-light: #{$icons};
+  --elements-light: #{$elements};
+  --hover-light: #{$hover};
+  --background-light: #{$background};
+  --shadow: #{$shadow};
+  --green: #{$green};
+  --red: #{$red};
+  --duration: #{$duration};
+}
+
+.dark-theme {
+  --primary: hsla(233, 40%, 96%, 1);
+  --primary-on-light: #{$primary};
+  --background: hsl(210, 10%, 10%);
+  --bg-checkbox: hsla(228, 11%, 26%, 1);
+  --button-bg: hsla(259, 100%, 68%, 1);
+  --icon-color: hsla(233, 40%, 96%, 1);
+  --secondary: hsla(233, 40%, 96%, 1);
+  --btn-active-color: hsla(259, 100%, 68%, 1);
+  --disabled-btn: var(--primary-light);
+
+  --icons: hsla(259, 100%, 68%, 1);
+  --elements: hsl(0, 0%, 20%);
+  --hover: hsl(210, 10%, 20%);
+}
+
+.light-theme {
+  --primary: var(--primary-light);
+  --primary-on-light: var(--primary-light);
+  --background: var(--background-light);
+  --bg-checkbox: #fff;
+  --btn-active-color: var(--green);
+  --button-bg: var(--primary-light);
+  --icon-color: var(--secondary-light);
+  --secondary: var(--secondary-light);
+  --disabled-btn: #{$white};
+
+  --icons: var(--icons-light);
+  --elements: var(--elements-light);
+  --hover: var(--hover-light);
+}
+
+body {
+  background: var(--background);
+  color: var(--primary);
+}

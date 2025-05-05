@@ -1,20 +1,29 @@
 import { NavLink } from 'react-router';
 import './style.module.scss';
 import s from './style.module.scss';
-import { Heart, ShoppingBag, Menu, X } from 'lucide-react';
+import { Heart, ShoppingBag, Menu, X, UserCog } from 'lucide-react';
 import { IconLinkWithCounter } from '@/components/molecules/IconLinkWithCounter/IconLinkWithCounter';
-import { CartElement, Favourites } from '@/types/Store';
 import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { useStore } from '@/store/store';
-import { LanguageSwitcher } from '@/components/organisms/LanguageSwitcher';
+import { LanguageSwitcher, UserIcon } from '@/components/organisms/Switchers';
 import { useTranslation } from 'react-i18next';
+import { ThemeToggle } from '@/components/molecules/ThemeToggle';
+import { useThemeStore } from '@/store/useThemeStore';
+import { useAuthStore } from '@/store/useAuthStore';
+import { ContactForm } from '@/components/organisms/ContactForm/ContactForm';
 
 export const Header = () => {
-  const { t } = useTranslation();
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
+  const langKey = i18n.language;
+  const isUa = langKey === 'uk' ? true : false;
 
-  const cart: CartElement[] = useStore(state => state.cart);
-  const favourites: Favourites[] = useStore(state => state.favourites);
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isNavRightVisible, setIsNavRightVisible] = useState(false);
+  const isAuth = !!useAuthStore(s => s.user);
+
+  const state = useStore(state => (isAuth ? state.user : state.guest));
+  const theme = useThemeStore(state => state.theme);
 
   const getRealClassName = (isActive: boolean) => {
     return isActive ? `${s.link} ${s.active}` : s.link;
@@ -59,7 +68,7 @@ export const Header = () => {
         <div className={s.navLeft}>
           <NavLink to={'/'} className={s.logo}>
             <img
-              src="/img/Logo.png"
+              src={theme === 'light-theme' ? '/img/Logo.png' : '/img/Logo.svg'}
               alt="Logo"
               onClick={() => setMenuOpen(false)}
             />
@@ -77,14 +86,33 @@ export const Header = () => {
           </nav>
         </div>
 
-        <div className={s.navRight}>
+        {/* right user menu start */}
+        <button
+          className={s.navToggleButton}
+          onClick={() => setIsNavRightVisible(prev => !prev)}
+        >
+          {isNavRightVisible ? <X /> : <UserCog />}
+        </button>
+        <div
+          className={classNames(s.navRight, {
+            [s.navRightVisible]: isNavRightVisible,
+          })}
+        >
+          {/* <div className={st.languageHolder}>
+            <button
+            >
+              <UserRoundCheck />
+            </button>
+          </div> */}
+          <UserIcon />
+          <LanguageSwitcher isUa={isUa} />
           <NavLink
             to="/favourites"
             className={({ isActive }) =>
               `${s.iconWrapper} ${isActive ? s.active : ''}`
             }
           >
-            <IconLinkWithCounter count={favourites.length}>
+            <IconLinkWithCounter count={state.favourites?.length}>
               <Heart className={s.icon} />
             </IconLinkWithCounter>
           </NavLink>
@@ -95,7 +123,7 @@ export const Header = () => {
               `${s.iconWrapper} ${isActive ? s.active : ''}`
             }
           >
-            <IconLinkWithCounter count={cart.length}>
+            <IconLinkWithCounter count={state.cart?.length}>
               <ShoppingBag className={s.icon} />
             </IconLinkWithCounter>
           </NavLink>
@@ -107,7 +135,8 @@ export const Header = () => {
             <IconLinkWithCounter
               count={0}
               type={
-                (favourites.length > 0 || cart.length > 0) && !isMenuOpen
+                (state.favourites?.length > 0 || state.cart?.length > 0) &&
+                !isMenuOpen
                   ? 'menu'
                   : undefined
               }
@@ -120,7 +149,11 @@ export const Header = () => {
             </IconLinkWithCounter>
           </div>
         </div>
+
+        {/* right user menu end */}
       </header>
+      <ThemeToggle />
+      <ContactForm />
 
       <div className={`${s.mobileMenu} ${isMenuOpen ? s.active : ''}`}>
         <div className={s.mobileMenuLinks}>
@@ -144,7 +177,7 @@ export const Header = () => {
             }
             onClick={() => setMenuOpen(false)}
           >
-            <IconLinkWithCounter count={favourites.length}>
+            <IconLinkWithCounter count={state.favourites?.length}>
               <Heart className={s.icon} />
             </IconLinkWithCounter>
           </NavLink>
@@ -158,13 +191,12 @@ export const Header = () => {
             }
             onClick={() => setMenuOpen(false)}
           >
-            <IconLinkWithCounter count={cart.length}>
+            <IconLinkWithCounter count={state.cart?.length}>
               <ShoppingBag className={s.icon} />
             </IconLinkWithCounter>
           </NavLink>
         </div>
       </div>
-      <LanguageSwitcher />
     </>
   );
 };

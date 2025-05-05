@@ -1,6 +1,4 @@
-// components/GenericSelect.tsx
 import * as Select from '@radix-ui/react-select';
-
 import styles from './_styles.module.scss';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';

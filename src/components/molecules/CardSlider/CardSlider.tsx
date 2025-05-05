@@ -60,9 +60,12 @@ export const CardSlider: React.FC<Props> = ({
           breakpoints={{
             // when window width is >= 480px
             640: {
-              slidesPerView: 3.5,
+              slidesPerView: 2.5,
             },
             // when window width is >= 640px
+            900: {
+              slidesPerView: 3.5,
+            },
             1200: {
               slidesPerView: 4,
             },

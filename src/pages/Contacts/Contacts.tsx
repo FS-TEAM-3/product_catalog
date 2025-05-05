@@ -19,7 +19,7 @@ export const Contacts: React.FC = () => {
     {
       id: 2,
       name: t('personName.Kate'),
-      photo: 'https://via.placeholder.com/150',
+      photo: '/img/ContactPhotos/KAte.jpg',
       description: t('personDescription.Kate'),
     },
     {

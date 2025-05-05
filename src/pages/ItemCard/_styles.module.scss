@@ -94,7 +94,7 @@
 
   &Description {
     &Title {
-      color: $primary;
+      color: var(--primary);
       margin-top: 32px;
       margin-bottom: 16px;
       @include font-style(h4);
@@ -149,8 +149,12 @@
   }
 
   &Main {
-    color: $primary;
+    color: var(--primary);
     @include font-style(h3);
+  }
+
+  &Small {
+    margin-top: 7px;
   }
 }
 

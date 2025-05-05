@@ -1,6 +1,7 @@
 @use '@/styles/variables.scss' as *;
 
 .overlay {
+  height: 100%;
   position: fixed;
   inset: 0;
   background: rgba($background, 0.5);

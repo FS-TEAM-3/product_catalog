@@ -10,7 +10,7 @@ type Props = {
   isLoading?: boolean;
   size?: 'defauld' | 'big';
   onClick?: () => void;
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const RectangleButton: React.FC<Props> = ({
   children,

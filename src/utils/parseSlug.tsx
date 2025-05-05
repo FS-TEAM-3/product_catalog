@@ -5,7 +5,7 @@ export interface ParsedSlug {
 }
 
 export function parseSlug(slug: string): ParsedSlug {
-  const regex = /^([a-z0-9-]+)-(\d+(?:gb|mm))-([a-z-]+)$/i;
+  const regex = /^([a-z0-9-]+)-(\d+(?:gb|mm|tb))-([a-z-]+)$/i;
   const match = slug.match(regex);
 
   if (!match) {

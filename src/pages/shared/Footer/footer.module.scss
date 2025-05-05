@@ -82,7 +82,7 @@ $botton-size: 32px;
   }
   &:hover,
   :focus {
-    color: $primary;
+    color: var(--primary);
   }
 }
 

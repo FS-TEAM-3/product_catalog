@@ -1,9 +1,14 @@
 import { ColorSlug } from '@/constants/colors';
 
-export interface DescriptionBlock {
-  _id: string;
+export interface DescriptionLocale {
   title: string;
   text: string[];
+}
+
+export interface DescriptionBlock {
+  _id: string;
+  eng: DescriptionLocale;
+  ukr: DescriptionLocale;
 }
 
 export type Product = {

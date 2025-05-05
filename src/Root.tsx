@@ -14,6 +14,9 @@ import { NotFound } from './pages/NotFound';
 import { AuthPage } from './pages/Registration';
 import { Contacts } from './pages/Contacts';
 import { Rights } from './pages/Rights';
+import { OrderPage } from './pages/Order/Order';
+import { PrivateRoute } from './PrivateRoute';
+import { UserPage } from './pages/Registration/UserPage';
 
 export const Root = () => {
   return (
@@ -37,10 +40,14 @@ export const Root = () => {
             <Route path="/accessories/:slug" element={<ItemCard />} />
           </Route>
           <Route path="auth" element={<AuthPage />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="profile" element={<UserPage />} />
+          </Route>
           <Route path="contacts" element={<Contacts />} />
           <Route path="cart" element={<Cart />} />
           <Route path="rights" element={<Rights />} />
           <Route path="favourites" element={<Favourites />} />
+          <Route path="order" element={<OrderPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

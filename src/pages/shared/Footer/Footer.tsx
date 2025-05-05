@@ -7,14 +7,15 @@ import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import s from './footer.module.scss';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useThemeStore } from '@/store/useThemeStore';
 
 export const Footer = () => {
   const { t } = useTranslation();
-
+  const theme = useThemeStore(state => state.theme);
   const linkList = [
     { name: 'github', path: 'https://github.com/FS-TEAM-3' },
-    { name: 'contacts', path: '/contacts' },
-    { name: 'rights', path: '/rights' },
+    { name: t('footer.contacts'), path: '/contacts' },
+    { name: t('footer.rights'), path: '/rights' },
   ];
   const location = useLocation();
 
@@ -32,7 +33,11 @@ export const Footer = () => {
       <Container className={s.content}>
         <div className={clsx(s.logo, s.section)}>
           <NavLink to={'/'}>
-            <img className={s.logoImage} src="/img/Logo.png" alt="Logo" />
+            <img
+              className={s.logoImage}
+              src={theme === 'light-theme' ? '/img/Logo.png' : '/img/Logo.svg'}
+              alt="Logo"
+            />
           </NavLink>
         </div>
         <div className={clsx(s.linkList, s.section)}>

@@ -64,17 +64,25 @@ $video-height-desktop: 400px;
     & svg {
       width: 16px;
       height: 16px;
-      color: $primary;
+      color: var(--primary);
+      transition: color 0.4s;
     }
   }
   @include on-desktop {
     height: $video-height-desktop;
   }
 }
+.dark-theme .swiper-button-next:hover,
+.dark-theme .swiper-button-prev:hover {
+  border-color: $secondary;
+  svg {
+    color: $secondary;
+  }
+}
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  border-color: $primary;
+  border-color: var(--primary);
 }
 
 .box {
@@ -93,8 +101,13 @@ $video-height-desktop: 400px;
   object-position: center bottom;
   margin-bottom: 8px;
   box-sizing: border-box;
-  background-color: rgba($primary, 0.7);
+  background-color: rgba(var(--primary), 0.7);
   height: $video-height-mobile;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-width: 95%;
+  background-image: url('/public/img/image_P_small.png');
   & source {
     min-width: 100%;
   }
@@ -102,6 +115,7 @@ $video-height-desktop: 400px;
     height: $video-height-tablet;
     margin: 0;
     margin-inline: 5px;
+    background-image: url('/public/img/image_P_medium.png');
   }
   @include on-desktop {
     height: $video-height-desktop;

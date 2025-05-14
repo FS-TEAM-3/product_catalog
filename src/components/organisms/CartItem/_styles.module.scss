@@ -87,7 +87,7 @@
   }
 
   &__titleLink {
-    color: $primary;
+    color: var(--primary);
     text-decoration: none;
     transition: color 0.4s;
     flex-grow: 1;

@@ -14,7 +14,7 @@
 .link {
   display: inline-flex;
   align-items: center;
-  color: $primary;
+  color: var(--primary);
   text-decoration: none;
   transition: color 400ms;
 
@@ -38,7 +38,7 @@
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  color: $primary;
+  color: var(--primary);
 
   &Home {
     &:hover {

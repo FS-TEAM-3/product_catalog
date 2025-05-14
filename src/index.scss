@@ -3,14 +3,18 @@
 @use './styles/custom-body.scss';
 @use 'normalize.css';
 @use './styles/variables.scss' as *;
+@use './styles/theme.scss' as *;
+
+::-webkit-scrollbar {
+  display: none;
+}
 
 body {
   margin: 0;
-  background-color: #fff;
-  color: #000;
   cursor: url('@/../public/img/cursor.png'), auto;
   @include font-style(body);
 }
+
 .main-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

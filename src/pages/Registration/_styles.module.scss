@@ -3,11 +3,18 @@
 @use '@/styles/mixins' as *;
 
 .auth {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: flex-start;
+
   &Title {
-    margin: 50px 0;
+    justify-self: center;
+    margin: 20px 0;
 
     @include on-tablet {
-      margin: 70px 0 50px;
+      margin: 40px 0 20px;
     }
   }
 
@@ -15,6 +22,7 @@
     display: flex;
     gap: 20px;
     margin-bottom: 15px;
+    justify-self: center;
 
     button {
       text-transform: uppercase;
@@ -22,8 +30,8 @@
       border: none;
       font-weight: bold;
       text-decoration: underline;
-      cursor: pointer;
-      color: $primary;
+      cursor: url('@/../public/img/cursor-pointer.png'), auto;
+      color: var(--primary);
 
       transition: color 0.4s;
     }
@@ -31,32 +39,91 @@
 
   &Tabs button.active,
   &Tabs button:hover {
-    color: $secondary;
+    color: var(--secondary);
   }
 
   &Form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 15px 0 25px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    width: 100%;
+    padding: 40px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--icons);
+
     input {
+      color: var(--white);
+      background-color: var(--white);
       padding: 8px;
-      border: 1px solid $icons;
-      width: 230px;
+      border: 1px solid var(--icons);
+      width: 100%;
       box-sizing: border-box;
       &:focus {
-        outline: 1px solid $primary;
+        outline: 1px solid var(--primary);
       }
     }
     button {
       padding: 8px 16px;
       border: none;
-      cursor: url('@/../public/img/cursor.png'), auto;
       max-width: 230px;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px $shadow;
+        cursor: url('@/../public/img/cursor-pointer.png'), auto;
+        box-shadow: 0px 3px 13px 0px var(--shadow);
       }
+    }
+  }
+}
+
+.iconImg {
+  width: 1em;
+  height: 1em;
+  margin-right: 1em;
+}
+
+.user {
+  &Name {
+    @include font-style(h2);
+  }
+
+  &Avatar {
+    border-radius: 50%;
+  }
+}
+
+.fieldError {
+  color: $red;
+}
+
+.cont {
+  align-items: center;
+  width: 100%;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding-right: 2.5rem;
+  }
+
+  .toggleBtn {
+    position: absolute;
+    top: 55%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: url('@/../public/img/cursor-pointer.png'), auto;
+  }
+  button {
+    &:hover {
+      box-shadow: none;
     }
   }
 }

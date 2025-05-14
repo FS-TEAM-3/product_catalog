@@ -21,6 +21,9 @@ export const AlertDialogCheckout: React.FC<Props> = ({
       <AlertDialog.Portal>
         <AlertDialog.Overlay className={styles.Overlay} />
         <AlertDialog.Content className={styles.Content}>
+          <AlertDialog.AlertDialogCancel className={styles.Cancel}>
+            X
+          </AlertDialog.AlertDialogCancel>
           <AlertDialog.Title className={styles.Title}>
             {t('cart.notImplement')}
           </AlertDialog.Title>
